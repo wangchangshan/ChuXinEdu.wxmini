@@ -1,12 +1,14 @@
 {
   "pages":[
+    "pages/student/course/course",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#43B0D1",
+    "backgroundColor": "#43B0D1",
+    "navigationBarTitleText": "初心教育",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
   }
 }

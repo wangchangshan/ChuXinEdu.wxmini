@@ -1,0 +1,14 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells__title">许小念上课记录</view>
+        <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{courseList}}">
+                <view class="weui-cell" >
+                    <view class="weui-cell__bd">标题文字</view>
+                    <view class="weui-cell__ft">说明文字</view>
+                </view>
+            </block>
+           
+        </view>
+    </view>
+</view>
