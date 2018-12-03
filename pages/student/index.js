@@ -1,9 +1,10 @@
 
 var app = getApp();
+var allStudentList = [];
 Page({
     data: {
         inputShowed: false,
-        inputVal: "",
+        searchName: "",
         studentList: []
     }, 
     onLoad: function () {
@@ -16,18 +17,20 @@ Page({
     },
     hideInput: function () {
         this.setData({
-            inputVal: "",
+            searchName: "",
             inputShowed: false
         });
     },
     clearInput: function () {
         this.setData({
-            inputVal: ""
+            searchName: "",
+            studentList: allStudentList
         });
     },
     inputTyping: function (e) {
         this.setData({
-            inputVal: e.detail.value
+            searchName: e.detail.value,
+            studentList: allStudentList.filter(data => !e.detail.value || data.studentName.includes(e.detail.value))
         });
     },
 
@@ -50,9 +53,10 @@ Page({
                 'token': 'wx-mini'
             },
             success: result => {
-                console.log(result);
+                //console.log(result);
+                allStudentList = result.data.data;
                 this.setData({
-                    studentList: result.data.data
+                    studentList: allStudentList
                 });
             }
         })
