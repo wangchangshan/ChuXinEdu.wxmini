@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    serverBase: "http:localhost:5000"
+    serverBase: "http://localhost:5000"
   }
 })
