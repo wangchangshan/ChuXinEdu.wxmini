@@ -18,7 +18,8 @@ Page({
     hideInput: function () {
         this.setData({
             searchName: "",
-            inputShowed: false
+            inputShowed: false,
+            studentList: allStudentList
         });
     },
     clearInput: function () {
@@ -40,7 +41,7 @@ Page({
             url: app.globalData.serverBase + "/api/student/getstudentlist",
             data: {
                 pageIndex: 1,
-                pageSize: 10,
+                pageSize: 200,
                 q: {
                     studentCode: '',
                     studentName: '',
