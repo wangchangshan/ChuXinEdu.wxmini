@@ -1,0 +1,23 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells__title">课程套餐</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-loadmore" hidden="{{hiddenPackageLoading}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view wx:if="{{packageList.length == 0}}" class="weui-loadmore weui-loadmore_line">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+            <view wx:else class="weui-cells weui-cells_after-title">
+                <block wx:for="{{packageList}}" wx:key="{{studentCourseId}}">
+                    <view class="weui-cell">
+                        <view class="weui-cell__bd">{{ item.packageName }}</view>
+                        <!-- <view class="weui-cell__ft">{{ item.courseSubject }}</view> -->
+                    </view>
+                </block>
+
+            </view>
+        </view>
+    </view>
+</view>

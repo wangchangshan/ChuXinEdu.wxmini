@@ -7,19 +7,32 @@
                     <view class="weui-label">日期</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                    <picker mode="date" value="{{date}}" start="2017-12-01" end="2021-12-31" bindchange="bindDateChange">
                         <view class="weui-input">{{date}}</view>
                     </picker>
                 </view>
             </view>
         </view>
-        <view class="weui-cells__tips">底部说明文字底部说明文字</view>
 
-       
-
-
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">查询</button>
+        <!-- <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="searchSchedule">查询</button>
+        </view> -->
+        <view class="weui-loadmore" hidden="{{hiddenLoading}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
         </view>
+        <view wx:if="{{periods.length == 0}}" class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+
+        <block wx:for="{{periods}}" wx:key="*this">
+            <view class="weui-cells__title">{{item}}</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell" wx:for="{{schedule[item]}}" wx:for-item="cell" wx:key="cell.studentName">
+                    <view class="weui-cell__bd">{{ cell.studentName }}</view>
+                    <view class="weui-cell__ft {{cell.colorclass}}">{{ cell.folderName }}</view>
+                </view>
+            </view>
+        </block>
     </view>
 </view>

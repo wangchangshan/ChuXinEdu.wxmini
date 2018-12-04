@@ -1,34 +1,17 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/student/index",
-    "pages/schedule/schedule",
-    "pages/student/course/course",
-    "pages/logs/logs",
-    "pages/more/more"
-  ],
-  "window":{
-    "navigationBarBackgroundColor": "#43B0D1",
-    "backgroundColor": "#43B0D1",
-    "navigationBarTitleText": "cswang",
-    "navigationBarTextStyle": "white",
-    "backgroundTextStyle": "light"
-  },
-  "tabBar": {
-    "selectedColor": "#43B0D1",
-    "list": [
-        {
-            "pagePath": "pages/index/index",
-            "iconPath": "images/tabbar/index.png",
-            "selectedIconPath": "images/tabbar/index@select.png",
-            "text": "首 页"
-        },
-        {
-            "pagePath": "pages/more/more",
-            "iconPath": "images/tabbar/more.png",
-            "selectedIconPath": "images/tabbar/more@select.png",
-            "text": "更 多"
-        }
-    ]
-}
+    "pages": [
+        "pages/index/index",
+        "pages/login/login",
+        "pages/student/index",
+        "pages/student/course/course",
+        "pages/package/package",
+        "pages/schedule/schedule"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#43B0D1",
+        "backgroundColor": "#43B0D1",
+        "navigationBarTitleText": "初心教育",
+        "navigationBarTextStyle": "white",
+        "backgroundTextStyle": "light"
+    }
 }

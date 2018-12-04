@@ -1,1 +1,9 @@
 /* pages/student/course/course.wxss */
+.weui-grid{
+    padding: 0;
+}
+
+.weui-grid__icon{
+    width:100%;
+    height:100px;
+}

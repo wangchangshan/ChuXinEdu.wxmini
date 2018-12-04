@@ -20,7 +20,7 @@
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
                 <block wx:for="{{studentList}}" wx:key="{{id}}">
-                    <navigator url="/pages/student/course/course" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <navigator url="/pages/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                             <image class="weui-media-box__thumb" src="{{item.studentAvatarPath}}" />
                         </view>

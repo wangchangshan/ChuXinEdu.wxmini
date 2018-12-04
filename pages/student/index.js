@@ -38,7 +38,7 @@ Page({
 
     getStudentList: function() {
         wx.request({
-            url: app.globalData.serverBase + "/api/student/getstudentlist",
+            url: app.globalData.serverBase + "/api/open/getstudentlist",
             data: {
                 pageIndex: 1,
                 pageSize: 200,
@@ -54,7 +54,6 @@ Page({
                 'token': 'wx-mini'
             },
             success: result => {
-                //console.log(result);
                 allStudentList = result.data.data;
                 this.setData({
                     studentList: allStudentList
