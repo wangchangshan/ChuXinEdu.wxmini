@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        hiddenPackageLoading: false,
+        hiddenLoading: false,
         packageList:[]
     },
 
@@ -29,12 +29,18 @@ Page({
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'token': 'wx-mini'
+                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
             },
             success: result => {
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenLoading: true
+                    });
+                    return;
+                }
                 this.setData({
                     packageList: result.data,
-                    hiddenPackageLoading: true
+                    hiddenLoading: true
                 })
             }
         })

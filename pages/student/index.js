@@ -5,6 +5,7 @@ Page({
     data: {
         inputShowed: false,
         searchName: "",
+        hiddenLoading: false,
         studentList: []
     }, 
     onLoad: function () {
@@ -51,12 +52,19 @@ Page({
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'token': 'wx-mini'
+                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
             },
             success: result => {
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenLoading: true
+                    });
+                    return;
+                }
                 allStudentList = result.data.data;
                 this.setData({
-                    studentList: allStudentList
+                    studentList: allStudentList,
+                    hiddenLoading: true
                 });
             }
         })

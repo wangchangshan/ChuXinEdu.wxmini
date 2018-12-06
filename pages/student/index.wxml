@@ -17,6 +17,14 @@
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
 
+        <view class="weui-loadmore" hidden="{{hiddenLoading}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{studentList.length == 0}}" class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+        
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
                 <block wx:for="{{studentList}}" wx:key="{{id}}">

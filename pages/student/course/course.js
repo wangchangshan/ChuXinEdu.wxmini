@@ -47,9 +47,15 @@ Page({
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'token': 'wx-mini'
+                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
             },
             success: result => {
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenCourseLoading: true
+                    });
+                    return;
+                }
                 result.data.forEach(item => {
                     item.courseDate = item.courseDate.split('T')[0];
                 });
@@ -69,10 +75,15 @@ Page({
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'token': 'wx-mini'
+                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
             },
             success: result => {
-                //console.log(result);
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenArtworkLoading: true
+                    });
+                    return;
+                }
                 this.setData({
                     artworkList: result.data,
                     hiddenArtworkLoading: true

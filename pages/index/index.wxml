@@ -1,13 +1,18 @@
 <view class="page">
     <view class="page__hd__min">
-        <!-- <view class="page__title">WeUI</view>
-        <view class="page__desc">WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。</view> -->
+        <view class="userinfo">
+            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+            <block wx:else>
+                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            </block>
+        </view>
     </view>
     <view class="page__bd page__bd_spacing">
         <view class="kind-list">
             <block wx:for="{{list}}" wx:key="id">
                 <view class="kind-list__item">
-                    <navigator url="{{item.url}}" >
+                    <navigator url="{{item.url}}">
                         <view id="{{item.id}}" class="weui-flex kind-list__item-hd" bindtap="kindToggle">
                             <view class="weui-flex__item">{{item.name}}</view>
                             <text class='fa fa-2x {{item.fa}} fa__color'></text>
