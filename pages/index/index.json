@@ -1,1 +1,7 @@
-{}
+{
+  "usingComponents": {
+        "home": "/pages/home/index/index",
+        "appointment": "/pages/index1/index",
+        "member": "/pages/member/index/index"
+    }
+}

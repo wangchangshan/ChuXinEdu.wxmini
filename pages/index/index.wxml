@@ -1,25 +1,21 @@
-<view class="page">
-    <view class="page__hd__min">
-        <view class="userinfo">
-            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-            <block wx:else>
-                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-            </block>
-        </view>
+<home wx:if="{{PageCur=='home'}}"></home>
+<appointment wx:if="{{PageCur=='appointment'}}"></appointment>
+<member wx:if="{{PageCur=='member'}}"></member>
+<about wx:if="{{PageCur=='about'}}"></about>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="NavChange" data-cur="home">
+    <view class="{{PageCur=='home'?'text-green':'text-gray'}}">
+        <text class="cuIcon-home lg"></text>首页
     </view>
-    <view class="page__bd page__bd_spacing">
-        <view class="kind-list">
-            <block wx:for="{{list}}" wx:key="id">
-                <view class="kind-list__item">
-                    <navigator url="{{item.url}}">
-                        <view id="{{item.id}}" class="weui-flex kind-list__item-hd" bindtap="kindToggle">
-                            <view class="weui-flex__item">{{item.name}}</view>
-                            <text class='fa fa-2x {{item.fa}} fa__color'></text>
-                        </view>
-                    </navigator>
-                </view>
-            </block>
-        </view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="appointment">
+    <view class="{{PageCur=='appointment'?'text-green':'text-gray'}}">
+        <text class="cuIcon-calendar lg"></text>预约试课
     </view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="member">
+    <view class="{{PageCur=='member'?'text-green':'text-gray'}}">
+        <text class="cuIcon-my lg"></text>我的
+    </view>
+  </view>
 </view>

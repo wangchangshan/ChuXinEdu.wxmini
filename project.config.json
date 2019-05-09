@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.1",
+	"libVersion": "2.6.6",
 	"appid": "wxbc88d5a1f9bda2ec",
 	"projectname": "ChuXinEdu.wxmini",
 	"debugOptions": {

@@ -1,6 +1,12 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/home/index/index",
+        "pages/appointment/index/index",
+        "pages/member/index/index",
+
+
+        "pages/index1/index",
         "pages/student/index",
         "pages/student/course/course",
         "pages/package/package",
@@ -11,7 +17,11 @@
         "backgroundColor": "#43B0D1",
         "navigationBarTitleText": "初心教育",
         "navigationBarTextStyle": "white",
+        "navigationStyle": "custom",
         "backgroundTextStyle": "light"
+    },
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom"
     },
     "sitemapLocation": "sitemap.json"
 }
