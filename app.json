@@ -12,5 +12,6 @@
         "navigationBarTitleText": "初心教育",
         "navigationBarTextStyle": "white",
         "backgroundTextStyle": "light"
-    }
+    },
+    "sitemapLocation": "sitemap.json"
 }
