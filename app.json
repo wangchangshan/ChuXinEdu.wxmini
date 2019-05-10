@@ -3,14 +3,12 @@
         "pages/index/index",
         "pages/home/index/index",
         "pages/appointment/index/index",
+
         "pages/member/index/index",
-
-
-        "pages/index1/index",
-        "pages/student/index",
-        "pages/student/course/course",
-        "pages/package/package",
-        "pages/schedule/schedule"
+        "pages/member/student/index",
+        "pages/member/student/course/course",
+        "pages/member/package/package",
+        "pages/member/schedule/schedule"
     ],
     "window": {
         "navigationBarBackgroundColor": "#43B0D1",

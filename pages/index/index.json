@@ -1,7 +1,7 @@
 {
   "usingComponents": {
         "home": "/pages/home/index/index",
-        "appointment": "/pages/index1/index",
+        "appointment": "/pages/appointment/index/index",
         "member": "/pages/member/index/index"
     }
 }

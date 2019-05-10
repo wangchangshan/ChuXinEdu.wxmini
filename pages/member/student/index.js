@@ -3,24 +3,19 @@ var app = getApp();
 var allStudentList = [];
 Page({
     data: {
+        StatusBar: app.globalData.StatusBar,
+        CustomBar: app.globalData.CustomBar,
         inputShowed: false,
         searchName: "",
         hiddenLoading: false,
         studentList: []
-    }, 
+    },
     onLoad: function () {
         this.getStudentList();
-    }, 
+    },
     showInput: function () {
         this.setData({
             inputShowed: true
-        });
-    },
-    hideInput: function () {
-        this.setData({
-            searchName: "",
-            inputShowed: false,
-            studentList: allStudentList
         });
     },
     clearInput: function () {
@@ -37,7 +32,7 @@ Page({
     },
 
 
-    getStudentList: function() {
+    getStudentList: function () {
         wx.request({
             url: app.globalData.serverBase + "/api/open/getstudentlist",
             data: {
