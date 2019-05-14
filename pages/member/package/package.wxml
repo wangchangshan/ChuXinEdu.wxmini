@@ -1,26 +1,19 @@
-<view class="page">
-    <view class="page__bd">
-        <view class="weui-cells__title">课程套餐</view>
-        <view class="weui-cells weui-cells_after-title">
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">课程套餐</view>
+    </cu-custom>
 
-            <view class="weui-loadmore" hidden="{{hiddenLoading}}">
-                <view class="weui-loading"></view>
-                <view class="weui-loadmore__tips">正在加载</view>
-            </view>
-            
-            <view wx:if="{{packageList.length == 0}}" class="weui-loadmore weui-loadmore_line">
-                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
-            </view>
-
-            <view wx:else class="weui-cells weui-cells_after-title">
-                <block wx:for="{{packageList}}" wx:key="{{studentCourseId}}">
-                    <view class="weui-cell">
-                        <view class="weui-cell__bd">{{ item.packageName }}</view>
-                        <!-- <view class="weui-cell__ft">{{ item.courseSubject }}</view> -->
-                    </view>
-                </block>
-
+    <view class="cu-list menu">
+        <view class="cu-item" wx:for="{{packageList}}" wx:key="{{studentCourseId}}">
+            <view class="content">
+                <text class="cuIcon-colorlens text-olive bg"></text>
+                <text class="text-grey">{{ item.packageName }}</text>
             </view>
         </view>
     </view>
+</scroll-view>
+
+<view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
 </view>

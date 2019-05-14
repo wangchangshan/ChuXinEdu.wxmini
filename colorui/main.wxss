@@ -2016,16 +2016,16 @@ button.icon.lg {
 }
 
 .cu-timeline .cu-time {
-	width: 120rpx;
+	width: 150rpx;
 	text-align: center;
-	padding: 20rpx 0;
+	padding: 20rpx 0 20rpx 5rpx;
 	font-size: 26rpx;
 	color: #888;
 	display: block;
 }
 
 .cu-timeline>.cu-item {
-	padding: 30rpx 30rpx 30rpx 120rpx;
+	padding: 10rpx 20rpx 10rpx 120rpx;
 	position: relative;
 	display: block;
 	z-index: 0;
@@ -2077,7 +2077,7 @@ button.icon.lg {
 }
 
 .cu-timeline>.cu-item>.content {
-	padding: 30rpx;
+	padding: 15rpx;
 	border-radius: 6rpx;
 	display: block;
 	line-height: 1.6;
@@ -3058,7 +3058,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .margin-top {
-	margin-top: 30rpx;
+	margin-top: 20rpx;
 }
 
 .margin-top-lg {

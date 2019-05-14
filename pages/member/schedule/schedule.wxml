@@ -1,38 +1,43 @@
-<view class="page">
-    <view class="page__bd">
-        <view class="weui-cells__title">排课列表</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">日期</view>
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">课程表</view>
+    </cu-custom>
+
+    <form>
+        <view class="cu-form-group margin-top">
+            <view class="title">日期选择</view>
+            <picker mode="date" value="{{date}}" start="2017-12-01" end="2021-12-31" bindchange="bindDateChange">
+                <view class="picker">
+                    {{date}}
                 </view>
-                <view class="weui-cell__bd">
-                    <picker mode="date" value="{{date}}" start="2017-12-01" end="2021-12-31" bindchange="bindDateChange">
-                        <view class="weui-input">{{date}}</view>
-                    </picker>
+            </picker>
+        </view>
+    </form>
+
+    <block wx:for="{{periods}}" wx:key="*this">
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-orange "></text> {{item}}
+            </view>
+        </view>
+        <view class="cu-list menu">
+            <view class="cu-item" wx:for="{{schedule[item]}}" wx:for-item="cell" wx:key="{{cell.studentName}}">
+                <view class="content">
+                    <text class="text-grey">{{ cell.studentName }}</text>
+                </view>
+                <view class="action">
+                    <view class="cu-tag round {{cell.colorclass}} light">{{ cell.folderName }}</view>
                 </view>
             </view>
         </view>
+    </block>
 
-        <!-- <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="searchSchedule">查询</button>
-        </view> -->
-        <view class="weui-loadmore" hidden="{{hiddenLoading}}">
-            <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在加载</view>
-        </view>
-        <view wx:if="{{periods.length == 0}}" class="weui-loadmore weui-loadmore_line">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
-        </view>
-
-        <block wx:for="{{periods}}" wx:key="*this">
-            <view class="weui-cells__title">{{item}}</view>
-            <view class="weui-cells weui-cells_after-title">
-                <view class="weui-cell" wx:for="{{schedule[item]}}" wx:for-item="cell" wx:key="cell.studentName">
-                    <view class="weui-cell__bd">{{ cell.studentName }}</view>
-                    <view class="weui-cell__ft {{cell.colorclass}}">{{ cell.folderName }}</view>
-                </view>
-            </view>
-        </block>
+    <view wx:if="{{hiddenLoading==true && periods.length == 0}}" class="bg-grey padding radius text-center light">
+      <view class="text-lg">暂无数据</view>
     </view>
+</scroll-view>
+
+<view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
 </view>

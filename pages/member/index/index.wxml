@@ -1,9 +1,30 @@
 <scroll-view scroll-y class="scrollPage">
-    <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
-    </cu-custom>
+    <!-- <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+    </cu-custom> -->
+    <view class="UCenter-bg">
+        <view class="userinfo">
+            <view class="padding flex flex-direction" wx:if="{{!hasUserInfo && canIUse}}">
+                <button class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+                    获取头像昵称
+                </button>
+            </view>
+            <block wx:else>
+                <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
+            </block>
+        </view>
+        <view class="text-sm">
+            {{userInfo.nickName}}
+        </view>
+        <view class="text-xl margin-top">
+            初心工作室
+        </view>
+        <view class="margin-top-sm">
+            <text>By: wangchangshan</text>
+        </view>
+        <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    </view>
 
-    <view class='cu-tabbar-height'></view>
-    <view class='nav-list'>
+    <view class='nav-list' style="margin-top:15rpx">
         <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{list}}" wx:key>
             <view class="nav-title">{{item.title}}</view>
             <view class="nav-name">{{item.name}}</view>
@@ -11,16 +32,5 @@
         </navigator>
     </view>
 
-    <view class="userinfo">
-        <view class="padding flex flex-direction" wx:if="{{!hasUserInfo && canIUse}}" >
-            <button class="cu-btn bg-blue margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-             获取头像昵称 
-             </button>
-        </view>
-        <block wx:else>
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-        </block>
-    </view>
     <view class='cu-tabbar-height'></view>
 </scroll-view>

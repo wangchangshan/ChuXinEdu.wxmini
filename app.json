@@ -1,7 +1,11 @@
 {
     "pages": [
         "pages/index/index",
+        
         "pages/home/index/index",
+
+        "pages/paintingwall/index/index",
+        
         "pages/appointment/index/index",
 
         "pages/member/index/index",

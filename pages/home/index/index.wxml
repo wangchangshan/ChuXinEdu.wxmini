@@ -21,7 +21,7 @@
 
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
-            <text class="cuIcon-title text-orange "></text>学习日常
+            <text class="cuIcon-titles text-orange "></text>学习日常
         </view>
         <view class="action">
             更多...
@@ -30,7 +30,7 @@
 
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
-            <text class="cuIcon-title text-blue"></text>机构环境
+            <text class="cuIcon-titles text-blue"></text>机构环境
         </view>
         <view class="action">
             更多...
@@ -39,7 +39,7 @@
 
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
-            <text class="cuIcon-title text-green"></text>学生作品
+            <text class="cuIcon-titles text-green"></text>学生作品
         </view>
         <view class="action">
             更多...

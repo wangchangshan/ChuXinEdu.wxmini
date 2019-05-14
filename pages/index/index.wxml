@@ -1,4 +1,5 @@
 <home wx:if="{{PageCur=='home'}}"></home>
+<paintingwall wx:if="{{PageCur=='paintingwall'}}"></paintingwall>
 <appointment wx:if="{{PageCur=='appointment'}}"></appointment>
 <member wx:if="{{PageCur=='member'}}"></member>
 <about wx:if="{{PageCur=='about'}}"></about>
@@ -6,6 +7,11 @@
   <view class="action" bindtap="NavChange" data-cur="home">
     <view class="{{PageCur=='home'?'text-green':'text-gray'}}">
         <text class="cuIcon-home lg"></text>首页
+    </view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="paintingwall">
+    <view class="{{PageCur=='paintingwall'?'text-green':'text-gray'}}">
+        <text class="cuIcon-pic lg"></text>作品展示
     </view>
   </view>
   <view class="action" bindtap="NavChange" data-cur="appointment">

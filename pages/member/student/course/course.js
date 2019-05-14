@@ -6,8 +6,6 @@ Page({
         studentName: '',
         tabs: ["课程记录", "作品展示"],
         activeIndex: 0,
-        sliderOffset: 0,
-        sliderLeft: 0,
         courseList: [],
         artworkList: [],
         hiddenCourseLoading: false,
@@ -20,23 +18,19 @@ Page({
             studentName: options.studentName
         });
         this.getCourseList();
-        this.getAllArtWorks();
-
-        var that = this;
-        wx.getSystemInfo({
-            success: function (res) {
-                that.setData({
-                    sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-                    sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-                });
-            }
-        });
     },
-    tabClick: function (e) {
+    tabSelect: function (e) {
+        console.log(e.currentTarget.dataset.id)
         this.setData({
             sliderOffset: e.currentTarget.offsetLeft,
-            activeIndex: e.currentTarget.id
-        });
+            activeIndex: e.currentTarget.dataset.id,
+        }); 
+        if (e.currentTarget.dataset.id == 0 && this.data.courseList.length == 0){
+            this.getCourseList();
+        }
+        else if (e.currentTarget.dataset.id == 1 && this.data.artworkList.length == 0){
+            this.getAllArtWorks();
+        }
     },
     getCourseList: function () {
         wx.request({

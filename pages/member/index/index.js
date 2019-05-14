@@ -3,20 +3,20 @@ Page({
     data: {
         list: [
             {
-                id: 'schedule',
-                name: 'Schedule',
-                title: '课程表',
-                url: '/pages/member/schedule/schedule',
-                color: 'cyan',
-                icon: 'calendar'
-            },
-            {
                 id: 'student',
                 name: 'Students',
                 title: '我的学生',
                 url: '/pages/member/student/index',
                 color: 'red',
                 icon: 'peoplelist'
+            },
+            {
+                id: 'schedule',
+                name: 'Schedule',
+                title: '课程表',
+                url: '/pages/member/schedule/schedule',
+                color: 'cyan',
+                icon: 'calendar'
             },
             {
                 id: 'packages',

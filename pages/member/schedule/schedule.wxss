@@ -1,17 +1,17 @@
 /* pages/schedule/schedule.wxss */
 
 .meishu_00{
-    color:#67c23a;
+    color:#39b54a;
 }
 
 .meishu_01{
-    color:#409EFF
+    color:#0081ff
 }
 
 .shufa_00{
-    color:#e6a23c;
+    color:#f37b1d;
 }
 
 .shufa_01{
-    color:#e6a23c;
+    color:#a5673f;
 }
