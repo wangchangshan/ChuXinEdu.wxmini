@@ -1,66 +1,37 @@
-// pages/appointment/index/index.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        longitude: 116.3259000000, 
+        latitude: 40.0555400000,
+        name:'龙兴园南区6号楼4单元302室',
+        address:'龙兴园南区6号楼4单元302室',
+        markers: [{
+            id: 1,
+            longitude: 116.3259000000, 
+            latitude: 40.0555400000,
+            callout: {
+                content: '龙兴园南区6号楼4单元302室',
+                color: '#ffffff',
+                bgColor: "#0081ff",
+                fontSize: 15,
+                borderRadius: 5,
+                display: 'ALWAYS',
+                padding: 5
+            },
+            height: 22
+        }]
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
+    onReady: function (e) {
+        this.mapCtx = wx.createMapContext('myMap')
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    getCenterLocation: function () {
+        this.mapCtx.getCenterLocation({
+            success: function (res) {
+                console.log(res.longitude)
+                console.log(res.latitude)
+            }
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    moveToLocation: function () {
+        this.mapCtx.moveToLocation()
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

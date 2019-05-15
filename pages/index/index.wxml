@@ -16,7 +16,7 @@
   </view>
   <view class="action" bindtap="NavChange" data-cur="appointment">
     <view class="{{PageCur=='appointment'?'text-green':'text-gray'}}">
-        <text class="cuIcon-calendar lg"></text>预约试课
+        <text class="cuIcon-phone lg"></text>联系我们
     </view>
   </view>
   <view class="action" bindtap="NavChange" data-cur="member">
