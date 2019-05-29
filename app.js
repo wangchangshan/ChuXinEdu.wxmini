@@ -44,7 +44,7 @@ App({
     globalData: {
         userInfo: null,
         curStudentAvatar: '',
-        //serverBase: "http://localhost:5000"
-        serverBase: "http://47.104.231.152"
+        serverBase: "http://localhost:5000"
+        //serverBase: "http://47.104.231.152"
     }
 })

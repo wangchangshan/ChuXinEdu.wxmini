@@ -64,7 +64,105 @@ Page({
         }
     },
 
+    doLogin: function(e) {
+        wx.login({
+            success: res => {
+                console.log("用户登录凭证： " + res.code)
+                console.log(res)
+                this.getSessionKey(res.code, 'wxbc88d5a1f9bda2ec', '4a70f1859bc22f0a5caaf7e771bad42c');
+                wx.getUserInfo({
+                    success: result => {
+                        console.log("获取用户信息成功")
+                        console.log(result)
+                        //app.globalData.userInfo = result.userInfo
+                        this.setData({
+                            userInfo: result.userInfo,
+                            hasUserInfo: true
+                        })
+                    },
+                    fail: result => {
+                        console.log("获取用户信息失败")
+
+                        // 用户取消授权
+                        // ...
+                    }
+                })
+            },
+            fail: res => {
+                console.log("用户登录凭证失败")
+                console.log(res);
+            },
+            complete: res => {
+            }
+        });
+    },
+
+    getLoginState: function(code){
+        wx.request({
+            url: app.globalData.serverBase + "/api/wxuser/getloginstate",
+            data: {
+                code: code
+            },
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
+            },
+            success: result => {
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenLoading: true
+                    });
+                    return;
+                }
+                this.setData({
+                    packageList: result.data,
+                    hiddenLoading: true
+                })
+            }
+        })
+    },
+
+    getSessionKey: function(code, appid, appSecret) {
+        var opt = {
+            method: 'GET',
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            params: {
+                appid: appid,
+                secret: appSecret,
+                js_code: code,
+                grant_type: 'authorization_code'
+            }
+        };
+
+        wx.request({
+            method: 'GET',
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            data: {
+                appid: appid,
+                secret: appSecret,
+                js_code: code,
+                grant_type: 'authorization_code'
+            },
+            success: response => {
+                console.log("获取session_key成功")
+                console.log(response)
+                var data = response.data;
+                if (!data.openid || !data.session_key || data.errcode) {
+                    return {
+                        result: -2,
+                        errmsg: data.errmsg || '返回数据字段不完整'
+                    }
+                } else {
+                    return data
+                }
+            }
+        })
+    },
+
     getUserInfo: function (e) {
+        var code = wx.login();
+        console.log('login code is ' + code);
         app.globalData.userInfo = e.detail.userInfo
         this.setData({
             userInfo: e.detail.userInfo,

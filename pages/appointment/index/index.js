@@ -17,7 +17,7 @@ Page({
                 display: 'ALWAYS',
                 padding: 5
             },
-            height: 22
+            height: 25
         }]
     },
     onReady: function (e) {

@@ -4,8 +4,8 @@
     <view class="UCenter-bg">
         <view class="userinfo">
             <view class="padding flex flex-direction" wx:if="{{!hasUserInfo && canIUse}}">
-                <button class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-                    获取头像昵称
+                <button class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
+                    登录
                 </button>
             </view>
             <block wx:else>
