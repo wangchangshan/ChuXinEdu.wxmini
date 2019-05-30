@@ -1,6 +1,7 @@
 Page({
     data: {
-        PageCur: 'home'
+        PageCur: 'home',
+        fuck: 123
     },
     NavChange(e) {
         this.setData({

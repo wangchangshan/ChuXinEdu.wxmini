@@ -4,7 +4,7 @@
     <view class="UCenter-bg">
         <view class="userinfo">
             <view class="padding flex flex-direction" wx:if="{{!impowered && canIUse}}">
-                <button wx:if="{{canIUse}}" class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
+                <button wx:if="{{fuck == 123}}" class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
                     登录
                 </button>
                 <view wx:else>请升级微信版本</view>

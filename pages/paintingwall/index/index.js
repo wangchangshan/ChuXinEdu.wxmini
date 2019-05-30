@@ -1,8 +1,7 @@
-const app = getApp();
-Page({
+Component({
     data: {
-        StatusBar: app.globalData.StatusBar,
-        CustomBar: app.globalData.CustomBar,
+        // StatusBar: app.globalData.StatusBar,
+        // CustomBar: app.globalData.CustomBar,
         paintingList: [{
             studentName: '秦若雯',
             studentAvatar: 'http://47.104.231.152/api/upload/getimage?id=64&type=avatar-s',
@@ -27,11 +26,25 @@ Page({
         }
         ]
     },
-    onLoad: function (options) {
-        this.getPaintingList();
+    lifetimes: {
+        // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+        attached: function () { 
+            console.log('attached')
+            this.getPaintingList();
+        },
+        moved: function () { },
+        detached: function () { },
     },
-    getPaintingList: function() {
-        this.setData({
-        });
+    methods: {
+        onLoad: function(){
+            console.log('onload')
+        },
+        getPaintingList: function () {
+            console.log('get painting list')
+            this.setData({
+            });
+        }
     }
 });
+
+

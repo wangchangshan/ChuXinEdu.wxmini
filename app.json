@@ -4,7 +4,7 @@
         
         "pages/home/index/index",
 
-        "pages/paintingwall/index/index",
+        
         
         "pages/appointment/index/index",
 
@@ -13,6 +13,9 @@
         "pages/member/student/course/course",
         "pages/member/package/package",
         "pages/member/schedule/schedule"
+    ],
+    "components":[
+        "pages/paintingwall/index/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#43B0D1",

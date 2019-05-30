@@ -1,49 +1,37 @@
 //app.js
 App({
     onLaunch: function() {
-        // if (wx.cloud) {
-        //     wx.cloud.init({
-        //         traceUser: true
-        //     })
-        // }
         wx.getSystemInfo({
             success: e => {
                 this.globalData.StatusBar = e.statusBarHeight;
                 let custom = wx.getMenuButtonBoundingClientRect();
                 this.globalData.Custom = custom;
-                this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+                // this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+                this.globalData.CustomBar = 65;
             }
-        })
-        // // 登录
-        // wx.login({
-        //     success: res => {
-        //         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        //     }
-        // })
-        // // 获取用户信息
-        // wx.getSetting({
-        //     success: res => {
-        //         if (res.authSetting['scope.userInfo']) {
-        //             // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-        //             wx.getUserInfo({
-        //                 success: res => {
-        //                     // 可以将 res 发送给后台解码出 unionId
-        //                     this.globalData.userInfo = res.userInfo
+        });
 
-        //                     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-        //                     // 所以此处加入 callback 以防止这种情况
-        //                     if (this.userInfoReadyCallback) {
-        //                         this.userInfoReadyCallback(res)
-        //                     }
-        //                 }
-        //             })
-        //         }
-        //     }
-        // })
+        console.log(111111111111111111)
+        let loginFlag = wx.getStorageSync('skey');
+
+        console.log("pageLoad  skey is : " + loginFlag)
+        console.log("user info is :")
+        console.log(this.globalData.userInfo)
+        if (loginFlag) {
+            // 检查 session_key 是否过期
+            wx.checkSession({
+                // session_key 过期
+                fail: function () {
+                    this.globalData.userInfo = null;
+
+                    console.log('sessionkey已经过期')
+                }
+            });
+        }
     },
     globalData: {
         impower: false,
-        userInfo: null,
+        userInfo: 123,
         curStudentAvatar: '',
         serverBase: "http://localhost:5000"
         //serverBase: "http://47.104.231.152"

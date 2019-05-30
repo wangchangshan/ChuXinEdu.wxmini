@@ -35,7 +35,7 @@ Page({
         studentName: '',
         teacherKey: '',
         impowered: false,
-        userInfo: {},
+        userInfo1: {},
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
     /**
@@ -53,14 +53,14 @@ Page({
                 success: function() {
                     if (app.globalData.userInfo) {
                         this.setData({
-                            userInfo: app.globalData.userInfo,
+                            userInfo1: app.globalData.userInfo,
                         })
                     } else if (this.data.canIUse) {
                         // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                         // 所以此处加入 callback 以防止这种情况
                         app.userInfoReadyCallback = res => {
                             this.setData({
-                                userInfo: res.userInfo,
+                                userInfo1: res.userInfo,
                             })
                         }
                     } else {
@@ -69,7 +69,7 @@ Page({
                             success: res => {
                                 app.globalData.userInfo = res.userInfo
                                 this.setData({
-                                    userInfo: res.userInfo,
+                                    userInfo1: res.userInfo,
                                 })
                             }
                         })
@@ -81,7 +81,7 @@ Page({
                     app.globalData.userInfo = null;
                     this.setData({
                         impowered: false,
-                        userInfo: {}
+                        userInfo1: {}
                     })
                 }
             });
@@ -132,7 +132,7 @@ Page({
 
                     this.setData({
                         impowered: true,
-                        userInfo: app.globalData.userInfo
+                        userInfo1: app.globalData.userInfo
                     })
                 }
             }
@@ -233,7 +233,7 @@ Page({
                     this.setData({
                         isModalShow: null, 
                         impowered: true,
-                        userInfo: app.globalData.userInfo
+                        userInfo1: app.globalData.userInfo
                     });
                     wx.setStorageSync('skey', result.data.sessionKey);
                 }
@@ -263,7 +263,7 @@ Page({
                     this.setData({
                         isModalShow: null,
                         impowered: true,
-                        userInfo: app.globalData.userInfo
+                        userInfo1: app.globalData.userInfo
                     });
                     wx.setStorageSync('skey', result.data.sessionKey);
                 } else if (result.data.stateCode == '1222') {
