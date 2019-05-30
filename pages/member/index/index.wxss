@@ -44,3 +44,16 @@ map,.mapBox{
   width: 750rpx;
   height: 300rpx;
 }
+
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+
+.padding-xl {
+    padding: 0 0 50rpx 0;
+    height: 450rpx;
+}
+
+.cu-form-group{
+    padding: 1rpx 40rpx;
+}

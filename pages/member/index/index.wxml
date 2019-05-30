@@ -3,10 +3,11 @@
     </cu-custom> -->
     <view class="UCenter-bg">
         <view class="userinfo">
-            <view class="padding flex flex-direction" wx:if="{{!hasUserInfo && canIUse}}">
-                <button class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
+            <view class="padding flex flex-direction" wx:if="{{!impowered && canIUse}}">
+                <button wx:if="{{canIUse}}" class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
                     登录
                 </button>
+                <view wx:else>请升级微信版本</view>
             </view>
             <block wx:else>
                 <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
@@ -24,12 +25,68 @@
         <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
     </view>
 
-    <view class='nav-list' style="margin-top:15rpx">
+    <view class='nav-list' style="margin-top:15rpx" wx:if="{{impowered && activeTabIndex == 2}}">
         <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{list}}" wx:key>
             <view class="nav-title">{{item.title}}</view>
             <view class="nav-name">{{item.name}}</view>
             <text class='cuIcon-{{item.icon}}'></text>
         </navigator>
+    </view>
+
+    <!-- 注册登陆弹出框 -->
+    <view class="cu-modal {{isModalShow}}">
+        <view class="cu-dialog">
+            <view class="cu-bar bg-white justify-end">
+                <view class="content text-black text-bold">请选择身份角色</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red"></text>
+                </view>
+            </view>
+            <view class="padding-xl">
+                <scroll-view scroll-x class="bg-white nav">
+                    <view class="flex text-center">
+                        <view class="cu-item flex-sub {{1==activeTabIndex ? 'text-blue cur':''}}" bindtap="tabSelect" data-id="1">
+                            我是家长
+                        </view>
+                        <view class="cu-item flex-sub {{2==activeTabIndex ? 'text-blue cur': ''}}" bindtap="tabSelect" data-id="2">
+                            我是教师
+                        </view>
+                    </view>
+                </scroll-view>
+                <view wx:if="{{activeTabIndex == 1}}">
+                    <form>
+	                    <view class="cu-form-group margin-top ">
+		                    <view class="title ">孩子学号：</view>
+		                    <input placeholder="请输入" value="{{studentCode}}" bindblur="blurStudentCode"></input>
+	                    </view>
+	                    <view class="cu-form-group ">
+		                    <view class="title ">孩子姓名：</view>
+		                    <input placeholder="请输入" value="{{studentName}}" bindblur="blurStudentName"></input>
+	                    </view>
+                    </form>
+                </view>
+                <view wx:else>
+                    <form>
+	                    <view class="cu-form-group margin-top ">
+		                    <view class="title ">教师授权码：</view>
+		                    <input placeholder="请输入" value="{{teacherKey}}" bindblur="blurTeacherKey"></input>
+	                    </view>
+                    </form>
+                </view>
+                <view class="action margin-top ">
+                    <button class="cu-btn bg-green shadow" bindtap="submitRole">提 交</button>
+                </view>
+                <view wx:if="{{showTips}}" class="text-red text-center">
+                    注意：输入内容不能为空！
+                </view>
+                <view wx:if="{{studentTips != ''}}" class="text-red text-center">
+                    {{studentTips}}
+                </view>
+                <view wx:if="{{teacherTips != ''}}" class="text-red text-center">
+                    {{teacherTips}}
+                </view>
+            </view>
+        </view>
     </view>
 
     <view class='cu-tabbar-height'></view>
