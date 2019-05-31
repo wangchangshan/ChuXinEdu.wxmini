@@ -1,39 +1,39 @@
 //app.js
 App({
-    onLaunch: function() {
+    onLaunch: function () {
+
         wx.getSystemInfo({
             success: e => {
                 this.globalData.StatusBar = e.statusBarHeight;
                 let custom = wx.getMenuButtonBoundingClientRect();
                 this.globalData.Custom = custom;
-                // this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-                this.globalData.CustomBar = 65;
+                this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+                //this.globalData.CustomBar = 65;
             }
         });
 
-        console.log(111111111111111111)
-        let loginFlag = wx.getStorageSync('skey');
+        let SKEY = wx.getStorageSync('SKEY');
+        SKEY && wx.checkSession({
 
-        console.log("pageLoad  skey is : " + loginFlag)
-        console.log("user info is :")
-        console.log(this.globalData.userInfo)
-        if (loginFlag) {
-            // 检查 session_key 是否过期
-            wx.checkSession({
-                // session_key 过期
-                fail: function () {
-                    this.globalData.userInfo = null;
+            success: () => {
+                //console.log('sessionkey: ' + SKEY + ' 正常可用')
+            },
 
-                    console.log('sessionkey已经过期')
-                }
-            });
-        }
+            fail: () => {
+                //console.log('sessionkey已过期')
+                wx.setStorageSync('SKEY', null);
+                wx.setStorageSync('USERINFO', null)
+                this.globalData.UserInfo = null;
+            }
+        });
+
+        this.globalData.UserType = SKEY && SKEY.charAt(0) || "0";
     },
+
     globalData: {
-        impower: false,
-        userInfo: 123,
-        curStudentAvatar: '',
-        serverBase: "http://localhost:5000"
-        //serverBase: "http://47.104.231.152"
+        UserInfo: wx.getStorageSync('USERINFO'),
+        UserType: "0",
+        ServerBase: "http://localhost:5000",
+        //ServerBase: "http://47.104.231.152"
     }
 })

@@ -34,7 +34,7 @@ Page({
 
     getStudentList: function () {
         wx.request({
-            url: app.globalData.serverBase + "/api/open/getstudentlist",
+            url: app.globalData.ServerBase + "/api/open/getstudentlist",
             data: {
                 pageIndex: 1,
                 pageSize: 200,

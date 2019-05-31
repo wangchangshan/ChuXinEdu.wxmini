@@ -4,17 +4,17 @@
     <view class="UCenter-bg">
         <view class="userinfo">
             <view class="padding flex flex-direction" wx:if="{{!impowered && canIUse}}">
-                <button wx:if="{{fuck == 123}}" class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
+                <button wx:if="{{!curUser}}" class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
                     登录
                 </button>
                 <view wx:else>请升级微信版本</view>
             </view>
             <block wx:else>
-                <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
+                <view class="cu-avatar xl round" style="background-image:url({{curUser.avatarUrl}});"></view>
             </block>
         </view>
         <view class="text-sm">
-            {{userInfo.nickName}}
+            {{curUser.nickName}}
         </view>
         <view class="text-xl margin-top">
             初心工作室
@@ -24,8 +24,8 @@
         </view>
         <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
     </view>
-
-    <view class='nav-list' style="margin-top:15rpx" wx:if="{{impowered && activeTabIndex == 2}}">
+ 
+    <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 2}}">
         <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{list}}" wx:key>
             <view class="nav-title">{{item.title}}</view>
             <view class="nav-name">{{item.name}}</view>

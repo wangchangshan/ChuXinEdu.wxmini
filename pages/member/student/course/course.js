@@ -34,7 +34,7 @@ Page({
     },
     getCourseList: function () {
         wx.request({
-            url: app.globalData.serverBase + "/api/open/getcourselist",
+            url: app.globalData.ServerBase + "/api/open/getcourselist",
             data: {
                 studentCode: this.data.studentCode
             },
@@ -62,7 +62,7 @@ Page({
     },
     getAllArtWorks: function () {
         wx.request({
-            url: app.globalData.serverBase + "/api/open/getartworklist",
+            url: app.globalData.ServerBase + "/api/open/getartworklist",
             data: {
                 studentCode: this.data.studentCode//'BJ-201809011'
             },

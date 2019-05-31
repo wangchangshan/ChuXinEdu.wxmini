@@ -1,4 +1,7 @@
 Component({
+    options: {
+        addGlobalClass: true
+    },
     data: {
         // StatusBar: app.globalData.StatusBar,
         // CustomBar: app.globalData.CustomBar,
@@ -29,18 +32,13 @@ Component({
     lifetimes: {
         // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
         attached: function () { 
-            console.log('attached')
             this.getPaintingList();
         },
         moved: function () { },
         detached: function () { },
     },
     methods: {
-        onLoad: function(){
-            console.log('onload')
-        },
         getPaintingList: function () {
-            console.log('get painting list')
             this.setData({
             });
         }

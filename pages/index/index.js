@@ -10,7 +10,7 @@ Page({
     },
     onShow: function () {
         // Do something when page show.
-        console.log('333')
+        //console.log('首页面index/index   onShow')
     },
     onShareAppMessage() {
         return {

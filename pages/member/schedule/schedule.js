@@ -19,7 +19,7 @@ Page({
             hiddenLoading: false
         });
         wx.request({
-            url: app.globalData.serverBase + "/api/open/getcoursearrangedbyday",
+            url: app.globalData.ServerBase + "/api/open/getcoursearrangedbyday",
             data: {
                 day: this.data.date
             },

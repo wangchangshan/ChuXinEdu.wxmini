@@ -19,7 +19,7 @@ Page({
 
     getPackageList: function () {
         wx.request({
-            url: app.globalData.serverBase + "/api/open/getpackages",
+            url: app.globalData.ServerBase + "/api/open/getpackages",
             data: {
                 q: {
                     packageName: '',
