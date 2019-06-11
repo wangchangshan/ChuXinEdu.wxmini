@@ -1,20 +1,12 @@
-Page({
+const app = getApp();
+Component({
+    options: {
+        addGlobalClass: true
+    },
     data: {
         cardCur: 0,
-        swiperList: [{
-            id: 0,
-            type: 'image',
-            url: '../../../images/1.jpg'
-        }, {
-                id: 1,
-                type: 'image',
-                url: '../../../images/2.jpg'
-            },
-            {
-                id: 2,
-                type: 'image',
-                url: '../../../images/3.jpg'
-            }],
+        environmentPicList: [],
+        learnPicList:[],
         iconList: [{
             icon: 'friendfamous',
             color: 'orange',
@@ -37,25 +29,31 @@ Page({
             name: '举办活动'
         }],
     },
-    onLoad() {
-        this.towerSwiper('swiperList');
-        // 初始化towerSwiper 传已有的数组名即可
+    lifetimes: {
+        attached: function () {
+            this.getPicList();
+        },
+        moved: function () { },
+        detached: function () { },
     },
-    DotStyle(e) {
-        this.setData({
-            DotStyle: e.detail.value
-        })
-    },
-    // towerSwiper
-    // 初始化towerSwiper
-    towerSwiper(name) {
-        let list = this.data[name];
-        for (let i = 0; i < list.length; i++) {
-            list[i].zIndex = parseInt(list.length / 2) + 1 - Math.abs(i - parseInt(list.length / 2))
-            list[i].mLeft = i - parseInt(list.length / 2)
+    methods: {
+        getPicList: function () {
+            wx.request({
+                url: app.globalData.ServerBase + "/api/wxopen/getwxhomepicture",
+                method: 'GET',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                success: result => {
+                    if (result.data.code && result.data.code == '1401') {
+                        return;
+                    }
+                    this.setData({
+                        environmentPicList: result.data.filter((item)=>{ return item.wxPictureType == '01' }),
+                        learnPicList: result.data.filter((item) => { return item.wxPictureType == '00' }),
+                    })
+                }
+            })
         }
-        this.setData({
-            swiperList: list
-        })
-    },
+    }
 })

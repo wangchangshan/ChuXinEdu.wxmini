@@ -6,21 +6,21 @@
     <view class="cu-card case"  wx:for="{{paintingList}}" wx:key>
         <view class="cu-item shadow">
             <view class="image">
-                <image src="{{item.paintingPath}}" mode="widthFix"></image>
+                <image src="{{item.picturePath}}" mode="widthFix"></image>
             </view>
             <view class="cu-list menu-avatar">
                 <!-- <view>
                     {{ item.subject }}
                 </view> -->
                 <view class="cu-item">
-                    <view class="cu-avatar round lg" style="background-image:url({{item.studentAvatar}});"></view>
+                    <view class="cu-avatar round lg" style="background-image:url(../../../images/avatar.png);"></view>
                     <view class="content flex-sub">
-                        <view class="text-grey">{{item.studentName}}</view>
+                        <view class="text-grey">{{item.subject}}</view>
                         <view class="text-gray text-sm flex justify-between">
-                            {{item.paintingAge}}岁作品
+                            {{ item.studentAge }}岁作品
                             <view class="text-gray text-sm">
-                                <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
-                                <text class="cuIcon-share margin-lr-xs"></text>
+                                <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+                                <text class="cuIcon-share margin-lr-xs"></text> -->
                             </view>
                         </view>
                     </view>

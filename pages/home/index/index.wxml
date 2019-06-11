@@ -1,10 +1,9 @@
 <scroll-view scroll-y class="scrollPage">
     <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
     </cu-custom>
-    <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
-        <swiper-item wx:for="{{swiperList}}" wx:key>
-            <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-            <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
+        <swiper-item wx:for="{{environmentPicList}}" wx:key>
+            <image src="{{item.picturePath}}" mode="aspectFill"></image>
         </swiper-item>
     </swiper>
 
@@ -24,27 +23,28 @@
             <text class="cuIcon-titles text-orange "></text>学习日常
         </view>
         <view class="action">
-            更多...
+            
         </view>
     </view>
+    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
+        <swiper-item wx:for="{{learnPicList}}" wx:key>
+            <image src="{{item.picturePath}}" mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
 
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
             <text class="cuIcon-titles text-blue"></text>机构环境
         </view>
         <view class="action">
-            更多...
+            
         </view>
     </view>
-
-    <view class="cu-bar bg-white solid-bottom margin-top">
-        <view class="action">
-            <text class="cuIcon-titles text-green"></text>学生作品
-        </view>
-        <view class="action">
-            更多...
-        </view>
-    </view>
+    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
+        <swiper-item wx:for="{{environmentPicList}}" wx:key>
+            <image src="{{item.picturePath}}" mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
     
     <view class='cu-tabbar-height'></view>
 </scroll-view>

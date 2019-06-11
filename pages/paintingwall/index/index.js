@@ -1,36 +1,12 @@
+const app = getApp();
 Component({
     options: {
         addGlobalClass: true
     },
     data: {
-        // StatusBar: app.globalData.StatusBar,
-        // CustomBar: app.globalData.CustomBar,
-        paintingList: [{
-            studentName: '秦若雯',
-            studentAvatar: 'http://47.104.231.152/api/upload/getimage?id=64&type=avatar-s',
-            paintingAge: '8',
-            sex: '女',
-            paintingPath: '../../../images/test1.jpg',
-            subject: '老虎'
-        }, {
-            studentName: '杨乘轩',
-            studentAvatar: 'http://47.104.231.152/api/upload/getimage?id=1&type=avatar-s',
-            paintingAge: '8',
-            sex: '女',
-            paintingPath: '../../../images/test2.jpg',
-            subject: '小老鼠'
-        }, {
-            studentName: '金家熠',
-            studentAvatar: 'http://47.104.231.152/api/upload/getimage?id=3&type=avatar-s',
-            paintingAge: '8',
-            sex: '女',
-            paintingPath: '../../../images/test3.jpg',
-            subject: '树与石'
-        }
-        ]
+        paintingList: []
     },
     lifetimes: {
-        // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
         attached: function () { 
             this.getPaintingList();
         },
@@ -39,8 +15,21 @@ Component({
     },
     methods: {
         getPaintingList: function () {
-            this.setData({
-            });
+            wx.request({
+                url: app.globalData.ServerBase + "/api/wxopen/getwxpicture/02",
+                method: 'GET',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                success: result => {
+                    if (result.data.code && result.data.code == '1401') {
+                        return;
+                    }
+                    this.setData({
+                        paintingList: result.data
+                    })
+                }
+            })
         }
     }
 });
