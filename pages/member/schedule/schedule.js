@@ -19,14 +19,14 @@ Page({
             hiddenLoading: false
         });
         wx.request({
-            url: app.globalData.ServerBase + "/api/open/getcoursearrangedbyday",
+            url: app.globalData.ServerBase + "/api/wxopen/getcoursearrangedbyday",
             data: {
                 day: this.data.date
             },
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
+                'skey': wx.getStorageSync('SKEY')
             },
             success: result => {
                 if (result.data.code && result.data.code == '1401'){

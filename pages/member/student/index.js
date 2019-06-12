@@ -34,7 +34,7 @@ Page({
 
     getStudentList: function () {
         wx.request({
-            url: app.globalData.ServerBase + "/api/open/getstudentlist",
+            url: app.globalData.ServerBase + "/api/wxopen/getstudentlist",
             data: {
                 pageIndex: 1,
                 pageSize: 200,
@@ -47,7 +47,7 @@ Page({
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
+                'skey': wx.getStorageSync('SKEY')
             },
             success: result => {
                 if (result.data.code && result.data.code == '1401') {

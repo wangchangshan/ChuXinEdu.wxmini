@@ -82,7 +82,7 @@ Component({
                 method: 'GET',
                 header: {
                     'Content-Type': 'application/json',
-                    'name': app.globalData.UserInfo && app.globalData.UserInfo.nickName || ''
+                    'skey': wx.getStorageSync('SKEY')
                 },
                 success: result => {
                     if (result.data.stateCode == '1404') {
@@ -192,7 +192,7 @@ Component({
                 method: 'GET',
                 header: {
                     'Content-Type': 'application/json',
-                    'name': app.globalData.UserInfo && app.globalData.UserInfo.nickName || ''
+                    'skey': wx.getStorageSync('SKEY')
                 },
                 success: result => {
                     if (result.data.stateCode == '1404') {
@@ -223,7 +223,7 @@ Component({
                 method: 'GET',
                 header: {
                     'Content-Type': 'application/json',
-                    'name': app.globalData.UserInfo && app.globalData.UserInfo.nickName || ''
+                    'skey': wx.getStorageSync('SKEY')
                 },
                 success: result => {
                     if (result.data.stateCode == '1404') {

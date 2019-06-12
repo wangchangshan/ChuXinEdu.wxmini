@@ -34,14 +34,14 @@ Page({
     },
     getCourseList: function () {
         wx.request({
-            url: app.globalData.ServerBase + "/api/open/getcourselist",
+            url: app.globalData.ServerBase + "/api/wxopen/getcourselist",
             data: {
                 studentCode: this.data.studentCode
             },
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
+                'skey': wx.getStorageSync('SKEY')
             },
             success: result => {
                 if (result.data.code && result.data.code == '1401') {
@@ -62,14 +62,14 @@ Page({
     },
     getAllArtWorks: function () {
         wx.request({
-            url: app.globalData.ServerBase + "/api/open/getartworklist",
+            url: app.globalData.ServerBase + "/api/wxopen/getartworklist",
             data: {
                 studentCode: this.data.studentCode//'BJ-201809011'
             },
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
-                'name': app.globalData.userInfo && app.globalData.userInfo.nickName || ''
+                'skey': wx.getStorageSync('SKEY')
             },
             success: result => {
                 if (result.data.code && result.data.code == '1401') {

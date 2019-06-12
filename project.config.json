@@ -10,7 +10,7 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-        "checkSiteMap": false
+		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
@@ -19,6 +19,14 @@
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
+    "window": {
+      "navigationBarBackgroundColor": "#ffffff",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "小程序",
+      "backgroundColor": "#eeeeee",
+      "backgroundTextStyle": "light",
+      "enablePullDownRefresh": true
+    },
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

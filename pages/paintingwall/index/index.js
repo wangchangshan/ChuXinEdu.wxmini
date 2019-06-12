@@ -19,7 +19,8 @@ Component({
                 url: app.globalData.ServerBase + "/api/wxopen/getwxpicture/02",
                 method: 'GET',
                 header: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'skey': wx.getStorageSync('SKEY')
                 },
                 success: result => {
                     if (result.data.code && result.data.code == '1401') {
