@@ -33,22 +33,22 @@
         </view>
     </view>
 
-    <block wx:if="activeIndex == 0">
-        <block wx:if="hiddenCourseLoading == false">
+    <block wx:if="{{activeIndex == 0}}">
+        <block wx:if="{{hiddenCourseLoading == false}}">
             <view class="cu-load bg-grey loading margin-top light"></view>
         </block>
         <block wx:else>
-            <block wx:if="courseList.length == 0">
+            <block wx:if="{{courseList.length == 0}}">
                 <view class="cu-load bg-grey over margin-top light"></view>
             </block>
         </block>
     </block>
     <block wx:else>
-        <block wx:if="hiddenArtworkLoading == false">
+        <block wx:if="{{hiddenArtworkLoading == false}}">
             <view class="cu-load bg-grey loading margin-top light"></view>
         </block>
         <block wx:else>
-            <block wx:if="artworkList.length == 0">
+            <block wx:if="{{artworkList.length == 0}}">
                 <view class="cu-load bg-grey over margin-top light"></view>
             </block>
         </block>

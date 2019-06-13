@@ -20,7 +20,6 @@ Page({
         this.getCourseList();
     },
     tabSelect: function (e) {
-        console.log(e.currentTarget.dataset.id)
         this.setData({
             sliderOffset: e.currentTarget.offsetLeft,
             activeIndex: e.currentTarget.dataset.id,
