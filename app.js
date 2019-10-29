@@ -33,7 +33,7 @@ App({
     globalData: {
         UserInfo: wx.getStorageSync('USERINFO'),
         UserType: "0",
-        ServerBase: "http://localhost:5000",
-        //ServerBase: "http://47.104.231.152"
+        //ServerBase: "http://localhost:5000",
+        ServerBase: "https://www.shuyouxiaowu.com"
     }
 })
