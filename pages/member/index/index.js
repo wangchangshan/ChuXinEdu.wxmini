@@ -16,7 +16,7 @@ Component({
         }
     },
     data: {
-        list: [{
+        tlist: [{
                 id: 'student',
                 name: 'Students',
                 title: '我的学生',
@@ -41,6 +41,24 @@ Component({
                 icon: 'shop'
             }
         ],
+        plist: [
+        {
+            id: 'schedule',
+            name: 'Schedule',
+            title: '本周课程',
+            url: '/pages/member/student/myschedule/index',
+            color: 'cyan',
+            icon: 'calendar'
+        },
+        {
+            id: 'packages',
+            name: 'history',
+            title: '课程记录',
+            url: '/pages/member/student/course/course',
+            color: 'green',
+            icon: 'list'
+        }
+        ],
         isModalShow: '',
         showTips: false,
         studentTips: '',
@@ -48,6 +66,9 @@ Component({
         activeTabIndex: '1',
         studentCode: '',
         studentName: '',
+        teacherCode: '',
+        teacherName: '',
+        displayName: '',
         teacherKey: '',
         impowered: false,
         curUser: null,
@@ -63,7 +84,7 @@ Component({
 
                 wx.login({
                     success: res => {
-                        console.log("用户登录凭证： " + res.code)
+                        //console.log("用户登录凭证： " + res.code)
                         this.getLoginState(res.code);
                     }
                 });
@@ -102,9 +123,25 @@ Component({
 
                         this.setData({
                             impowered: true,
+                            displayName: result.data.innerPersonName,
                             curUser: app.globalData.UserInfo,
                             curUserType: result.data.sessionKey.charAt(0)
                         })
+
+                        if(this.data.curUserType == 1)
+                        {
+                            this.setData({
+                                studentCode: result.data.innerPersonCode,
+                                studentName: result.data.innerPersonName,
+                            })
+                        }
+                        else if (this.data.curUserType == 2)
+                        {
+                            this.setData({
+                                teacherCode: result.data.innerPersonCode,
+                                teacherName: result.data.innerPersonName
+                            })
+                        }
                     }
                 }
             })
@@ -204,6 +241,7 @@ Component({
                         this.setData({
                             isModalShow: null,
                             impowered: true,
+                            displayName: this.data.studentName,
                             curUser: app.globalData.UserInfo,
                             curUserType: result.data.sessionKey.charAt(0)
                         });
@@ -235,6 +273,9 @@ Component({
                         this.setData({
                             isModalShow: null,
                             impowered: true,
+                            teacherCode: result.data.teacherCode,
+                            teacherName: result.data.teacherName,
+                            displayName: result.data.teacherName,
                             curUser: app.globalData.UserInfo,
                             curUserType: result.data.sessionKey.charAt(0)
                         });

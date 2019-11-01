@@ -9,7 +9,7 @@ Page({
     },
 
     onLoad: function (options) {
-        this.searchSchedule(this.data.date);
+        this.searchSchedule();
     },
 
     searchSchedule: function () {

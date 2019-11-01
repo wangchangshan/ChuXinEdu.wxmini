@@ -20,13 +20,23 @@
             初心工作室
         </view>
         <view class="margin-top-sm">
-            <text>cswang07@foxmail.com</text>
+            <text>{{ displayName }}</text>
         </view>
         <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
     </view>
  
+    <!-- 教师功能列表 -->
     <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 2}}">
-        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{list}}" wx:key>
+        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{tlist}}" wx:key>
+            <view class="nav-title">{{item.title}}</view>
+            <view class="nav-name">{{item.name}}</view>
+            <text class='cuIcon-{{item.icon}}'></text>
+        </navigator>
+    </view>
+
+    <!-- 家长功能列表 -->
+    <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 1}}">
+        <navigator open-type="navigate" hover-class='none' url="{{item.url + '?studentCode=' + studentCode + '&studentName=' + studentName}}" class="nav-li bg-{{item.color}}" wx:for="{{plist}}" wx:key>
             <view class="nav-title">{{item.title}}</view>
             <view class="nav-name">{{item.name}}</view>
             <text class='cuIcon-{{item.icon}}'></text>

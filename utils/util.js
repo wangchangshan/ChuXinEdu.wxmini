@@ -30,7 +30,36 @@ const getToday = () => {
     return currentdate;
 }
 
+const getWeekName = (weekCode) => {
+    var weekName = '';
+    switch (weekCode){
+        case "day1":
+            weekName = '星期一';
+            break;
+        case "day2":
+            weekName = '星期二';
+            break;
+        case "day3":
+            weekName = '星期三';
+            break;
+        case "day4":
+            weekName = '星期四';
+            break;
+        case "day5":
+            weekName = '星期五';
+            break;
+        case "day6":
+            weekName = '星期六';
+            break;
+        case "day7":
+            weekName = '星期日';
+            break;
+    }
+    return weekName;
+}
+
 module.exports = {
     formatTime: formatTime,
-    getToday: getToday
+    getToday: getToday,
+    getWeekName: getWeekName
 }

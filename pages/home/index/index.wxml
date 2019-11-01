@@ -1,13 +1,13 @@
 <scroll-view scroll-y class="scrollPage">
     <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
     </cu-custom>
-    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
+    <!-- <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
         <swiper-item wx:for="{{environmentPicList}}" wx:key>
             <image src="{{item.picturePath}}" mode="aspectFill"></image>
         </swiper-item>
-    </swiper>
+    </swiper> -->
 
-    <view class="cu-list grid col-4 no-border">
+    <!-- <view class="cu-list grid col-4 no-border">
         <view class="cu-item" wx:for="{{iconList}}" wx:key>
             <view class="cuIcon-{{item.icon}} text-{{item.color}}">
                 <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
@@ -16,21 +16,7 @@
             </view>
             <text>{{item.name}}</text>
         </view>
-    </view>
-
-    <view class="cu-bar bg-white solid-bottom margin-top">
-        <view class="action">
-            <text class="cuIcon-titles text-orange "></text>学习日常
-        </view>
-        <view class="action">
-            
-        </view>
-    </view>
-    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
-        <swiper-item wx:for="{{learnPicList}}" wx:key>
-            <image src="{{item.picturePath}}" mode="aspectFill"></image>
-        </swiper-item>
-    </swiper>
+    </view> -->
 
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
@@ -42,6 +28,20 @@
     </view>
     <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
         <swiper-item wx:for="{{environmentPicList}}" wx:key>
+            <image src="{{item.picturePath}}" mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
+
+    <view class="cu-bar bg-white solid-bottom margin-top">
+        <view class="action">
+            <text class="cuIcon-titles text-orange "></text>学习日常
+        </view>
+        <view class="action">
+            
+        </view>
+    </view>
+    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
+        <swiper-item wx:for="{{learnPicList}}" wx:key>
             <image src="{{item.picturePath}}" mode="aspectFill"></image>
         </swiper-item>
     </swiper>
