@@ -41,6 +41,7 @@ Page({
                 }
                 
                 result.data.forEach(item => {
+                    item.courseDate = item.courseDate.split('T')[0];
                     item.courseWeekDay = util.getWeekName(item.courseWeekDay);
                 });
                 this.setData({

@@ -7,6 +7,8 @@ Component({
         attached: function () {
             // 添加'SKEY'的验证，为了防止同意授权但是没有输入注册码提交成功的情况。
             if (app.globalData.UserInfo && wx.getStorageSync('SKEY')) {
+                
+                this.getUserInfoBySKey(wx.getStorageSync('SKEY'));
                 this.setData({
                     impowered: true,
                     curUser: app.globalData.UserInfo,
@@ -137,6 +139,52 @@ Component({
                         }
                         else if (this.data.curUserType == 2)
                         {
+                            this.setData({
+                                teacherCode: result.data.innerPersonCode,
+                                teacherName: result.data.innerPersonName
+                            })
+                        }
+                    }
+                }
+            })
+        },
+
+        getUserInfoBySKey: function (skey) {
+            wx.request({
+                url: app.globalData.ServerBase + "/api/wxuser/getwxuserinfo",
+                data: {
+                    sKey: skey
+                },
+                method: 'GET',
+                header: {
+                    'Content-Type': 'application/json',
+                },
+                success: result => {
+                    if (result.data.stateCode == '1404') {
+                        this.setData({
+                            studentCode: '',
+                            studentName: '',
+                            teacherKey: '',
+                            isModalShow: 'show',
+                            showTips: false,
+                            studentTips: '',
+                            teacherTips: ''
+                        });
+                        return;
+                    } else if (result.data.stateCode == '1200') {
+
+                        this.setData({
+                            displayName: result.data.innerPersonName,
+                            curUserType: skey.charAt(0)
+                        })
+
+                        if (this.data.curUserType == 1) {
+                            this.setData({
+                                studentCode: result.data.innerPersonCode,
+                                studentName: result.data.innerPersonName,
+                            })
+                        }
+                        else if (this.data.curUserType == 2) {
                             this.setData({
                                 teacherCode: result.data.innerPersonCode,
                                 teacherName: result.data.innerPersonName

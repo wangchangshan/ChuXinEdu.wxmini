@@ -22,7 +22,7 @@
         <view class="margin-top-sm">
             <text>{{ displayName }}</text>
         </view>
-        <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+        <!-- <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image> -->
     </view>
  
     <!-- 教师功能列表 -->
