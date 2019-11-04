@@ -9,7 +9,11 @@ Page({
         courseList: [],
         artworkList: [],
         hiddenCourseLoading: false,
-        hiddenArtworkLoading: false
+        hiddenArtworkLoading: false,
+        pageIndex: 1,
+        pageSize: 15,
+        courseMore: true,
+        artMore: true
     },
 
     onLoad: function (options) {
@@ -31,11 +35,16 @@ Page({
             this.getAllArtWorks();
         }
     },
+    loadMoreCourse: function(e) {
+        this.getCourseList();
+    },
     getCourseList: function () {
         wx.request({
             url: app.globalData.ServerBase + "/api/wxopen/getcourselist",
             data: {
-                studentCode: this.data.studentCode
+                studentCode: this.data.studentCode,
+                pageIndex: this.data.pageIndex,
+                pageSize: this.data.pageSize
             },
             method: 'GET',
             header: {
@@ -49,11 +58,21 @@ Page({
                     });
                     return;
                 }
+                this.setData({
+                    pageIndex: this.data.pageIndex + 1
+                });
+                
                 result.data.forEach(item => {
                     item.courseDate = item.courseDate.split('T')[0];
                 });
+
+                if(result.data.length < this.data.pageSize) {
+                    this.setData({
+                        courseMore: false
+                    })
+                }
                 this.setData({
-                    courseList: result.data,
+                    courseList: this.data.courseList.concat(result.data),
                     hiddenCourseLoading: true
                 })
             }

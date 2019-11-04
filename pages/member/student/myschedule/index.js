@@ -17,6 +17,10 @@ Page({
         this.getWeekSchedule();
     },
 
+    onPullDownRefresh: function () {
+        this.getWeekSchedule();
+    },
+
     getWeekSchedule: function () {
         this.setData({
             schedule: [],
@@ -48,6 +52,11 @@ Page({
                     schedule: result.data,
                     hiddenLoading: true
                 });
+            },
+            complete: function () {
+                // complete
+                wx.hideNavigationBarLoading() //完成停止加载
+                wx.stopPullDownRefresh() //停止下拉刷新
             }
         })
     }

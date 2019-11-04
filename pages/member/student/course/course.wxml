@@ -13,6 +13,7 @@
         </view>
     </scroll-view>
 
+    <!-- 上课记录-->
     <view class="cu-timeline" hidden="{{activeIndex != 0}}" wx:for="{{courseList}}" wx:key="{{studentCourseId}}">
         <view class="cu-time">{{ item.courseDate }}</view>
         <view class="cu-item">
@@ -25,6 +26,9 @@
         </view>
     </view>
 
+
+
+    <!-- 作品记录-->
     <view class="cu-card case no-card" hidden="{{activeIndex != 1}}" wx:for="{{artworkList}}" wx:key="{{artworkId}}">
         <view class="cu-item shadow">
             <view class="image">
@@ -33,7 +37,10 @@
         </view>
     </view>
 
+
+    <!-- 提示区-->
     <block wx:if="{{activeIndex == 0}}">
+        <!-- loading图标-->
         <block wx:if="{{hiddenCourseLoading == false}}">
             <view class="cu-load bg-grey loading margin-top light"></view>
         </block>
@@ -41,6 +48,16 @@
             <block wx:if="{{courseList.length == 0}}">
                 <view class="cu-load bg-grey over margin-top light"></view>
             </block>
+        </block>
+
+        <!-- 加载更多-->
+        <block wx:if="{{courseMore == true}}">
+            <view class="flex solid-bottom padding justify-center">
+                <view bindtap="loadMoreCourse">加载更多</view>
+            </view>
+        </block>
+        <block wx:else class="solids-bottom padding-xs flex align-center">
+            <view>没有更多了</view>
         </block>
     </block>
     <block wx:else>

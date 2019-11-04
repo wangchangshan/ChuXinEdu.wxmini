@@ -162,10 +162,11 @@ Component({
                 success: result => {
                     if (result.data.stateCode == '1404') {
                         this.setData({
+                            curUser: null,
+                            impowered: null,
                             studentCode: '',
                             studentName: '',
                             teacherKey: '',
-                            isModalShow: 'show',
                             showTips: false,
                             studentTips: '',
                             teacherTips: ''

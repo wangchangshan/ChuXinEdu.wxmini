@@ -16,13 +16,13 @@
                     <text class="text-grey">{{ item.coursePeriod }}</text>
                 </view>
                 <view class="action">
-                    <view class="cu-tag round {{cell.colorclass}} light">{{ item.folderName }}</view>
+                    <view class="cu-tag round {{item.courseFolderCode}} light">{{ item.courseFolderName }}</view>
                 </view>
             </view>
         </view>
     </block>
 
-    <view wx:if="{{hiddenLoading==true && periods.length == 0}}" class="bg-grey padding radius text-center light">
+    <view wx:if="{{hiddenLoading==true && schedule.length == 0}}" class="bg-grey padding radius text-center light">
       <view class="text-lg">本周没有课程安排了</view>
     </view>
 </scroll-view>
