@@ -52,12 +52,14 @@
 
         <!-- 加载更多-->
         <block wx:if="{{courseMore == true}}">
-            <view class="flex solid-bottom padding justify-center">
+            <view class="flex padding-15 justify-center bg-white">
                 <view bindtap="loadMoreCourse">加载更多</view>
             </view>
         </block>
-        <block wx:else class="solids-bottom padding-xs flex align-center">
-            <view>没有更多了</view>
+        <block wx:else>
+            <view class="flex padding-15 justify-center bg-white">
+                <view>没有更多了</view>
+            </view>
         </block>
     </block>
     <block wx:else>

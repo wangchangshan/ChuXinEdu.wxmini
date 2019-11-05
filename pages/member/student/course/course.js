@@ -23,6 +23,17 @@ Page({
         });
         this.getCourseList();
     },
+
+    onReachBottom: function (){
+        console.log('onReachBottom, activeIndex is: ' + this.data.activeIndex)
+        if (this.data.activeIndex == 0){
+            this.getCourseList();
+        }
+        else{
+            //
+        }
+    },
+
     tabSelect: function (e) {
         this.setData({
             sliderOffset: e.currentTarget.offsetLeft,

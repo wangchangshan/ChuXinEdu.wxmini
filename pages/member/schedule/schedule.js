@@ -12,6 +12,10 @@ Page({
         this.searchSchedule();
     },
 
+    onPullDownRefresh: function () {
+        this.searchSchedule();
+    },
+
     searchSchedule: function () {
         this.setData({
             periods: [],
