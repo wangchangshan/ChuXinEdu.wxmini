@@ -10,8 +10,10 @@ Page({
         artworkList: [],
         hiddenCourseLoading: false,
         hiddenArtworkLoading: false,
-        pageIndex: 1,
-        pageSize: 15,
+        cPageIndex: 1,
+        cPageSize: 15,
+        iPageIndex:1,
+        iPageSize:3,
         courseMore: true,
         artMore: true
     },
@@ -25,12 +27,11 @@ Page({
     },
 
     onReachBottom: function (){
-        console.log('onReachBottom, activeIndex is: ' + this.data.activeIndex)
         if (this.data.activeIndex == 0){
             this.getCourseList();
         }
         else{
-            //
+            this.getArtWorks();
         }
     },
 
@@ -43,19 +44,22 @@ Page({
             this.getCourseList();
         }
         else if (e.currentTarget.dataset.id == 1 && this.data.artworkList.length == 0){
-            this.getAllArtWorks();
+            this.getArtWorks();
         }
     },
     loadMoreCourse: function(e) {
         this.getCourseList();
     },
     getCourseList: function () {
+        if (!this.data.courseMore) {
+            return false;
+        }
         wx.request({
             url: app.globalData.ServerBase + "/api/wxopen/getcourselist",
             data: {
                 studentCode: this.data.studentCode,
-                pageIndex: this.data.pageIndex,
-                pageSize: this.data.pageSize
+                pageIndex: this.data.cPageIndex,
+                pageSize: this.data.cPageSize
             },
             method: 'GET',
             header: {
@@ -69,31 +73,34 @@ Page({
                     });
                     return;
                 }
-                this.setData({
-                    pageIndex: this.data.pageIndex + 1
-                });
                 
                 result.data.forEach(item => {
                     item.courseDate = item.courseDate.split('T')[0];
                 });
 
-                if(result.data.length < this.data.pageSize) {
+                if (result.data.length < this.data.cPageSize) {
                     this.setData({
                         courseMore: false
                     })
                 }
                 this.setData({
+                    cPageIndex: this.data.cPageIndex + 1,
                     courseList: this.data.courseList.concat(result.data),
                     hiddenCourseLoading: true
                 })
             }
         })
     },
-    getAllArtWorks: function () {
+    getArtWorks: function () {
+        if (!this.data.artMore) {
+            return false;
+        }
         wx.request({
             url: app.globalData.ServerBase + "/api/wxopen/getartworklist",
             data: {
-                studentCode: this.data.studentCode//'BJ-201809011'
+                studentCode: this.data.studentCode,
+                pageIndex: this.data.iPageIndex,
+                pageSize: this.data.iPageSize
             },
             method: 'GET',
             header: {
@@ -107,8 +114,16 @@ Page({
                     });
                     return;
                 }
+
+                if (result.data.length < this.data.iPageSize) {
+                    this.setData({
+                        artMore: false
+                    })
+                }
+                
                 this.setData({
-                    artworkList: result.data,
+                    iPageIndex: this.data.iPageIndex + 1,
+                    artworkList: this.data.artworkList.concat(result.data),
                     hiddenArtworkLoading: true
                 })
             }

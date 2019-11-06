@@ -1,5 +1,5 @@
-<home wx:if="{{PageCur=='home'}}"></home>
-<paintingwall wx:if="{{PageCur=='paintingwall'}}"></paintingwall>
+<home wx:if="{{PageCur=='home'}}" id="home"></home>
+<paintingwall wx:if="{{PageCur=='paintingwall'}}" id="paintingwall"></paintingwall>
 <appointment wx:if="{{PageCur=='appointment'}}"></appointment>
 <member wx:if="{{PageCur=='member'}}"></member>
 <about wx:if="{{PageCur=='about'}}"></about>

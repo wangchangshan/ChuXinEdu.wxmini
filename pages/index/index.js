@@ -1,7 +1,18 @@
+const app = getApp()
 Page({
     data: {
         PageCur: 'home',
     },
+    onLoad: function () {
+        this.paintingwall = this.selectComponent("#home")
+        console.log(this.home)
+    },
+
+    onReachBottom: function () {
+        console.log(111)
+        //this.paintingwall.onReachEnd()
+    },
+
     NavChange(e) {
         this.setData({
             PageCur: e.currentTarget.dataset.cur

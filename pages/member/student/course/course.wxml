@@ -71,5 +71,12 @@
                 <view class="cu-load bg-grey over margin-top light"></view>
             </block>
         </block>
+
+        <!-- 加载更多-->
+        <block wx:if="{{artMore == false}}">
+            <view class="flex padding-15 justify-center bg-white">
+                <view>没有更多了</view>
+            </view>
+        </block>
     </block>
 </scroll-view>

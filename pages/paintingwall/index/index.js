@@ -4,7 +4,10 @@ Component({
         addGlobalClass: true
     },
     data: {
-        paintingList: []
+        pageIndex: 1,
+        pageSize: 3,
+        paintingList: [],
+        artMore: true
     },
     lifetimes: {
         attached: function () { 
@@ -14,9 +17,21 @@ Component({
         detached: function () { },
     },
     methods: {
+        onReachEnd: function () {
+            console.log('onReachBottom')
+            this.getPaintingList();
+        },
         getPaintingList: function () {
+            if (!this.data.artMore) {
+                return false;
+            }
             wx.request({
-                url: app.globalData.ServerBase + "/api/wxopen/getwxpicture/02",
+                url: app.globalData.ServerBase + "/api/wxopen/getwxbestdraw",
+                data: {
+                    wxPicCode: '02',
+                    pageIndex: this.data.pageIndex,
+                    pageSize: this.data.pageSize
+                },
                 method: 'GET',
                 header: {
                     'Content-Type': 'application/json',
@@ -25,9 +40,17 @@ Component({
                 success: result => {
                     if (result.data.code && result.data.code == '1401') {
                         return;
+                    } 
+                    
+                    if (result.data.length < this.data.pageSize) {
+                        this.setData({
+                            artMore: false
+                        })
                     }
+
                     this.setData({
-                        paintingList: result.data
+                        cPageIndex: this.data.cPageIndex + 1,                        
+                        paintingList: this.data.paintingList.concat(result.data),
                     })
                 }
             })
