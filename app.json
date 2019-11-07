@@ -2,8 +2,10 @@
     "pages": [
         "pages/index/index",
         
-        "pages/home/index/index",        
-        
+        "pages/home/index/index",      
+        "pages/home/about/about",
+        "pages/home/coursecategory/coursecategory",
+
         "pages/appointment/index/index",
 
         "pages/paintingwall/index/index",

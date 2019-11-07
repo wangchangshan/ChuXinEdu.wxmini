@@ -6,38 +6,42 @@ Component({
     data: {
         cardCur: 0,
         environmentPicList: [],
-        learnPicList:[],
+        learnPicList: [],
         iconList: [{
             icon: 'friendfamous',
             color: 'orange',
             badge: 0,
-            name: '师资力量'
+            name: '师资力量',
+            url: ''
         }, {
             icon: 'upstagefill',
             color: 'yellow',
             badge: 0,
-            name: '获得荣誉'
+            name: '获得荣誉',
+            url: ''
         }, {
             icon: 'colorlens',
             color: 'olive',
             badge: 0,
-            name: '精品课程'
+            name: '精品课程',
+            url: ''
         }, {
-            icon: 'activity',
-            color: 'cyan',
+            icon: 'like',
+            color: 'red',
             badge: 0,
-            name: '举办活动'
+            name: '关于我们',
+            url: '/pages/home/about/about',
         }],
     },
     lifetimes: {
-        attached: function () {
+        attached: function() {
             this.getPicList();
         },
-        moved: function () { },
-        detached: function () { },
+        moved: function() {},
+        detached: function() {},
     },
     methods: {
-        getPicList: function () {
+        getPicList: function() {
             wx.request({
                 url: app.globalData.ServerBase + "/api/wxopen/getwxhomepicture",
                 method: 'GET',
@@ -50,8 +54,12 @@ Component({
                         return;
                     }
                     this.setData({
-                        environmentPicList: result.data.filter((item)=>{ return item.wxPictureType == '01' }),
-                        learnPicList: result.data.filter((item) => { return item.wxPictureType == '00' }),
+                        environmentPicList: result.data.filter((item) => {
+                            return item.wxPictureType == '01'
+                        }),
+                        learnPicList: result.data.filter((item) => {
+                            return item.wxPictureType == '00'
+                        }),
                     })
                 }
             })
