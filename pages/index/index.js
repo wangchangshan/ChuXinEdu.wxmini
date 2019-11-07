@@ -4,13 +4,14 @@ Page({
         PageCur: 'home',
     },
     onLoad: function () {
-        this.paintingwall = this.selectComponent("#home")
-        console.log(this.home)
     },
 
     onReachBottom: function () {
-        console.log(111)
-        //this.paintingwall.onReachEnd()
+        this.paintingwall = this.selectComponent("#paintingwall")
+        if(this.paintingwall)
+        {
+            this.paintingwall.onReachEnd()
+        }
     },
 
     NavChange(e) {

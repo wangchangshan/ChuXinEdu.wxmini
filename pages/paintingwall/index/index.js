@@ -18,7 +18,6 @@ Component({
     },
     methods: {
         onReachEnd: function () {
-            console.log('onReachBottom')
             this.getPaintingList();
         },
         getPaintingList: function () {
@@ -49,7 +48,7 @@ Component({
                     }
 
                     this.setData({
-                        cPageIndex: this.data.cPageIndex + 1,                        
+                        pageIndex: this.data.pageIndex + 1,                        
                         paintingList: this.data.paintingList.concat(result.data),
                     })
                 }

@@ -3,31 +3,33 @@
         <view slot="content">宝贝作品</view>
     </cu-custom>
 
-    <view class="cu-card case"  wx:for="{{paintingList}}" wx:key>
-        <view class="cu-item shadow">
-            <view class="image">
-                <image src="{{item.picturePath}}" mode="widthFix"></image>
-            </view>
-            <view class="cu-list menu-avatar">
-                <!-- <view>
+    <view style="height:100%">
+        <view class="cu-card case" wx:for="{{paintingList}}" wx:key>
+            <view class="cu-item shadow">
+                <view class="image">
+                    <image src="{{item.picturePath}}" mode="widthFix"></image>
+                </view>
+                <view class="cu-list menu-avatar">
+                    <!-- <view>
                     {{ item.subject }}
                 </view> -->
-                <view class="cu-item">
-                    <view class="cu-avatar round lg" style="background-image:url(../../../images/avatar.png);"></view>
-                    <view class="content flex-sub">
-                        <view class="text-grey">{{item.subject}}</view>
-                        <view class="text-gray text-sm flex justify-between">
-                            {{ item.studentAge }}岁作品
-                            <view class="text-gray text-sm">
-                                <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+                    <view class="cu-item">
+                        <view class="cu-avatar round lg" style="background-image:url(../../../images/avatar.png);"></view>
+                        <view class="content flex-sub">
+                            <view class="text-grey">{{item.subject}}</view>
+                            <view class="text-gray text-sm flex justify-between">
+                                {{ item.studentAge }}岁作品
+                                <view class="text-gray text-sm">
+                                    <!-- <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
                                 <text class="cuIcon-share margin-lr-xs"></text> -->
+                                </view>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
+        <view class='cu-tabbar-height'></view>
     </view>
 
-    <view class='cu-tabbar-height'></view>
 </scroll-view>

@@ -1,3 +1,4 @@
+<view>
 <home wx:if="{{PageCur=='home'}}" id="home"></home>
 <paintingwall wx:if="{{PageCur=='paintingwall'}}" id="paintingwall"></paintingwall>
 <appointment wx:if="{{PageCur=='appointment'}}"></appointment>
@@ -24,4 +25,5 @@
         <text class="cuIcon-my lg"></text>我的
     </view>
   </view>
+</view>
 </view>

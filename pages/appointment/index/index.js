@@ -26,8 +26,8 @@ Page({
     getCenterLocation: function () {
         this.mapCtx.getCenterLocation({
             success: function (res) {
-                console.log(res.longitude)
-                console.log(res.latitude)
+                //console.log(res.longitude)
+                //console.log(res.latitude)
             }
         })
     },
