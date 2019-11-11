@@ -1,0 +1,18 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+    </cu-custom>
+
+    <!-- <view class="cu-card case"  wx:for="{{paintingList}}" wx:key>
+        <view class="cu-item shadow">
+            <view class="image">
+                <image src="{{item.paintingPath}}" mode="widthFix"></image>
+            </view>
+        </view>
+    </view> -->
+    <view class="padding bg-white">
+        <view class="text-left text-bold padding">联系人： 唐老师 18523423024</view>
+        <view class="text-left text-bold padding">联系人： 马老师 17310182521</view>
+        <view class="text-left text-bold padding">地址：龙兴园南区6号楼4单元302室</view>
+    </view>
+    <map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" show-location></map>
+</scroll-view>

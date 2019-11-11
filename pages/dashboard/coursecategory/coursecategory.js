@@ -1,4 +1,4 @@
-// pages/about/index/index.js
+// pages/home/coursecategory/coursecategory.js
 Page({
 
     /**

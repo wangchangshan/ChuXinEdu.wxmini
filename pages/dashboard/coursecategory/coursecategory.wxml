@@ -1,0 +1,35 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">精品课程</view>
+    </cu-custom>
+
+    <view class='padding radius shadow-lg bg-white'>
+        <view class='text-content'>
+            <view class="text-bold">米罗创意班（西画）</view>
+            <view>教学对象：建议年龄4-6岁</view>
+            <view>课时时长：1.5小时/节</view>
+            <view>教学目标：通过生动有趣的课程体验，让孩子充分感知绘画的趣味性，在实际课程中发现线，形，色的美，增强对各种线的熟悉，开始具有对各种形的组合构成的意识，培养孩子创意思维习惯</view>
+            <view>绘画形式：蜡笔画、综合材料画、丙烯画、水彩画、轻黏土画、手指画、马克笔画</view>
+
+            <view class="margin-top-sm text-bold">立体主义班（西画）</view>
+            <view>教学对象：建议年龄6-8岁</view>
+            <view>课时时长：1.5小时/节</view>
+            <view>教学目标：增强专业性，深入美术技巧学习，提高审美技能水平，拓展学生的艺术视野</view>
+            <view>绘画形式：素描、丙烯画、水彩笔、马克笔画、色粉笔画、彩铅画、动漫人物画</view>
+
+            <view class="margin-top-sm text-bold">表现主义班（西画）</view>
+            <view>教学对象：建议8至12岁</view>
+            <view>课时时长：1.5小时/节</view>
+            <view>教学目标：提升专业性的塑造，拓展学生的艺术视野，了解艺术的多元化与丰富性，学习不同艺术门类的不同艺术语言，提升审美水平和艺术知识</view>
+            <view>绘画形式：素描、水彩画、丙烯画、马克笔画、色粉笔画、彩铅画</view>
+
+            <view class="margin-top-sm text-bold">专业技巧班（西画）</view>
+            <view>教学对象：建议年龄12岁及以上</view>
+            <view>课时时长：1.5小时/节</view>
+            <view>教学目标：艺术专业阶段课程设置符合艺术院校基本专业课程，增强专业性的训练，深入美术技巧学习，提高审美，技能水平</view>
+            <view>绘画形式：速写（静物、风景、石膏像、人物），素描（静物、石膏像、人物），水粉（静物、人物）……</view>
+
+        </view>
+    </view>
+</scroll-view>

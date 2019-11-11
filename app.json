@@ -2,20 +2,20 @@
     "pages": [
         "pages/index/index",
         
-        "pages/home/index/index",      
-        "pages/home/about/about",
-        "pages/home/coursecategory/coursecategory",
+        "pages/dashboard/index/index",      
+        "pages/dashboard/about/about",
+        "pages/dashboard/coursecategory/coursecategory",
 
-        "pages/appointment/index/index",
+        "pages/contact/index/index",
 
         "pages/paintingwall/index/index",
 
-        "pages/member/index/index",
-        "pages/member/student/index",
-        "pages/member/student/myschedule/index",
-        "pages/member/student/course/course",
-        "pages/member/package/package",
-        "pages/member/schedule/schedule"
+        "pages/mine/index/index",
+        "pages/mine/student/index",
+        "pages/mine/student/myschedule/index",
+        "pages/mine/student/course/course",
+        "pages/mine/package/package",
+        "pages/mine/schedule/schedule"
     ],
     "window": {
         "navigationBarBackgroundColor": "#43B0D1",

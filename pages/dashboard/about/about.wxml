@@ -1,0 +1,25 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">初心工作室简介</view>
+    </cu-custom>
+
+    <view class='margin-xl padding-xl radius shadow-lg bg-white'>
+        <view class='text-content'>
+            <view class="text-blue">Hi！亲爱的家长朋友~ </view>
+            <view class='margin-top-sm'>感谢您对初心的关注，初心工作室成立于2017年，一直专注于少儿美术、书法的教育工作。我们相信每个孩子都是充满想象力的天才，我们致力于培养、引导他们用手中的画笔，描绘出这个色彩斑斓的世界。</view>
+            <view class='margin-top-sm text-bold text-green'>我们的办学模式：</view>
+            <view>分段设班，精品小班</view>
+            <view>课堂学习，自主个性</view>
+            <view>创作元素，生活多元</view>
+            <view>课程精炼，卓越创新</view>
+
+            <view class='margin-top-sm text-bold text-green'>我们的教学理念：</view>
+            <view>发现，自信，荣誉，寓教于乐</view>
+
+
+            <view class='margin-top-sm'>我们会以专业的知识技能、先进的教育理念，培养孩子的自主能力、创造能力，挖掘孩子的无限潜能。我们将用百倍用心换取您对我们的放心！</view>
+            <view class="text-bold text-red">我们期待着您和宝贝的选择 ٩(๑❛ᴗ❛๑)۶</view>
+        </view>
+    </view>
+</scroll-view>

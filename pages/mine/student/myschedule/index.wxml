@@ -1,0 +1,32 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">{{ studentName }}本周课程安排</view>
+    </cu-custom>
+
+    <block wx:for="{{schedule}}" wx:key="*this">
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-orange "></text> {{item.courseDate}} {{' ' + item.courseWeekDay}}
+            </view>
+        </view>
+        <view class="cu-list menu">
+            <view class="cu-item">
+                <view class="content">
+                    <text class="text-grey">{{ item.coursePeriod }}</text>
+                </view>
+                <view class="action">
+                    <view class="cu-tag round {{item.courseFolderCode}} light">{{ item.courseFolderName }}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <view wx:if="{{hiddenLoading==true && schedule.length == 0}}" class="bg-grey padding radius text-center light">
+      <view class="text-lg">本周没有课程安排了</view>
+    </view>
+</scroll-view>
+
+<view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+</view>
