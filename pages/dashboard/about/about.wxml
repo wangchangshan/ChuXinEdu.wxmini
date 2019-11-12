@@ -4,7 +4,7 @@
         <view slot="content">初心工作室简介</view>
     </cu-custom>
 
-    <view class='margin-xl padding-xl radius shadow-lg bg-white'>
+    <view class='margin-lg padding-xl radius shadow-lg bg-white'>
         <view class='text-content'>
             <view class="text-blue">Hi！亲爱的家长朋友~ </view>
             <view class='margin-top-sm'>感谢您对初心的关注，初心工作室成立于2017年，一直专注于少儿美术、书法的教育工作。我们相信每个孩子都是充满想象力的天才，我们致力于培养、引导他们用手中的画笔，描绘出这个色彩斑斓的世界。</view>

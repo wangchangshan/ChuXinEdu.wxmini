@@ -22,7 +22,7 @@ Component({
                 id: 'student',
                 name: 'Students',
                 title: '我的学生',
-                url: '/pages/member/student/index',
+                url: '/pages/mine/student/index',
                 color: 'red',
                 icon: 'peoplelist'
             },
@@ -30,7 +30,7 @@ Component({
                 id: 'schedule',
                 name: 'Schedule',
                 title: '课程表',
-                url: '/pages/member/schedule/schedule',
+                url: '/pages/mine/schedule/schedule',
                 color: 'cyan',
                 icon: 'calendar'
             },
@@ -38,7 +38,7 @@ Component({
                 id: 'packages',
                 name: 'Study Plan',
                 title: '课程套餐',
-                url: '/pages/member/package/package',
+                url: '/pages/mine/package/package',
                 color: 'green',
                 icon: 'shop'
             }
@@ -48,7 +48,7 @@ Component({
             id: 'schedule',
             name: 'Schedule',
             title: '本周课程',
-            url: '/pages/member/student/myschedule/index',
+            url: '/pages/mine/student/myschedule/index',
             color: 'cyan',
             icon: 'calendar'
         },
@@ -56,7 +56,7 @@ Component({
             id: 'packages',
             name: 'history',
             title: '课程记录',
-            url: '/pages/member/student/course/course',
+            url: '/pages/mine/student/course/course',
             color: 'green',
             icon: 'list'
         }

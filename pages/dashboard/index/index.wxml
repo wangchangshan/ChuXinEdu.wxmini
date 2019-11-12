@@ -20,20 +20,28 @@
         </view>
     </view>
 
-    <!-- 机构环境 -->
-    <!-- <view class="cu-bar bg-white solid-bottom margin-top">
+    <!-- 优秀教师 -->
+    <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
-            <text class="cuIcon-titles text-blue"></text>机构环境
+            <text class="cuIcon-titles text-blue"></text>优秀教师
         </view>
         <view class="action">
 
         </view>
     </view>
-    <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
-        <swiper-item wx:for="{{environmentPicList}}" wx:key>
-            <image src="{{item.picturePath}}" mode="aspectFill"></image>
-        </swiper-item>
-    </swiper> -->
+    <view class='nav-list' style="padding: 0 15rpx;">
+        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li" style="border-radius:0;padding:0 0 10rpx; background-color:#fff;margin: 0 2% 15rpx" wx:for="{{teachers}}" wx:key>
+            <image src="{{item.img}}" mode="aspectFill"></image>
+            <view class='text-bold padding-sm'>
+                <view class="text-df" style="display:inline">
+                    {{item.name + ' / '}}
+                </view>
+                <view class="text-sm text-{{item.color}}" style="display:inline">
+                    {{item.title}}
+                </view>
+            </view>
+        </navigator>
+    </view>
 
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">

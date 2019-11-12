@@ -12,7 +12,7 @@ Component({
             color: 'orange',
             badge: 0,
             name: '师资力量',
-            url: ''
+            url: '/pages/dashboard/teachers/index'
         }, {
             icon: 'upstagefill',
             color: 'yellow',
@@ -24,14 +24,35 @@ Component({
             color: 'olive',
             badge: 0,
             name: '精品课程',
-            url: '/pages/home/coursecategory/coursecategory'
+            url: '/pages/dashboard/coursecategory/coursecategory'
         }, {
             icon: 'like',
             color: 'red',
             badge: 0,
             name: '关于我们',
-            url: '/pages/home/about/about',
-        }],
+            url: '/pages/dashboard/about/about',
+            }],
+        teachers: [
+            {
+                name: '唐得红',
+                title: '国画教师',
+                img: '/images/t001.png',
+                url:'/pages/dashboard/teachers/resumes/tangdehong',
+                color: 'cyan'
+            }, {
+                name: '马朝',
+                title: '西画教师',
+                img: '/images/t002.png',
+                url: '/pages/dashboard/teachers/resumes/mazhao',
+                color: 'blue'
+            }, {
+                name: '于孟珂',
+                title: '书法教师',
+                img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg',
+				url: '/pages/dashboard/teachers/resumes/yumengke',
+                color: 'brown'
+            },
+        ]
     },
     lifetimes: {
         attached: function() {

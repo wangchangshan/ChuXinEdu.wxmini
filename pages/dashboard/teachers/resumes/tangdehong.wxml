@@ -1,0 +1,60 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">个人简历</view>
+    </cu-custom>
+
+    <view class='margin-lg padding-lg radius shadow-lg bg-white'>
+        <view>
+            <view class="cu-avatar xxl round margin-left inline-block" style="background-image:url(/images/t001.png);"></view>
+            <view class="inline-block base-info">
+                <view class="text-bold view-padding">唐得红 </view>
+                <view class="text-bold view-padding">湖南省师范大学</view>
+                <view class="text-bold view-padding">国画专业</view>
+            </view>
+        </view>
+
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-green"></text>从业资历
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+            从事美术教育行业5年，专注于4至16岁少儿青少年的绘画教育研究。
+        </view>
+
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-red"></text>获得荣誉
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+            中国大学生广告艺术节学院奖一等奖
+        </view>
+        <view class="padding-sm text-sm">
+            获得湖南省版画“和谐之梦”二等奖
+        </view>
+        <view class="padding-sm text-sm">
+            指导学员参加ICAA国际少儿书画大赛多位学生获得金牌
+        </view>
+        <view class="padding-sm text-sm">
+            ICAA国际少儿书画大赛优秀辅导教师称号
+        </view>
+        <view class="padding-sm text-sm">
+            文化部全国美术等级考试优秀指导老师称号
+        </view>
+
+		<view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-mauve"></text>教学总结
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+            让学生在快乐中学习，快乐中成长，以最简单的艺术表达方式传递给学生基本的艺术理念。
+        </view>
+        
+    </view>
+</scroll-view>

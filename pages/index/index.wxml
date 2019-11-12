@@ -1,12 +1,12 @@
 <view>
-<home wx:if="{{PageCur=='home'}}" id="home"></home>
+<dashboard wx:if="{{PageCur=='dashboard'}}" id="dashboard"></dashboard>
 <paintingwall wx:if="{{PageCur=='paintingwall'}}" id="paintingwall"></paintingwall>
-<appointment wx:if="{{PageCur=='appointment'}}"></appointment>
-<member wx:if="{{PageCur=='member'}}"></member>
+<contact wx:if="{{PageCur=='contact'}}"></contact>
+<mine wx:if="{{PageCur=='mine'}}"></mine>
 <about wx:if="{{PageCur=='about'}}"></about>
 <view class="cu-bar tabbar bg-white shadow foot">
-  <view class="action" bindtap="NavChange" data-cur="home">
-    <view class="{{PageCur=='home'?'text-green':'text-gray'}}">
+  <view class="action" bindtap="NavChange" data-cur="dashboard">
+    <view class="{{PageCur=='dashboard'?'text-green':'text-gray'}}">
         <text class="cuIcon-home lg"></text>首页
     </view>
   </view>
@@ -15,13 +15,13 @@
         <text class="cuIcon-pic lg"></text>作品展示
     </view>
   </view>
-  <view class="action" bindtap="NavChange" data-cur="appointment">
-    <view class="{{PageCur=='appointment'?'text-green':'text-gray'}}">
-        <text class="cuIcon-phone lg"></text>联系我们
+  <view class="action" bindtap="NavChange" data-cur="contact">
+    <view class="{{PageCur=='contact'?'text-green':'text-gray'}}">
+        <text class="cuIcon-message lg"></text>联系我们
     </view>
   </view>
-  <view class="action" bindtap="NavChange" data-cur="member">
-    <view class="{{PageCur=='member'?'text-green':'text-gray'}}">
+  <view class="action" bindtap="NavChange" data-cur="mine">
+    <view class="{{PageCur=='mine'?'text-green':'text-gray'}}">
         <text class="cuIcon-my lg"></text>我的
     </view>
   </view>

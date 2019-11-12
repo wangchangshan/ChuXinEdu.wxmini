@@ -1,0 +1,57 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">个人简历</view>
+    </cu-custom>
+
+    <view class='margin-lg padding-lg radius shadow-lg bg-white'>
+        <view>
+            <view class="cu-avatar xxl round margin-left inline-block" style="background-image:url(/images/t002.png);"></view>
+            <view class="inline-block base-info">
+                <view class="text-bold view-padding">马朝 </view>
+                <view class="text-bold view-padding">山东工艺美术学院</view>
+                <view class="text-bold view-padding">油画专业</view>
+            </view>
+        </view>
+
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-green"></text>从业资历
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+            从事美术教育行业5年，擅长3岁半到16岁少年儿童的创意西画教育。
+        </view>
+
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-red"></text>获得荣誉
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+            山东师生基本功大赛国画线描一等奖
+        </view>
+        <view class="padding-sm text-sm">
+            辅导学员参加ICAA国际少儿书画大赛多位学生获得金奖
+        </view>
+        <view class="padding-sm text-sm">
+            ICAA国际少儿书画大赛优秀辅导教师称号
+        </view>
+        <view class="padding-sm text-sm">
+            文化部全国美术等级考试优秀指导老师
+        </view>
+
+		<view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-mauve"></text>教学总结
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+            孩子的成长是我最大的快乐，家长的满意是我最大的满足，能带给孩子不一样的东西，是我永恒的追求！
+        </view>
+        
+    </view>
+</scroll-view>

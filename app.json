@@ -4,6 +4,13 @@
         
         "pages/dashboard/index/index",      
         "pages/dashboard/about/about",
+
+        "pages/dashboard/teachers/index",
+
+        "pages/dashboard/teachers/resumes/tangdehong",
+		"pages/dashboard/teachers/resumes/mazhao",
+		"pages/dashboard/teachers/resumes/yumengke",
+
         "pages/dashboard/coursecategory/coursecategory",
 
         "pages/contact/index/index",

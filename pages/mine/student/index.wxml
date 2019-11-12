@@ -19,7 +19,7 @@
 
     <view class="cu-list grid col-5 no-border" style="margin-top:{{CustomBar - 12}}px;">
         <view class="cu-item" wx:for="{{studentList}}" wx:key>
-            <navigator url="/pages/member/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}"> 
+            <navigator url="/pages/mine/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}"> 
                 <view class="cu-avatar lg radius" style="background-image:url({{item.studentAvatarPath}});"></view>
                 <text class="text-center">{{item.studentName}}</text>
             </navigator>

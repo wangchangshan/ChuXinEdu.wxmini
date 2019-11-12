@@ -1,9 +1,9 @@
 {
   "usingComponents": {
-        "home": "/pages/dashboard/index/index",
+        "dashboard": "/pages/dashboard/index/index",
         "paintingwall": "/pages/paintingwall/index/index",
-        "appointment": "/pages/contact/index/index",
-        "member": "/pages/mine/index/index"
+        "contact": "/pages/contact/index/index",
+        "mine": "/pages/mine/index/index"
     },
     "enablePullDownRefresh": true,
     "onReachBottomDistance": 150

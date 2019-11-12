@@ -1,0 +1,14 @@
+/* pages/dashboard/teachers/resumes/mazhao.wxss */
+
+.inline-block{
+    display: inline-block;
+}
+
+.base-info{
+    vertical-align:middle;
+}
+
+.view-padding {
+    padding:20rpx;
+    padding-left: 40rpx;
+}
