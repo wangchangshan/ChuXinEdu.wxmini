@@ -14,7 +14,7 @@
                     {{ item.subject }}
                 </view> -->
                     <view class="cu-item">
-                        <view class="cu-avatar round lg" style="background-image:url(../../../images/avatar.png);"></view>
+                        <view class="cu-avatar round lg" style="background-image:url(../../../images/logo.png);"></view>
                         <view class="content flex-sub">
                             <view class="text-grey">{{item.subject}}</view>
                             <view class="text-gray text-sm flex justify-between">

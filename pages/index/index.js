@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
     data: {
-        PageCur: 'dashboard',
+        PageCur: 'mine',
     },
     onLoad: function () {
     },
@@ -12,7 +12,15 @@ Page({
         {
             this.paintingwall.onReachEnd()
         }
+		else
+		{
+
+		}
     },
+
+	onPullDownRefresh: function() {
+		wx.stopPullDownRefresh() //停止下拉刷新
+	},
 
     NavChange(e) {
         this.setData({
@@ -26,7 +34,7 @@ Page({
     onShareAppMessage() {
         return {
             title: '初心美术——创意无限的美术培训室',
-            imageUrl: '/images/share.jpg',
+            imageUrl: '/images/logo.png',
             path: '/pages/index/index'
         }
     },

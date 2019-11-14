@@ -4,10 +4,10 @@ Component({
         addGlobalClass: true
     },
     lifetimes: {
-        attached: function () {
+        attached: function() {
             // 添加'SKEY'的验证，为了防止同意授权但是没有输入注册码提交成功的情况。
             if (app.globalData.UserInfo && wx.getStorageSync('SKEY')) {
-                
+
                 this.getUserInfoBySKey(wx.getStorageSync('SKEY'));
                 this.setData({
                     impowered: true,
@@ -18,48 +18,69 @@ Component({
         }
     },
     data: {
-        tlist: [{
-                id: 'student',
-                name: 'Students',
-                title: '我的学生',
-                url: '/pages/mine/student/index',
-                color: 'red',
-                icon: 'peoplelist'
-            },
-            {
+        teacherOverview: [{
+            color: 'orange',
+            num: 0,
+            name: '我的学员',
+            url: '/pages/mine/student/index'
+        }, {
+            color: 'yellow',
+            num: 0,
+            name: '今日排课',
+            url: ''
+        }, {
+            color: 'olive',
+            num: 0,
+            name: '学员生日',
+			url: '/pages/mine/teacher/studentlist/index'
+        }, {
+            color: 'red',
+            num: 0,
+            name: '即将到期',
+            url: '',
+        }],
+        teacherEdu: [{
+            icon: 'roundcheck',
+            color: 'green',
+            name: '销课签到',
+            url: ''
+        }, {
+            icon: 'calendar',
+            color: 'blue',
+            name: '课程安排',
+            url: '/pages/mine/schedule/schedule'
+        }, {
+            icon: 'picfill',
+            color: 'olive',
+            name: '精品画作',
+            url: ''
+        }, {
+            icon: 'comment',
+            color: 'orange',
+            name: '课堂点评',
+            url: ''
+        }, {
+            icon: 'shop',
+            color: 'cyan',
+            name: '课程套餐',
+            url: '/pages/mine/package/package'
+        }],
+        plist: [{
                 id: 'schedule',
                 name: 'Schedule',
-                title: '课程表',
-                url: '/pages/mine/schedule/schedule',
+                title: '本周课程',
+                url: '/pages/mine/student/myschedule/index',
                 color: 'cyan',
                 icon: 'calendar'
             },
             {
                 id: 'packages',
-                name: 'Study Plan',
-                title: '课程套餐',
-                url: '/pages/mine/package/package',
+                name: 'history',
+                title: '课程记录',
+                url: '/pages/mine/student/course/course',
                 color: 'green',
-                icon: 'shop'
+                icon: 'list'
             }
-        ],
-        plist: [
-        {
-            id: 'schedule',
-            name: 'Schedule',
-            title: '本周课程',
-            url: '/pages/mine/student/myschedule/index',
-            color: 'cyan',
-            icon: 'calendar'
-        },
-        {
-            id: 'packages',
-            name: 'history',
-            title: '课程记录',
-            url: '/pages/mine/student/course/course',
-            color: 'green',
-            icon: 'list'
-        }
         ],
         isModalShow: '',
         showTips: false,
@@ -75,11 +96,12 @@ Component({
         impowered: false,
         curUser: null,
         curUserType: 0,
+        curUserTypeName: '游客',
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
 
     methods: {
-        doLogin: function (e) {
+        doLogin: function(e) {
             if (e.detail.userInfo) {
                 app.globalData.UserInfo = e.detail.userInfo
                 wx.setStorageSync('USERINFO', e.detail.userInfo);
@@ -96,7 +118,7 @@ Component({
             }
         },
 
-        getLoginState: function (code) {
+        getLoginState: function(code) {
             wx.request({
                 url: app.globalData.ServerBase + "/api/wxuser/getloginstate",
                 data: {
@@ -130,26 +152,34 @@ Component({
                             curUserType: result.data.sessionKey.charAt(0)
                         })
 
-                        if(this.data.curUserType == 1)
-                        {
+                        if (this.data.curUserType == 1) {
                             this.setData({
+                                curUserTypeName: '学 员',
                                 studentCode: result.data.innerPersonCode,
                                 studentName: result.data.innerPersonName,
                             })
-                        }
-                        else if (this.data.curUserType == 2)
-                        {
-                            this.setData({
-                                teacherCode: result.data.innerPersonCode,
-                                teacherName: result.data.innerPersonName
-                            })
+                        } else if (this.data.curUserType == 2) {
+							var overview = result.data.overView;
+							var studentCount = "teacherOverview[0].num";
+							var todayCourseCount = "teacherOverview[1].num";
+							var studentBirthCount = "teacherOverview[2].num";
+							var expirationCount = "teacherOverview[3].num";
+							this.setData({
+								curUserTypeName: '教 师',
+								teacherCode: result.data.innerPersonCode,
+								teacherName: result.data.innerPersonName,
+								[studentCount]: overview.tStudentCount,
+								[todayCourseCount]: overview.tTodayCourseCount,
+								[studentBirthCount]: overview.tStudentBirthCount,
+								[expirationCount]: overview.tExpirationCount
+							});
                         }
                     }
                 }
             })
         },
 
-        getUserInfoBySKey: function (skey) {
+        getUserInfoBySKey: function(skey) {
             wx.request({
                 url: app.globalData.ServerBase + "/api/wxuser/getwxuserinfo",
                 data: {
@@ -173,23 +203,33 @@ Component({
                         });
                         return;
                     } else if (result.data.stateCode == '1200') {
-
                         this.setData({
                             displayName: result.data.innerPersonName,
                             curUserType: skey.charAt(0)
                         })
 
                         if (this.data.curUserType == 1) {
+							var overview = result.data.overView;
                             this.setData({
+                                curUserTypeName: '学 员',
                                 studentCode: result.data.innerPersonCode,
                                 studentName: result.data.innerPersonName,
                             })
-                        }
-                        else if (this.data.curUserType == 2) {
-                            this.setData({
-                                teacherCode: result.data.innerPersonCode,
-                                teacherName: result.data.innerPersonName
-                            })
+						} else if (this.data.curUserType == 2) {
+							var overview = result.data.overView;
+							var studentCount = "teacherOverview[0].num";
+							var todayCourseCount = "teacherOverview[1].num";
+							var studentBirthCount = "teacherOverview[2].num";
+							var expirationCount = "teacherOverview[3].num";
+							this.setData({
+								curUserTypeName: '教 师',
+								teacherCode: result.data.innerPersonCode,
+								teacherName: result.data.innerPersonName,
+								[studentCount]: overview.tStudentCount,
+								[todayCourseCount]: overview.tTodayCourseCount,
+								[studentBirthCount]: overview.tStudentBirthCount,
+								[expirationCount]: overview.tExpirationCount
+							});
                         }
                     }
                 }
@@ -202,7 +242,7 @@ Component({
             })
         },
 
-        tabSelect: function (e) {
+        tabSelect: function(e) {
             this.setData({
                 activeTabIndex: e.currentTarget.dataset.id,
                 showTips: false,
@@ -211,25 +251,25 @@ Component({
             });
         },
 
-        blurStudentCode: function (e) {
+        blurStudentCode: function(e) {
             this.setData({
                 studentCode: e.detail.value
             })
         },
 
-        blurStudentName: function (e) {
+        blurStudentName: function(e) {
             this.setData({
                 studentName: e.detail.value
             })
         },
 
-        blurTeacherKey: function (e) {
+        blurTeacherKey: function(e) {
             this.setData({
                 teacherKey: e.detail.value
             })
         },
 
-        submitRole: function () {
+        submitRole: function() {
             if (this.data.activeTabIndex == 1) { // 家长
                 var sCode = this.data.studentCode.toLowerCase();
                 var sName = this.data.studentName.toLowerCase();
@@ -267,7 +307,7 @@ Component({
             });
         },
 
-        parentRegister: function (code) {
+        parentRegister: function(code) {
             wx.request({
                 url: app.globalData.ServerBase + "/api/wxuser/pregister",
                 data: {
@@ -300,7 +340,7 @@ Component({
             })
         },
 
-        teacherRegister: function (code) {
+        teacherRegister: function(code) {
             wx.request({
                 url: app.globalData.ServerBase + "/api/wxuser/tregister",
                 data: {
@@ -339,5 +379,5 @@ Component({
             })
         }
     },
-    
+
 });

@@ -4,19 +4,23 @@
     </cu-custom>
 
     <view class='margin-lg padding-xl radius shadow-lg bg-white'>
-        <view class="text-left padding-sm">联系人：唐老师</view>
-        <view class="text-left padding-sm action">电 话：18523423024</view> <text class="cuIcon-phone lg action"></text>
-        <view class="text-left padding-sm">微 信：18523423024</view>
 
-        <view class="line"></view>
+        <block wx:for="{{contactList}}" wx:key>
+            <view class="text-left padding-sm">联系人：{{item.name}}</view>
 
-        <view class="text-left padding-sm">联系人：马老师</view>
-        <view class="text-left padding-sm">电 话：17310182521</view>
-        <view class="text-left padding-sm">微 信：17310182521</view>
+            <view class="text-inline">
+                <view class="text-left padding-sm action">电 话：{{item.phone}}</view>
+                <button class="cu-btn round sm line-red shadow" bindtap="phonecall" data-num="{{item.phone}}">拨打</button>
+            </view>
 
-		<view class="line"></view>
+            <view class="text-inline">
+                <view class="text-left padding-sm">微 信：{{item.weixin}}</view>
+                <button class="cu-btn round sm line-red shadow"  bindtap="wxcopy" data-num="{{item.weixin}}">复制</button>
+            </view>
+            <view class="line"></view>
+        </block>
 
-        <view class="text-left padding-sm">地 址：北京市海地区西三旗龙兴园</view>
+        <view class="text-left padding-sm">地 址：{{showAddress}}</view>
     </view>
 
     <!-- <view class='margin-lg padding-xl radius shadow-lg'>

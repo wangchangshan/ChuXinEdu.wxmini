@@ -1,0 +1,50 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">{{pageTitle}}</view>
+    </cu-custom>
+
+    <view class="cu-list menu-avatar">
+        <view class="cu-item">
+            <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+            <view class="content">
+                <view>
+				 	<text class="text-cut">伊泽瑞尔</text>
+                </view>
+                <view class="text-gray text-sm flex">
+                    <text class="text-cut">剩余课时：23</text>
+                </view>
+            </view>
+            <view class="action">
+                <view class="text-grey text-sm">03-05</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input type="text" placeholder="输入学生姓名" confirm-type="search" value="{{searchName}}" focus="{{inputShowed}}" bindinput="inputTyping"></input>
+            <view wx:if="{{searchName.length > 0}}" bindtap="clearInput">
+                <text class="cuIcon-close text-gray"></text>
+            </view>
+        </view>
+        <view class="action">
+            <button class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
+        </view>
+    </view>
+
+    <view class="cu-list grid col-5 no-border" style="margin-top:{{CustomBar - 12}}px;">
+        <view class="cu-item" wx:for="{{studentList}}" wx:key>
+            <navigator url="/pages/mine/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}">
+                <view class="cu-avatar lg radius" style="background-image:url({{item.studentAvatarPath}});"></view>
+                <text class="text-center">{{item.studentName}}</text>
+            </navigator>
+        </view>
+    </view> -->
+</scroll-view>
+
+
+<view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+</view>

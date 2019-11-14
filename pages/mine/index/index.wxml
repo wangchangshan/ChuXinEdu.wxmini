@@ -1,38 +1,85 @@
 <scroll-view scroll-y class="scrollPage">
-    <!-- <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
-    </cu-custom> -->
-    <view class="UCenter-bg">
-        <view class="userinfo">
-            <view class="padding flex flex-direction" wx:if="{{!impowered && canIUse}}">
-                <button wx:if="{{!curUser}}" class="cu-btn bg- margin-tb-sm lg" open-type="getUserInfo" bindgetuserinfo="doLogin">
-                    登录
-                </button>
-                <view wx:else>请升级微信版本</view>
-            </view>
-            <block wx:else>
-                <view class="cu-avatar xl round" style="background-image:url({{curUser.avatarUrl}});"></view>
-            </block>
-        </view>
-        <view class="text-sm">
-            {{curUser.nickName}}
-        </view>
-        <view class="text-xl margin-top">
-            初心工作室
-        </view>
-        <view class="margin-top-sm">
-            <text>{{ displayName }}</text>
-        </view>
-        <!-- <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-wave"></image> -->
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
+        <view slot="content">初心美术</view>
+    </cu-custom>
+
+    <view>
+        <image src="../../../images/bg.png" style="width:100%;height:260rpx" mode="aspectFill"></image>
     </view>
- 
+
+    <!-- 头像部分 + 总览 -->
+    <view style="top:-150rpx; position:relative;margin-bottom:10rpx" class='margin radius-lg shadow-lg bg-white'>
+        <!-- 头像 -->
+        <view class="cu-list menu-avatar">
+            <view class="cu-item margin">
+                <block wx:if="{{!impowered && canIUse}}">
+                    <button wx:if="{{!curUser}}" open-type="getUserInfo" bindgetuserinfo="doLogin" class="cu-avatar xl round bg-grey">
+                        <text class="avatar-text">登录</text>
+                    </button>
+                    <view wx:else>请升级微信版本</view>
+                </block>
+                <block wx:else>
+                    <view class="cu-avatar xl round" style="background-image:url({{curUser.avatarUrl}});"></view>
+                    <!-- <view class="text-sm text-center">
+                        {{curUser.nickName}}
+                    </view> -->
+                </block>
+                <view class="content margin-left">
+                    <view class="text-grey">{{ displayName }}</view>
+                    <view class="text-gray text-sm flex">
+                        <text class="text-cut">
+							<text class="margin-right-xs"></text> {{curUserTypeName}}
+                        </text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 教师总览 -->
+        <block wx:if="{{curUser && curUserType == 2}}">
+            <view class="cu-list grid col-4 no-border" style="margin-top:0;padding-top:10rpx">
+                <view class="cu-item" wx:for="{{teacherOverview}}" wx:key>
+                    <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
+                        <view class="text-black text-center text-xl">
+                            {{item.num}}
+                        </view>
+                        <text>{{item.name}}</text>
+                    </navigator>
+                </view>
+            </view>
+        </block>
+    </view>
+
+    <block wx:if="{{curUser && curUserType == 2}}">
+    	<!-- 教师教务部分 -->
+        <view style="position:relative; top:-75px; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="padding text-xl text-black">
+                    教务
+                </view>
+            </view>
+            <view class="cu-list grid col-3 no-border">
+                <view class="cu-item" wx:for="{{teacherEdu}}" wx:key>
+                    <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
+                        <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+                        </view>
+                        <text>{{item.name}}</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </block>
+
+
+
     <!-- 教师功能列表 -->
-    <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 2}}">
+    <!-- <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 2}}">
         <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{tlist}}" wx:key>
             <view class="nav-title">{{item.title}}</view>
             <view class="nav-name">{{item.name}}</view>
             <text class='cuIcon-{{item.icon}}'></text>
         </navigator>
-    </view>
+    </view> -->
 
     <!-- 家长功能列表 -->
     <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 1}}">
@@ -65,22 +112,22 @@
                 </scroll-view>
                 <view wx:if="{{activeTabIndex == 1}}">
                     <form>
-	                    <view class="cu-form-group margin-top ">
-		                    <view class="title ">孩子学号：</view>
-		                    <input placeholder="请输入" value="{{studentCode}}" bindblur="blurStudentCode"></input>
-	                    </view>
-	                    <view class="cu-form-group ">
-		                    <view class="title ">孩子姓名：</view>
-		                    <input placeholder="请输入" value="{{studentName}}" bindblur="blurStudentName"></input>
-	                    </view>
+                        <view class="cu-form-group margin-top ">
+                            <view class="title ">孩子学号：</view>
+                            <input placeholder="请输入" value="{{studentCode}}" bindblur="blurStudentCode"></input>
+                        </view>
+                        <view class="cu-form-group ">
+                            <view class="title ">孩子姓名：</view>
+                            <input placeholder="请输入" value="{{studentName}}" bindblur="blurStudentName"></input>
+                        </view>
                     </form>
                 </view>
                 <view wx:else>
                     <form>
-	                    <view class="cu-form-group margin-top ">
-		                    <view class="title ">教师授权码：</view>
-		                    <input placeholder="请输入" value="{{teacherKey}}" bindblur="blurTeacherKey"></input>
-	                    </view>
+                        <view class="cu-form-group margin-top ">
+                            <view class="title ">教师授权码：</view>
+                            <input placeholder="请输入" value="{{teacherKey}}" bindblur="blurTeacherKey"></input>
+                        </view>
                     </form>
                 </view>
                 <view class="action margin-top ">
