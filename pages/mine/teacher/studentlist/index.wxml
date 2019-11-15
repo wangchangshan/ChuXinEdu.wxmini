@@ -4,22 +4,52 @@
         <view slot="content">{{pageTitle}}</view>
     </cu-custom>
 
-    <view class="cu-list menu-avatar">
-        <view class="cu-item">
-            <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-            <view class="content">
-                <view>
-				 	<text class="text-cut">伊泽瑞尔</text>
+    <view class="cu-list menu-avatar" wx:if="{{pageType == 'birthday'}}">
+        <block wx:for="{{studentList}}" wx:key>
+            <view class="cu-item">
+                <view class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                <view class="content">
+                    <view>
+                        <text class="text-cut">{{item.student_name}}</text>
+                        <view class="text-grey text-sm padding-left">生日：{{item.student_birthday}}</view>
+                    </view>
+                    <view class="text-gray text-sm flex">
+                        <text class="text-cut">电话：{{item.student_phone}} </text>
+                        <text class="padding-left">剩余课时：{{item.rest_course_count}}</text>
+                    </view>
                 </view>
-                <view class="text-gray text-sm flex">
-                    <text class="text-cut">剩余课时：23</text>
+                <view class="action">
+                    <text class="cuIcon-phone text-sl text-green"></text>
                 </view>
             </view>
-            <view class="action">
-                <view class="text-grey text-sm">03-05</view>
-            </view>
-        </view>
+        </block>
     </view>
+
+    <view class="cu-list menu-avatar" wx:if="{{pageType == 'expiration'}}">
+        <block wx:for="{{studentList}}" wx:key>
+            <view class="cu-item">
+                <view class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                <view class="content">
+                    <view>
+                        <text class="text-cut">{{item.student_name}}</text>
+                        <view class="text-grey text-sm padding-left">{{item.student_phone}}</view>
+                    </view>
+                    <view class="text-gray text-sm flex">
+                        <text class="text-cut">{{item.package_name}} </text>
+                        <text class="padding-left">剩余课时：{{item.rest_course_count}}</text>
+                    </view>
+                </view>
+                <view class="action">
+                    <text class="cuIcon-phone text-sl text-green"></text>
+                </view>
+            </view>
+        </block>
+    </view>
+
+
+    <block wx:if="{{studentMore == false}}">
+        <view class="cu-load bg-grey over margin-top light"></view>
+    </block>
 
     <!-- <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
         <view class="search-form round">

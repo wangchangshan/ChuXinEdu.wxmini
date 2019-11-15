@@ -31,8 +31,8 @@ Component({
         }, {
             color: 'olive',
             num: 0,
-            name: '学员生日',
-			url: '/pages/mine/teacher/studentlist/index'
+            name: '生日提醒',
+			url: '/pages/mine/teacher/studentlist/index?type=birthday'
         }, {
             color: 'red',
             num: 0,

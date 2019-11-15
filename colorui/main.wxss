@@ -3810,7 +3810,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .text-sl {
-	font-size: 80rpx;
+	font-size: 80rpx !important;
 }
 
 .text-xsl {
