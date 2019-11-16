@@ -12,31 +12,47 @@ Page({
 		hiddenLoading: false,
 		studentList: [],
 		pageIndex: 1,
-		pagesize: 12,
+        pageSize: 10,
 		studentMore: true
 	},
 	onLoad: function (options) {
-		if(options.type == 'birthday')
-		{
+        if(options.type == 'all'){
+            this.getAllStudentList();
+            this.setData({
+                pageTitle: '我的学员',
+                pageType: 'all'
+            })
+        }
+		else if(options.type == 'birthday') {
 			this.getBirthStudentList();
 			this.setData({
 				pageTitle: '本周生日学员',
 				pageType: 'birthday'
 			})
 		}
-		else if (options.type == 'expiration')
-		{
+		else if (options.type == 'expiration') {
+            this.getExpirationStudentList();
 			this.setData({
-				pageTitle: '本周生日学员',
+				pageTitle: '即将到期学员',
 				pageType: 'expiration'
 			})
 		}
 		// this.getStudentList();
 	},
 	onReachBottom: function () {
-		if (this.data.pageType == 'birthday') {
+        if(!this.data.studentMore) {
+            return false;
+        }
+
+        if (this.data.pageType == 'all') {
+            this.getAllStudentList();
+        }
+		else if (this.data.pageType == 'birthday') {
 			this.getBirthStudentList();
 		}
+        else if (this.data.pageType == 'expiration') {
+            this.getExpirationStudentList();
+        }
 	},
 	showInput: function () {
 		this.setData({
@@ -56,12 +72,56 @@ Page({
 		});
 	},
 
+    getAllStudentList() {
+        wx.request({
+            url: app.globalData.ServerBase + "/api/wxopen/getallstudents",
+            data: {
+                pageIndex: this.data.pageIndex,
+                pageSize: this.data.pageSize,
+                q: {
+                    studentName: ''
+                }
+            },
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+                'skey': wx.getStorageSync('SKEY')
+            },
+            success: result => {
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenLoading: true
+                    });
+                    return;
+                }
+
+                if (result.data.totalCount < this.data.pageSize) {
+                    this.setData({
+                        studentMore: false
+                    })
+                }
+
+                var curList = JSON.parse(result.data.data)
+                // console.log(curList);
+                curList.forEach(function(item){
+                    item.rest_course_info = JSON.parse(item.rest_course_info)
+                })
+                // console.log(curList);
+                this.setData({
+                    pageIndex: this.data.pageIndex + 1,
+                    studentList: this.data.studentList.concat(curList),
+                    hiddenLoading: true
+                });
+            }
+        })
+    },
+
 	getBirthStudentList(){
 		wx.request({
 			url: app.globalData.ServerBase + "/api/wxopen/getstudentstobirth",
 			data: {
-				pageIndex: 1,
-				pageSize: 12
+				pageIndex: this.data.pageIndex,
+                pageSize: this.data.pageSize
 			},
 			method: 'GET',
 			header: {
@@ -93,6 +153,40 @@ Page({
 		})
 	},
 
+    getExpirationStudentList(){
+        wx.request({
+            url: app.globalData.ServerBase + "/api/wxopen/getstudentstoexpiration",
+            data: {
+                pageIndex: this.data.pageIndex,
+                pageSize: this.data.pageSize
+            },
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+                'skey': wx.getStorageSync('SKEY')
+            },
+            success: result => {
+                if (result.data.code && result.data.code == '1401') {
+                    this.setData({
+                        hiddenLoading: true
+                    });
+                    return;
+                }
+                if (result.data.totalCount < this.data.pageSize) {
+                    this.setData({
+                        studentMore: false
+                    })
+                }
+
+                var curList = JSON.parse(result.data.data)
+                this.setData({
+                    pageIndex: this.data.pageIndex + 1,
+                    studentList: this.data.studentList.concat(curList),
+                    hiddenLoading: true
+                });
+            }
+        })
+    },
 
 	getStudentList: function () {
 		wx.request({

@@ -4,6 +4,28 @@
         <view slot="content">{{pageTitle}}</view>
     </cu-custom>
 
+    <view class="cu-list menu-avatar" wx:if="{{pageType == 'all'}}">
+        <block wx:for="{{studentList}}" wx:key>
+            <view class="cu-item">
+                <view class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                <view class="content">
+                    <view>
+                        <text class="text-cut">{{item.student_name}}</text>
+                        <view class="text-grey text-sm padding-left">
+                            <text class="cuIcon-phone text-green"></text>{{item.student_phone}}</view>
+                    </view>
+                    <view class="text-gray text-sm flex">
+                        <block wx:for="{{item.rest_course_info}}" wx:for-item="cell" wx:key>
+                            <text class="text-cut padding-right">{{cell.course_category_name}}：剩余 {{cell.rest_course_count}}节 </text></block>
+                    </view>
+                </view>
+                <view class="action">
+                    
+                </view>
+            </view>
+        </block>
+    </view>
+
     <view class="cu-list menu-avatar" wx:if="{{pageType == 'birthday'}}">
         <block wx:for="{{studentList}}" wx:key>
             <view class="cu-item">
@@ -32,15 +54,16 @@
                 <view class="content">
                     <view>
                         <text class="text-cut">{{item.student_name}}</text>
-                        <view class="text-grey text-sm padding-left">{{item.student_phone}}</view>
+                        <view class="text-grey text-sm padding-left">
+                            <text class="cuIcon-phone text-green"></text>{{item.student_phone}}</view>
                     </view>
                     <view class="text-gray text-sm flex">
                         <text class="text-cut">{{item.package_name}} </text>
-                        <text class="padding-left">剩余课时：{{item.rest_course_count}}</text>
+
                     </view>
                 </view>
                 <view class="action">
-                    <text class="cuIcon-phone text-sl text-green"></text>
+                    <text class="round text-red">{{item.rest_course_count}}节</text>
                 </view>
             </view>
         </block>

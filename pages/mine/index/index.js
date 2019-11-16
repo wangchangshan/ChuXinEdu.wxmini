@@ -22,22 +22,22 @@ Component({
             color: 'orange',
             num: 0,
             name: '我的学员',
-            url: '/pages/mine/student/index'
+            url: '/pages/mine/teacher/studentlist/index?type=all'
         }, {
             color: 'yellow',
             num: 0,
             name: '今日排课',
-            url: ''
+            url: '/pages/mine/schedule/schedule'
         }, {
             color: 'olive',
             num: 0,
             name: '生日提醒',
-			url: '/pages/mine/teacher/studentlist/index?type=birthday'
+            url: '/pages/mine/teacher/studentlist/index?type=birthday'
         }, {
             color: 'red',
             num: 0,
             name: '即将到期',
-            url: '',
+            url: '/pages/mine/teacher/studentlist/index?type=expiration',
         }],
         teacherEdu: [{
             icon: 'roundcheck',
@@ -159,20 +159,20 @@ Component({
                                 studentName: result.data.innerPersonName,
                             })
                         } else if (this.data.curUserType == 2) {
-							var overview = result.data.overView;
-							var studentCount = "teacherOverview[0].num";
-							var todayCourseCount = "teacherOverview[1].num";
-							var studentBirthCount = "teacherOverview[2].num";
-							var expirationCount = "teacherOverview[3].num";
-							this.setData({
-								curUserTypeName: '教 师',
-								teacherCode: result.data.innerPersonCode,
-								teacherName: result.data.innerPersonName,
-								[studentCount]: overview.tStudentCount,
-								[todayCourseCount]: overview.tTodayCourseCount,
-								[studentBirthCount]: overview.tStudentBirthCount,
-								[expirationCount]: overview.tExpirationCount
-							});
+                            var overview = result.data.overView;
+                            var studentCount = "teacherOverview[0].num";
+                            var todayCourseCount = "teacherOverview[1].num";
+                            var studentBirthCount = "teacherOverview[2].num";
+                            var expirationCount = "teacherOverview[3].num";
+                            this.setData({
+                                curUserTypeName: '教 师',
+                                teacherCode: result.data.innerPersonCode,
+                                teacherName: result.data.innerPersonName,
+                                [studentCount]: overview.tStudentCount,
+                                [todayCourseCount]: overview.tTodayCourseCount,
+                                [studentBirthCount]: overview.tStudentBirthCount,
+                                [expirationCount]: overview.tExpirationCount
+                            });
                         }
                     }
                 }
@@ -209,27 +209,27 @@ Component({
                         })
 
                         if (this.data.curUserType == 1) {
-							var overview = result.data.overView;
+                            var overview = result.data.overView;
                             this.setData({
                                 curUserTypeName: '学 员',
                                 studentCode: result.data.innerPersonCode,
                                 studentName: result.data.innerPersonName,
                             })
-						} else if (this.data.curUserType == 2) {
-							var overview = result.data.overView;
-							var studentCount = "teacherOverview[0].num";
-							var todayCourseCount = "teacherOverview[1].num";
-							var studentBirthCount = "teacherOverview[2].num";
-							var expirationCount = "teacherOverview[3].num";
-							this.setData({
-								curUserTypeName: '教 师',
-								teacherCode: result.data.innerPersonCode,
-								teacherName: result.data.innerPersonName,
-								[studentCount]: overview.tStudentCount,
-								[todayCourseCount]: overview.tTodayCourseCount,
-								[studentBirthCount]: overview.tStudentBirthCount,
-								[expirationCount]: overview.tExpirationCount
-							});
+                        } else if (this.data.curUserType == 2) {
+                            var overview = result.data.overView;
+                            var studentCount = "teacherOverview[0].num";
+                            var todayCourseCount = "teacherOverview[1].num";
+                            var studentBirthCount = "teacherOverview[2].num";
+                            var expirationCount = "teacherOverview[3].num";
+                            this.setData({
+                                curUserTypeName: '教 师',
+                                teacherCode: result.data.innerPersonCode,
+                                teacherName: result.data.innerPersonName,
+                                [studentCount]: overview.tStudentCount,
+                                [todayCourseCount]: overview.tTodayCourseCount,
+                                [studentBirthCount]: overview.tStudentBirthCount,
+                                [expirationCount]: overview.tExpirationCount
+                            });
                         }
                     }
                 }
