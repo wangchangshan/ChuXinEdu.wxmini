@@ -66,11 +66,22 @@ Page({
 		});
 	},
 	inputTyping: function (e) {
-		this.setData({
-			searchName: e.detail.value,
-			studentList: allStudentList.filter(data => !e.detail.value || data.studentName.includes(e.detail.value))
+        this.setData({
+			searchName: e.detail.value
 		});
+		// this.setData({
+		// 	searchName: e.detail.value,
+		// 	studentList: allStudentList.filter(data => !e.detail.value || data.studentName.includes(e.detail.value))
+		// });
 	},
+
+    searchStudent(){
+        this.setData({
+            pageIndex: 1,
+            studentList: []
+        });
+        this.getAllStudentList();
+    },
 
     getAllStudentList() {
         wx.request({
@@ -79,7 +90,7 @@ Page({
                 pageIndex: this.data.pageIndex,
                 pageSize: this.data.pageSize,
                 q: {
-                    studentName: ''
+                    studentName: this.data.searchName
                 }
             },
             method: 'GET',
