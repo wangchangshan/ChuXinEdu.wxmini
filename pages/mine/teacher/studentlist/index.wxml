@@ -86,7 +86,7 @@
 
 
     <block wx:if="{{studentMore == false}}">
-        <view class="cu-load bg-grey over margin-top light"></view>
+        <view class="cu-load bg-grey over light"></view>
     </block>
 
 
