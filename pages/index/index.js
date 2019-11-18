@@ -14,7 +14,7 @@ Page({
         }
 		else
 		{
-
+			wx.stopPullDownRefresh()
 		}
     },
 

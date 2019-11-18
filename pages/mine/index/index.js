@@ -27,7 +27,7 @@ Component({
             color: 'yellow',
             num: 0,
             name: '今日排课',
-            url: '/pages/mine/schedule/schedule'
+			url: '/pages/mine/schedule/schedule'
         }, {
             color: 'olive',
             num: 0,
@@ -65,6 +65,27 @@ Component({
             name: '课程套餐',
             url: '/pages/mine/package/package'
         }],
+		studentOverview: [{
+			color: 'orange',
+			num: 0,
+			name: '我的学员',
+			url: '/pages/mine/teacher/studentlist/index?type=all'
+		}, {
+			color: 'yellow',
+			num: 0,
+			name: '今日排课',
+			url: '/pages/mine/schedule/schedule'
+		}, {
+			color: 'olive',
+			num: 0,
+			name: '生日提醒',
+			url: '/pages/mine/teacher/studentlist/index?type=birthday'
+		}, {
+			color: 'red',
+			num: 0,
+			name: '即将到期',
+			url: '/pages/mine/teacher/studentlist/index?type=expiration',
+		}],
         plist: [{
                 id: 'schedule',
                 name: 'Schedule',
