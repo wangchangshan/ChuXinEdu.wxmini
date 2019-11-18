@@ -68,12 +68,12 @@ Component({
 		studentOverview: [{
 			color: 'orange',
 			num: 0,
-			name: '我的学员',
+			name: '完成课时',
 			url: '/pages/mine/teacher/studentlist/index?type=all'
 		}, {
 			color: 'yellow',
 			num: 0,
-			name: '今日排课',
+			name: '剩余课时',
 			url: '/pages/mine/schedule/schedule'
 		}, {
 			color: 'olive',
@@ -83,7 +83,7 @@ Component({
 		}, {
 			color: 'red',
 			num: 0,
-			name: '即将到期',
+			name: '课堂作品',
 			url: '/pages/mine/teacher/studentlist/index?type=expiration',
 		}],
         plist: [{

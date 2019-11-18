@@ -25,12 +25,28 @@
                     </view> -->
                 </block>
                 <view class="content margin-left">
-                    <view class="text-grey">{{ displayName }}</view>
-                    <view class="text-gray text-sm flex">
-                        <text class="text-cut">
+                    <!-- 游客 -->
+                    <block wx:if="{{curUser && curUserType == 0}}">
+                        <view class="text-grey">{{ curUserTypeName }}</view>
+                    </block>
+                    <!-- 学员 -->
+                    <block wx:elif="{{curUser && curUserType == 1}}">
+                        <view class="text-grey">{{ displayName }}</view>
+                        <view class="text-gray text-sm flex">
+                            <text class="text-cut">
 							<text class="margin-right-xs"></text> {{curUserTypeName}}
-                        </text>
-                    </view>
+                            </text>
+                        </view>
+                    </block>
+                    <!-- 教师 -->
+                    <block wx:elif="{{curUser && curUserType == 2}}">
+                        <view class="text-grey">{{ displayName }}</view>
+                        <view class="text-gray text-sm flex">
+                            <text class="text-cut">
+							<text class="margin-right-xs"></text> {{curUserTypeName}}
+                            </text>
+                        </view>
+                    </block>
                 </view>
             </view>
         </view>
@@ -49,8 +65,8 @@
             </view>
         </block>
 
-		<!-- 学员总览 -->
-		<block wx:if="{{curUser && curUserType == 1}}">
+        <!-- 学员总览 -->
+        <block wx:if="{{curUser && curUserType == 1}}">
             <view class="cu-list grid col-4 no-border" style="margin-top:0;padding-top:10rpx">
                 <view class="cu-item" wx:for="{{studentOverview}}" wx:key>
                     <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
@@ -64,9 +80,9 @@
         </block>
     </view>
 
-	<!-- 教师教务 -->
+    <!-- 教师教务 -->
     <block wx:if="{{curUser && curUserType == 2}}">
-    	<!-- 教师教务部分 -->
+        <!-- 教师教务部分 -->
         <view style="position:relative; top:-75px; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
             <view class="cu-bar bg-white solid-bottom margin-top">
                 <view class="padding text-xl text-black">
