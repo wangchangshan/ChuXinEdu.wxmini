@@ -8,13 +8,7 @@ Component({
         attached: function() {
             // 添加'SKEY'的验证，为了防止同意授权但是没有输入注册码提交成功的情况。
             if (app.globalData.UserInfo && wx.getStorageSync('SKEY')) {
-
                 this.getUserInfoBySKey(wx.getStorageSync('SKEY'));
-                this.setData({
-                    impowered: true,
-                    curUser: app.globalData.UserInfo,
-                    curUserType: app.globalData.UserType
-                })
             }
         }
     },
@@ -140,19 +134,7 @@ Component({
                         if (this.data.curUserType == 1) {
 							this.setStudentInfo(result.data.innerPersonCode, result.data.innerPersonName, overview)
                         } else if (this.data.curUserType == 2) {
-                            var studentCount = "teacherOverview[0].num";
-                            var todayCourseCount = "teacherOverview[1].num";
-                            var studentBirthCount = "teacherOverview[2].num";
-                            var expirationCount = "teacherOverview[3].num";
-                            this.setData({
-                                curUserTypeName: '教 师',
-                                teacherCode: result.data.innerPersonCode,
-                                teacherName: result.data.innerPersonName,
-                                [studentCount]: overview.tStudentCount,
-                                [todayCourseCount]: overview.tTodayCourseCount,
-                                [studentBirthCount]: overview.tStudentBirthCount,
-                                [expirationCount]: overview.tExpirationCount
-                            });
+							this.setTeacherInfo(result.data.innerPersonCode, result.data.innerPersonName, overview)
                         }
                     }
                 }
@@ -183,7 +165,12 @@ Component({
                         });
                         return;
                     } else if (result.data.stateCode == '1200') {
-                        this.setData({
+						this.setData({
+							curUserType: app.globalData.UserType || 0
+						})
+						this.setData({
+							impowered: true,
+							curUser: app.globalData.UserInfo,
                             displayName: result.data.innerPersonName,
                             curUserType: skey.charAt(0)
                         })
@@ -192,19 +179,7 @@ Component({
                         if (this.data.curUserType == 1) {
 							this.setStudentInfo(result.data.innerPersonCode, result.data.innerPersonName, overview)
                         } else if (this.data.curUserType == 2) {                            
-                            var studentCount = "teacherOverview[0].num";
-                            var todayCourseCount = "teacherOverview[1].num";
-                            var studentBirthCount = "teacherOverview[2].num";
-                            var expirationCount = "teacherOverview[3].num";
-                            this.setData({
-                                curUserTypeName: '教 师',
-                                teacherCode: result.data.innerPersonCode,
-                                teacherName: result.data.innerPersonName,
-                                [studentCount]: overview.tStudentCount,
-                                [todayCourseCount]: overview.tTodayCourseCount,
-                                [studentBirthCount]: overview.tStudentBirthCount,
-                                [expirationCount]: overview.tExpirationCount
-                            });
+							this.setTeacherInfo(result.data.innerPersonCode, result.data.innerPersonName, overview)
                         }
                     }
                 }
@@ -233,6 +208,19 @@ Component({
 		},
 
 		setTeacherInfo: function (code, name, overview) {
+			var studentCount = "teacherOverview[0].num";
+			var todayCourseCount = "teacherOverview[1].num";
+			var studentBirthCount = "teacherOverview[2].num";
+			var expirationCount = "teacherOverview[3].num";
+			this.setData({
+				curUserTypeName: '教 师',
+				teacherCode: code,
+				teacherName: name,
+				[studentCount]: overview.tStudentCount,
+				[todayCourseCount]: overview.tTodayCourseCount,
+				[studentBirthCount]: overview.tStudentBirthCount,
+				[expirationCount]: overview.tExpirationCount
+			});
 
 		},
 

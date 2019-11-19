@@ -26,7 +26,7 @@
                 </block>
                 <view class="content margin-left">
                     <!-- 游客 -->
-                    <block wx:if="{{curUser && curUserType == 0}}">
+                    <block wx:if="{{curUserType == 0}}">
                         <view class="text-grey">{{ curUserTypeName }}</view>
                     </block>
                     <!-- 学员 -->
@@ -86,6 +86,13 @@
             </view>
         </block>
     </view>
+
+	<!-- 游客 -->
+	<block wx:if="{{curUserType == 0}}">
+        <view style="height:200px">
+           
+        </view>
+    </block>
 
     <!-- 教师教务 -->
     <block wx:if="{{curUser && curUserType == 2}}">
