@@ -33,7 +33,7 @@
                     <block wx:elif="{{curUser && curUserType == 1}}">
                         <view class="text-grey margin-top">
                             {{ displayName }}
-                            <text class="cuIcon-female text-red"></text>
+                            <text class="cuIcon-{{studentSex == '女' ? 'fe': ''}}male text-{{studentSex == '女' ? 'red': 'blue'}}"></text>
                             <text class="margin-left text-sm">生日：{{studentBirthday}}</text>
                             <text></text>
                         </view>

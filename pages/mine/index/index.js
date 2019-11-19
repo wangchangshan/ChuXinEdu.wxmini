@@ -381,6 +381,7 @@ Component({
                             curUserType: result.data.sessionKey.charAt(0)
                         });
                         wx.setStorageSync('SKEY', result.data.sessionKey);
+                        this.getUserInfoBySKey(result.data.sessionKey);
                     }
                 }
             })
@@ -415,6 +416,7 @@ Component({
                             curUserType: result.data.sessionKey.charAt(0)
                         });
                         wx.setStorageSync('SKEY', result.data.sessionKey);
+                        this.getUserInfoBySKey(result.data.sessionKey);
                     } else if (result.data.stateCode == '1222') {
                         this.setData({
                             teacherTips: '过期的授权码！'

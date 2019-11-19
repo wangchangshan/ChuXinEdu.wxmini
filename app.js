@@ -7,8 +7,8 @@ App({
                 this.globalData.StatusBar = e.statusBarHeight;
                 let custom = wx.getMenuButtonBoundingClientRect();
                 this.globalData.Custom = custom;
-                this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-                //this.globalData.CustomBar = 65;
+                //this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+                this.globalData.CustomBar = 65;
             }
         });
 
@@ -33,7 +33,7 @@ App({
     globalData: {
         UserInfo: wx.getStorageSync('USERINFO'),
         UserType: "0",
-        ServerBase: "http://localhost:8080",
-        //ServerBase: "https://www.shuyouxiaowu.com"
+        //ServerBase: "http://localhost:8080",
+        ServerBase: "https://www.shuyouxiaowu.com"
     }
 })
