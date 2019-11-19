@@ -564,7 +564,7 @@ radio.white[checked] .wx-radio-input {
 }
 
 .solid-bottom::after {
-	border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1rpx solid rgba(0, 0, 0, 0.26);
 }
 
 .solid-left::after {
@@ -1288,8 +1288,8 @@ button.icon.lg {
 .cu-list.menu-avatar>.cu-item .content {
 	position: absolute;
 	left: 146rpx;
-	width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx);
-	line-height: 1.6em;
+	/* width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx); */
+	line-height: 2em;
 }
 
 .cu-list.menu-avatar>.cu-item .content.flex-sub {

@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 const app = getApp();
 Component({
     options: {
@@ -19,22 +20,18 @@ Component({
     },
     data: {
         teacherOverview: [{
-            color: 'orange',
             num: 0,
             name: '我的学员',
             url: '/pages/mine/teacher/studentlist/index?type=all'
         }, {
-            color: 'yellow',
             num: 0,
             name: '今日排课',
 			url: '/pages/mine/schedule/schedule'
         }, {
-            color: 'olive',
             num: 0,
             name: '生日提醒',
             url: '/pages/mine/teacher/studentlist/index?type=birthday'
         }, {
-            color: 'red',
             num: 0,
             name: '即将到期',
             url: '/pages/mine/teacher/studentlist/index?type=expiration',
@@ -54,55 +51,17 @@ Component({
             color: 'olive',
             name: '精品画作',
             url: ''
-        }, {
-            icon: 'comment',
-            color: 'orange',
-            name: '课堂点评',
-            url: ''
-        }, {
+        },{
             icon: 'shop',
             color: 'cyan',
             name: '课程套餐',
             url: '/pages/mine/package/package'
         }],
-		studentOverview: [{
-			color: 'orange',
-			num: 0,
-			name: '完成课时',
-			url: '/pages/mine/teacher/studentlist/index?type=all'
-		}, {
-			color: 'yellow',
-			num: 0,
-			name: '剩余课时',
-			url: '/pages/mine/schedule/schedule'
-		}, {
-			color: 'olive',
-			num: 0,
-			name: '生日提醒',
-			url: '/pages/mine/teacher/studentlist/index?type=birthday'
-		}, {
-			color: 'red',
-			num: 0,
-			name: '课堂作品',
-			url: '/pages/mine/teacher/studentlist/index?type=expiration',
-		}],
-        plist: [{
-                id: 'schedule',
-                name: 'Schedule',
-                title: '本周课程',
-                url: '/pages/mine/student/myschedule/index',
-                color: 'cyan',
-                icon: 'calendar'
-            },
-            {
-                id: 'packages',
-                name: 'history',
-                title: '课程记录',
-                url: '/pages/mine/student/course/course',
-                color: 'green',
-                icon: 'list'
-            }
-        ],
+		
+		studentOverview: [],
+		studentSchedule:[],
+		studentScheduleCount: 1,
+		studentPackages: [],
         isModalShow: '',
         showTips: false,
         studentTips: '',
@@ -110,6 +69,10 @@ Component({
         activeTabIndex: '1',
         studentCode: '',
         studentName: '',
+		studentBirthday: '',
+		studentPhone: '',
+		studentSex: '',
+		studentAddress: '',
         teacherCode: '',
         teacherName: '',
         displayName: '',
@@ -173,14 +136,10 @@ Component({
                             curUserType: result.data.sessionKey.charAt(0)
                         })
 
+						var overview = result.data.overView;
                         if (this.data.curUserType == 1) {
-                            this.setData({
-                                curUserTypeName: '学 员',
-                                studentCode: result.data.innerPersonCode,
-                                studentName: result.data.innerPersonName,
-                            })
+							this.setStudentInfo(result.data.innerPersonCode, result.data.innerPersonName, overview)
                         } else if (this.data.curUserType == 2) {
-                            var overview = result.data.overView;
                             var studentCount = "teacherOverview[0].num";
                             var todayCourseCount = "teacherOverview[1].num";
                             var studentBirthCount = "teacherOverview[2].num";
@@ -229,15 +188,10 @@ Component({
                             curUserType: skey.charAt(0)
                         })
 
+						var overview = result.data.overView;
                         if (this.data.curUserType == 1) {
-                            var overview = result.data.overView;
-                            this.setData({
-                                curUserTypeName: '学 员',
-                                studentCode: result.data.innerPersonCode,
-                                studentName: result.data.innerPersonName,
-                            })
-                        } else if (this.data.curUserType == 2) {
-                            var overview = result.data.overView;
+							this.setStudentInfo(result.data.innerPersonCode, result.data.innerPersonName, overview)
+                        } else if (this.data.curUserType == 2) {                            
                             var studentCount = "teacherOverview[0].num";
                             var todayCourseCount = "teacherOverview[1].num";
                             var studentBirthCount = "teacherOverview[2].num";
@@ -257,6 +211,89 @@ Component({
             })
         },
 
+		setStudentInfo: function (code, name, overview){
+			var restCourseObj = JSON.parse(overview.studentCourseOverview)
+			restCourseObj = restCourseObj.concat([{
+				rest_course_count: overview.studentArtworkCount,
+				course_category_name: '课堂作品',
+				url: '/pages/mine/teacher/studentlist/index?type=expiration',
+			}]);
+			this.setData({
+				curUserTypeName: '学 员',
+				studentCode: code,
+				studentName: name,
+				studentBirthday: overview.studentBirthday.split('T')[0],
+				studentPhone: overview.studentPhone,
+				studentSex: overview.studentSex,
+				studentAddress: overview.studentAddress,
+				studentOverview: restCourseObj
+			})
+			this.getStudentWeekSchedule(code)
+			this.getStudentPackage(code);
+		},
+
+		setTeacherInfo: function (code, name, overview) {
+
+		},
+
+		getStudentPackage: function (studentCode) {
+			wx.request({
+				url: app.globalData.ServerBase + "/api/wxopen/getstudentpackages",
+				data: {
+					studentCode: studentCode,
+				},
+				method: 'GET',
+				header: {
+					'Content-Type': 'application/json',
+					'skey': wx.getStorageSync('SKEY')
+				},
+				success: result => {
+					if (result.data.code && result.data.code == '1401') {
+						return;
+					}
+					
+					this.setData({
+						studentPackages: result.data,
+					});
+				}
+			})
+		},
+
+		getStudentWeekSchedule: function (studentCode) {
+			this.setData({
+				schedule: [],
+				hiddenLoading: false
+			});
+			wx.request({
+				url: app.globalData.ServerBase + "/api/wxopen/getstudentweekcourse",
+				data: {
+					studentCode: studentCode
+				},
+				method: 'GET',
+				header: {
+					'Content-Type': 'application/json',
+					'skey': wx.getStorageSync('SKEY')
+				},
+				success: result => {
+					if (result.data.code && result.data.code == '1401') {
+						this.setData({
+							hiddenLoading: true
+						});
+						return;
+					}
+
+					result.data.forEach(item => {
+						item.courseWeekDay = util.getWeekName(item.courseWeekDay);
+					});
+					this.setData({
+						studentSchedule: result.data,
+						studentScheduleCount: result.data.length
+					});
+				}
+			})
+		},
+
+		// --------------注册登录部分 start-----------------
         hideModal(e) {
             this.setData({
                 isModalShow: null
@@ -399,6 +436,8 @@ Component({
                 }
             })
         }
+
+		// --------------注册登录部分 end--------------
     },
 
 });

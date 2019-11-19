@@ -31,11 +31,18 @@
                     </block>
                     <!-- 学员 -->
                     <block wx:elif="{{curUser && curUserType == 1}}">
-                        <view class="text-grey">{{ displayName }}</view>
+                        <view class="text-grey margin-top">
+                            {{ displayName }}
+                            <text class="cuIcon-female text-red"></text>
+                            <text class="margin-left text-sm">生日：{{studentBirthday}}</text>
+                            <text></text>
+                        </view>
                         <view class="text-gray text-sm flex">
-                            <text class="text-cut">
-							<text class="margin-right-xs"></text> {{curUserTypeName}}
-                            </text>
+                            <text>联系电话：{{studentPhone}}</text>
+                            <text class="cuIcon-phone text-blue margin-left-sm"></text>
+                        </view>
+                        <view class="text-gray text-sm">
+                            <text>地址：{{studentAddress}}</text>
                         </view>
                     </block>
                     <!-- 教师 -->
@@ -43,7 +50,7 @@
                         <view class="text-grey">{{ displayName }}</view>
                         <view class="text-gray text-sm flex">
                             <text class="text-cut">
-							<text class="margin-right-xs"></text> {{curUserTypeName}}
+								<text class="margin-right-xs"></text> {{curUserTypeName}}
                             </text>
                         </view>
                     </block>
@@ -67,13 +74,13 @@
 
         <!-- 学员总览 -->
         <block wx:if="{{curUser && curUserType == 1}}">
-            <view class="cu-list grid col-4 no-border" style="margin-top:0;padding-top:10rpx">
+            <view class="cu-list grid col-3 no-border" style="margin-top:0;padding-top:10rpx">
                 <view class="cu-item" wx:for="{{studentOverview}}" wx:key>
                     <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
                         <view class="text-black text-center text-xl">
-                            {{item.num}}
+                            {{item.rest_course_count}}
                         </view>
-                        <text>{{item.name}}</text>
+                        <text>{{item.course_category_name}}</text>
                     </navigator>
                 </view>
             </view>
@@ -101,15 +108,64 @@
         </view>
     </block>
 
+    <!-- 家长功能——本周课程 -->
+    <block wx:if="{{curUser && curUserType == 1}}">
+        <view style="position:relative; top:-75px; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="padding text-xl text-black">
+                    本周课程安排<text class="cuIcon-calendar text-green margin-left-xs"></text>
+                </view>
+            </view>
+            <view class="cu-list menu sm-border margin-top">
+                <view class="cu-item" wx:for="{{studentSchedule}}" wx:key>
+                    <view class="content">
+                        <text class="cuIcon-tagfill text-red"></text>
+                        <text class="text-grey">{{item.courseWeekDay}}（{{item.coursePeriod}}）</text>
+                    </view>
+                    <view class="action">
+                        <view class="cu-tag round bg-olive light">{{item.courseFolderName}}</view>
+                    </view>
+                </view>
+				<view class="padding" wx:if="{{studentScheduleCount == 0}}">
+					本周没有课程了😊
+				</view>
+            </view>
+        </view>
+    </block>
 
-    <!-- 家长功能列表 -->
-    <view class='nav-list' style="margin-top:15rpx" wx:if="{{curUser && curUserType == 1}}">
-        <navigator open-type="navigate" hover-class='none' url="{{item.url + '?studentCode=' + studentCode + '&studentName=' + studentName}}" class="nav-li bg-{{item.color}}" wx:for="{{plist}}" wx:key>
-            <view class="nav-title">{{item.title}}</view>
-            <view class="nav-name">{{item.name}}</view>
-            <text class='cuIcon-{{item.icon}}'></text>
-        </navigator>
-    </view>
+    <!-- 家长功能——学员套餐卡 -->
+    <block wx:if="{{curUser && curUserType == 1}}" wx:for="{{studentPackages}}" wx:key>
+        <view style="position:relative; top:-75px; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="padding text-lg text-black">
+                    {{item.packageName}}
+                </view>
+            </view>
+            <view class="margin-top flex">
+                <text class="margin-left">总课时: {{item.actualCourseCount}}</text>
+                <text class="margin-left">剩余课时数: {{item.restCourseCount}}</text>
+                <text class="margin-left">金额: ￥{{item.actualPrice}}</text>
+            </view>
+            <view class="padding-top padding-left padding-right">
+                <view class="flex">
+                    <view class="cu-progress round sm">
+                        <view class="bg-cyan" style="width:{{(item.actualCourseCount - item.restCourseCount) / item.actualCourseCount * 100}}%;"></view>
+                    </view>
+                    <block wx:if="{{item.restCourseCount == 0}}">
+                        <text class="cuIcon-roundcheckfill text-green text-xs margin-left-xs"></text>
+                    </block>
+                    <block wx:else>
+                        <text class="margin-left-xs text-sm">{{(item.actualCourseCount - item.restCourseCount) / item.actualCourseCount * 100}}%</text>
+                    </block>
+                </view>
+            </view>
+            <view class="text-gray text-sm text-right padding-sm">
+                <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}">
+                    <text>查看详细</text>
+                </navigator>
+            </view>
+        </view>
+    </block>
 
     <!-- 注册登陆弹出框 -->
     <view class="cu-modal {{isModalShow}}">

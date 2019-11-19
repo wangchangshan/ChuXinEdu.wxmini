@@ -21,7 +21,6 @@
 		"pages/mine/teacher/studentlist/index",
 
         "pages/mine/student/index",
-        "pages/mine/student/myschedule/index",
         "pages/mine/student/course/course",
         "pages/mine/package/package",
         "pages/mine/schedule/schedule"
