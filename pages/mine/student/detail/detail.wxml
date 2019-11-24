@@ -1,0 +1,107 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">{{ studentName }}</view>
+    </cu-custom>
+
+    <!-- 头像部分 + 总览 -->
+    <view style="position:relative;margin-bottom:10rpx" class='margin radius-lg shadow-lg bg-white'>
+        <!-- 头像 -->
+        <view class="cu-list menu-avatar">
+            <view class="cu-item margin">
+                <view class="cu-avatar xl round" style="background-image:url({{studentAvatarPath}});"></view>
+                <view class="content margin-left">
+                    <view class="text-grey margin-top">
+                        {{ studentName }}
+                        <text class="cuIcon-{{studentSex == '女' ? 'fe': ''}}male text-{{studentSex == '女' ? 'red': 'blue'}}"></text>
+                        <text class="margin-left text-sm">生日：{{studentBirthday}}</text>
+                        <text></text>
+                    </view>
+                    <view class="text-gray text-sm flex">
+                        <text>联系电话：{{studentPhone}}</text>
+                        <text class="cuIcon-phone text-blue margin-left-sm"></text>
+                    </view>
+                    <view class="text-gray text-sm">
+                        <text>地址：{{studentAddress}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 学员总览 -->
+        <view class="cu-list grid col-3 no-border" style="margin-top:0;padding-top:10rpx">
+            <view class="cu-item" wx:for="{{studentCourseOverview}}" wx:key>
+                <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
+                    <view class="text-black text-center text-xl">
+                        {{item.rest_course_count}}
+                    </view>
+                    <text>{{item.course_category_name}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+
+
+    <!-- 家长功能——本周课程 -->
+    <view style="position:relative;margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="padding text-xl text-black">
+                本周课程安排
+                <text class="cuIcon-calendar text-green margin-left-xs"></text>
+            </view>
+        </view>
+        <view class="cu-list menu sm-border margin-top">
+            <view class="cu-item" wx:for="{{studentSchedule}}" wx:key>
+                <view class="content">
+                    <text class="cuIcon-tagfill text-red"></text>
+                    <text class="text-grey">{{item.courseWeekDay}}（{{item.coursePeriod}}）</text>
+                </view>
+                <view class="action">
+                    <view class="cu-tag round bg-olive light">{{item.courseFolderName}}</view>
+                </view>
+            </view>
+            <view class="padding" wx:if="{{studentScheduleCount == 0}}">
+                本周没有课程了😊
+            </view>
+        </view>
+    </view>
+
+    <!-- 家长功能——学员套餐卡 -->
+    <block wx:for="{{studentPackages}}" wx:key>
+        <view style="position:relative; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="padding text-lg text-black">
+                    {{item.packageName}}
+                </view>
+            </view>
+            <view class="margin-top flex">
+                <text class="margin-left">总课时: {{item.actualCourseCount}}</text>
+                <text class="margin-left">剩余课时数: {{item.restCourseCount}}</text>
+                <text class="margin-left">金额: ￥{{item.actualPrice}}</text>
+            </view>
+            <view class="padding-top padding-left padding-right">
+                <view class="flex">
+                    <view class="cu-progress round sm">
+                        <view class="bg-cyan" style="width:{{(item.actualCourseCount - item.restCourseCount) / item.actualCourseCount * 100}}%;"></view>
+                    </view>
+                    <block wx:if="{{item.restCourseCount == 0}}">
+                        <text class="cuIcon-roundcheckfill text-green text-xs margin-left-xs"></text>
+                    </block>
+                    <block wx:else>
+                        <text class="margin-left-xs text-sm">{{item.percentage}}%</text>
+                    </block>
+                </view>
+            </view>
+            <view class="text-gray text-sm text-right padding-sm">
+                <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}">
+                    <text>查看详细</text>
+                </navigator>
+            </view>
+        </view>
+    </block>
+</scroll-view>
+
+
+<view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
+    <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+</view>

@@ -20,10 +20,12 @@
         <view class="cu-list menu-avatar" style="margin-top:{{CustomBar - 12}}px;">
             <block wx:for="{{studentList}}" wx:key>
                 <view class="cu-item">
-                    <view class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                    <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
                     <view class="content">
                         <view>
-                            <text class="text-cut">{{item.student_name}}</text>
+                            <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/detail/detail?studentCode={{item.student_code}}">
+                                <text class="text-cut">{{item.student_name}}</text>
+                            </navigator>
                             <view class="text-grey text-sm padding-left">
                                 <text class="cuIcon-phone text-green"></text>{{item.student_phone}}</view>
                         </view>
@@ -44,10 +46,12 @@
     <view class="cu-list menu-avatar" wx:if="{{pageType == 'birthday'}}">
         <block wx:for="{{studentList}}" wx:key>
             <view class="cu-item">
-                <view class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
                 <view class="content">
                     <view>
-                        <text class="text-cut">{{item.student_name}}</text>
+                        <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/detail/detail?studentCode={{item.student_code}}">
+                            <text class="text-cut">{{item.student_name}}</text>
+                        </navigator>
                         <view class="text-grey text-sm padding-left">生日：{{item.student_birthday}}</view>
                     </view>
                     <view class="text-gray text-sm flex">
@@ -65,10 +69,12 @@
     <view class="cu-list menu-avatar" wx:if="{{pageType == 'expiration'}}">
         <block wx:for="{{studentList}}" wx:key>
             <view class="cu-item">
-                <view class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
                 <view class="content">
                     <view>
-                        <text class="text-cut">{{item.student_name}}</text>
+                        <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/detail/detail?studentCode={{item.student_code}}">
+                            <text class="text-cut">{{item.student_name}}</text>
+                        </navigator>
                         <view class="text-grey text-sm padding-left">
                             <text class="cuIcon-phone text-green"></text>{{item.student_phone}}</view>
                     </view>
@@ -88,19 +94,7 @@
     <block wx:if="{{studentMore == false}}">
         <view class="cu-load bg-grey over light"></view>
     </block>
-
-
-    <!-- 
-    <view class="cu-list grid col-5 no-border" style="margin-top:{{CustomBar - 12}}px;">
-        <view class="cu-item" wx:for="{{studentList}}" wx:key>
-            <navigator url="/pages/mine/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}">
-                <view class="cu-avatar lg radius" style="background-image:url({{item.studentAvatarPath}});"></view>
-                <text class="text-center">{{item.studentName}}</text>
-            </navigator>
-        </view>
-    </view> -->
 </scroll-view>
-
 
 <view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
     <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>

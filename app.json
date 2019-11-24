@@ -20,7 +20,8 @@
         "pages/mine/index/index",
 		"pages/mine/teacher/studentlist/index",
 
-        "pages/mine/student/index",
+        "pages/mine/student/detail/detail",
+
         "pages/mine/student/course/course",
         "pages/mine/package/package",
         "pages/mine/schedule/schedule"
@@ -28,7 +29,7 @@
     "window": {
         "navigationBarBackgroundColor": "#43B0D1",
         "backgroundColor": "#43B0D1",
-        "navigationBarTitleText": "初心教育",
+        "navigationBarTitleText": "",
         "navigationBarTextStyle": "white",
         "navigationStyle": "custom",
         "backgroundTextStyle": "light"

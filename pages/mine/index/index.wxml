@@ -162,7 +162,7 @@
                         <text class="cuIcon-roundcheckfill text-green text-xs margin-left-xs"></text>
                     </block>
                     <block wx:else>
-                        <text class="margin-left-xs text-sm">{{(item.actualCourseCount - item.restCourseCount) / item.actualCourseCount * 100}}%</text>
+                        <text class="margin-left-xs text-sm">{{item.percentage}}%</text>
                     </block>
                 </view>
             </view>

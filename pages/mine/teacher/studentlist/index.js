@@ -65,6 +65,12 @@ Page({
 		this.getStudentList(this.data.pageType);
     },
 
+    jump2Detail(e) {
+        wx.navigateTo({
+            url: '/pages/mine/student/detail/detail?studentCode=' + e.currentTarget.dataset.code,
+        })
+    },
+
     getStudentList(type) {
         var myUrl = "";
         var myHeader = null;

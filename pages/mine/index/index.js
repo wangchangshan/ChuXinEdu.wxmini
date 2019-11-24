@@ -240,6 +240,9 @@ Component({
 						return;
 					}
 					
+                    result.data.forEach(item => {
+                        item['percentage'] = ((item.actualCourseCount - item.restCourseCount) / item.actualCourseCount).toFixed(2) * 100;
+                    });
 					this.setData({
 						studentPackages: result.data,
 					});
