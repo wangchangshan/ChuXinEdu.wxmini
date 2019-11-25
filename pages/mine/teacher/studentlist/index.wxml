@@ -8,7 +8,7 @@
         <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
             <view class="search-form round">
                 <text class="cuIcon-search"></text>
-                <input type="text" placeholder="输入学生姓名" confirm-type="search" value="{{searchName}}" focus="{{inputShowed}}" bindinput="inputTyping"></input>
+                <input type="text" placeholder="输入学生姓名" confirm-type="search" value="{{searchName}}" bindinput="inputTyping"></input>
                 <view wx:if="{{searchName.length > 0}}" bindtap="clearInput">
                     <text class="cuIcon-close text-gray"></text>
                 </view>

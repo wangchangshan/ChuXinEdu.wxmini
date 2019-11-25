@@ -34,25 +34,25 @@ const getWeekName = (weekCode) => {
     var weekName = '';
     switch (weekCode){
         case "day1":
-            weekName = '星期一';
+            weekName = '周一';
             break;
         case "day2":
-            weekName = '星期二';
+			weekName = '周二';
             break;
         case "day3":
-            weekName = '星期三';
+			weekName = '周三';
             break;
         case "day4":
-            weekName = '星期四';
+			weekName = '周四';
             break;
         case "day5":
-            weekName = '星期五';
+			weekName = '周五';
             break;
         case "day6":
-            weekName = '星期六';
+			weekName = '周六';
             break;
         case "day7":
-            weekName = '星期日';
+			weekName = '周日';
             break;
     }
     return weekName;

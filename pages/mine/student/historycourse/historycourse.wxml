@@ -11,20 +11,15 @@
                 <view class="cu-item text-red cuIcon-evaluate_fill">
                     <view class="content">
                         <view class="cu-capsule radius">
-                            <view class="cu-tag bg-cyan">{{cell.courseDay}}</view>
+                            <view class="cu-tag bg-cyan">{{cell.courseDay}}[{{cell.courseWeekday}}]</view>
                             <view class="cu-tag line-cyan">{{cell.coursePeriod}}</view>
                         </view>
                         <text class="margin-left">{{cell.courseSubject}}</text>
-                        <!-- <block wx:for="{{cell.courseArtworks}}" wx:for-item="tiny" wx:key> -->
-                            <!-- <view class="margin-top">
-                                <image mode="widthFix" src="{{tiny.artworkUrl}}"></image>
-                            </view> -->
-                            <view wx:if="{{cell.courseArtworks.length > 0}}" class="cu-list grid col-3 no-border" style="margin:0;padding:10rpx">
-                                <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{cell.courseArtworks}}" wx:for-item="tiny" wx:key>
-                                    <image bindtap="imagePreview" mode="widthFix" src="{{tiny.artworkUrl}}" data-src="{{tiny.artworkUrl}}"></image>
-                                </view>
+                        <view wx:if="{{cell.courseArtworks.length > 0}}" class="cu-list grid col-3 no-border" style="margin:0;padding:10rpx">
+                            <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{cell.courseArtworks}}" wx:for-item="tiny" wx:key>
+                                <image bindtap="imagePreview" mode="widthFix" src="{{tiny.artworkUrl}}" data-src="{{tiny.artworkUrl}}"></image>
                             </view>
-                        <!-- </block> -->
+                        </view>
                     </view>
                 </view>
             </block>

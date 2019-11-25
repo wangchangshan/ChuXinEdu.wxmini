@@ -5,7 +5,6 @@ Page({
         CustomBar: app.globalData.CustomBar,
         pageTitle: "学员列表",
         pageType: '',
-        inputShowed: false,
         searchName: "",
         hiddenLoading: false,
         studentList: [],

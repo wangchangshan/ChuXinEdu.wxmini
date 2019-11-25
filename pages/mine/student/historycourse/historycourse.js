@@ -1,4 +1,4 @@
-var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+const util = require('../../../../utils/util.js')
 var app = getApp();
 Page({
 	data: {
@@ -20,7 +20,15 @@ Page({
 		this.getCourseList();
 	},
 
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+	},
+
 	onReachBottom: function () {
+		if (!this.data.courseMore) {
+			wx.stopPullDownRefresh()
+			return false;
+		}
 		this.getCourseList();
 	},
 
@@ -70,6 +78,7 @@ Page({
 				var newImageList = [];
 				newCourse.forEach(function(item){
 					item.courses.forEach(function(cell){
+						cell.courseWeekday = util.getWeekName(cell.courseWeekday);
 						cell.courseArtworks.forEach(function(art){
 							newImageList.push(art.artworkUrl);
 						})
