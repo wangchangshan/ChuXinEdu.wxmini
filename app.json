@@ -21,8 +21,8 @@
 		"pages/mine/teacher/studentlist/index",
 
         "pages/mine/student/detail/detail",
+		"pages/mine/student/historycourse/historycourse",
 
-        "pages/mine/student/course/course",
         "pages/mine/package/package",
         "pages/mine/schedule/schedule"
     ],

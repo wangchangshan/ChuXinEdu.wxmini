@@ -32,4 +32,7 @@
         <view class='cu-tabbar-height'></view>
     </view>
 
+	<block wx:if="{{artMore == false}}">
+        <view class="cu-load bg-grey over light"></view>
+    </block>
 </scroll-view>

@@ -93,7 +93,7 @@
                 </view>
             </view>
             <view class="text-gray text-sm text-right padding-sm">
-                <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/course/course?studentCode={{item.studentCode}}&studentName={{item.studentName}}">
+                <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/historycourse/historycourse?sPackageId={{item.id}}&studentName={{item.studentName}}">
                     <text>查看详细</text>
                 </navigator>
             </view>

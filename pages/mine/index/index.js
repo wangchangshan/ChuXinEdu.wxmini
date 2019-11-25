@@ -191,7 +191,7 @@ Component({
 			restCourseObj = restCourseObj.concat([{
 				rest_course_count: overview.studentArtworkCount,
 				course_category_name: '课堂作品',
-				url: '/pages/mine/teacher/studentlist/index?type=expiration',
+				url: '',
 			}]);
 			this.setData({
 				curUserTypeName: '学 员',
