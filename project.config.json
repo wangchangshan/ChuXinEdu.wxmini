@@ -13,7 +13,7 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.2",
+	"libVersion": "2.8.3",
 	"appid": "wxbc88d5a1f9bda2ec",
 	"projectname": "ChuXinEdu.wxmini",
 	"debugOptions": {

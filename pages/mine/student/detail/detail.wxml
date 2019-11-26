@@ -70,9 +70,11 @@
     <block wx:for="{{studentPackages}}" wx:key>
         <view style="position:relative; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
             <view class="cu-bar bg-white solid-bottom margin-top">
-                <view class="padding text-lg text-black">
-                    {{item.packageName}}
-                </view>
+				<navigator open-type="navigate" hover-class='none' url="/pages/mine/student/historycourse/historycourse?sPackageId={{item.id}}&studentName={{item.studentName}}">
+                	<view class="padding text-lg text-black">
+                    	{{item.packageName}}
+                	</view>
+				</navigator>
             </view>
             <view class="margin-top flex">
                 <text class="margin-left">总课时: {{item.actualCourseCount}}</text>
@@ -93,9 +95,6 @@
                 </view>
             </view>
             <view class="text-gray text-sm text-right padding-sm">
-                <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/historycourse/historycourse?sPackageId={{item.id}}&studentName={{item.studentName}}">
-                    <text>查看详细</text>
-                </navigator>
             </view>
         </view>
     </block>
