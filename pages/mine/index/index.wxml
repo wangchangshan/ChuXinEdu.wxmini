@@ -39,7 +39,6 @@
                         </view>
                         <view class="text-gray text-sm flex">
                             <text>联系电话：{{studentPhone}}</text>
-                            <text class="cuIcon-phone text-blue margin-left-sm"></text>
                         </view>
                         <view class="text-gray text-sm">
                             <text>地址：{{studentAddress}}</text>

@@ -38,7 +38,7 @@ Component({
         }, {
             icon: 'calendar',
             color: 'blue',
-            name: '课程安排',
+            name: '排课看板',
             url: '/pages/mine/schedule/schedule'
         }, {
             icon: 'picfill',

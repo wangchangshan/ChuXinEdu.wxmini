@@ -25,6 +25,12 @@ Page({
         this.getStudentList();
     },
 
+    makePhoneCall: function(e) {
+        wx.makePhoneCall({
+            phoneNumber: e.currentTarget.dataset.num
+        })
+    },
+
     getStudentList: function() {
         wx.request({
             url: app.globalData.ServerBase + "/api/wxopen/getstudentdetail",

@@ -19,7 +19,7 @@
                     </view>
                     <view class="text-gray text-sm flex">
                         <text>联系电话：{{studentPhone}}</text>
-                        <text class="cuIcon-phone text-blue margin-left-sm"></text>
+                        <button bindtap="makePhoneCall" class="cu-btn sm bg-blue shadow margin-left-sm" data-num="{{studentPhone}}">拨打</button>
                     </view>
                     <view class="text-gray text-sm">
                         <text>地址：{{studentAddress}}</text>
