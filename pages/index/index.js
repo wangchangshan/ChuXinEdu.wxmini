@@ -19,7 +19,14 @@ Page({
     },
 
 	onPullDownRefresh: function() {
-		wx.stopPullDownRefresh() //停止下拉刷新
+		this.mine = this.selectComponent("#mine")
+		if (this.mine) {
+			this.mine.onPullDown()
+			wx.stopPullDownRefresh() //停止下拉刷新
+		}
+		else {
+			wx.stopPullDownRefresh() //停止下拉刷新
+		}
 	},
 
     NavChange(e) {

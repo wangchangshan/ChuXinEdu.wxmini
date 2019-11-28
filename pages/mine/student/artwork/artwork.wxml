@@ -1,0 +1,32 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">{{studentName}}的作品集</view>
+    </cu-custom>
+
+    <view class="cu-timeline">
+        <block wx:for="{{artworklist}}" wx:for-item="item" wx:key>
+            <view class="cu-time">{{item.yyyymm}}</view>
+            <view class="cu-item text-red cuIcon-evaluate_fill">
+                <view class="content">
+                    <view class="cu-list grid col-3 no-border" style="margin:0;padding:10rpx">
+                        <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{item.artworks}}" wx:for-item="cell" wx:key>
+                            <image bindtap="imagePreview" mode="widthFix" src="{{cell.artworkUrl}}" data-src="{{cell.artworkUrl}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+
+
+    <!-- loading图标-->
+    <block wx:if="{{hiddenLoading == false}}">
+        <view class="cu-load bg-grey loading margin-top light"></view>
+    </block>
+
+    <!-- 加载更多-->
+    <block wx:if="{{hasMore == false}}">
+        <view class="cu-load bg-grey over light"></view>
+    </block>
+</scroll-view>

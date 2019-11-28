@@ -2,7 +2,7 @@
 <dashboard wx:if="{{PageCur=='dashboard'}}" id="dashboard"></dashboard>
 <paintingwall wx:if="{{PageCur=='paintingwall'}}" id="paintingwall"></paintingwall>
 <contact wx:if="{{PageCur=='contact'}}"></contact>
-<mine wx:if="{{PageCur=='mine'}}"></mine>
+<mine wx:if="{{PageCur=='mine'}}" id="mine"></mine>
 <about wx:if="{{PageCur=='about'}}"></about>
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action" bindtap="NavChange" data-cur="dashboard">

@@ -31,12 +31,12 @@
         <!-- 学员总览 -->
         <view class="cu-list grid col-3 no-border" style="margin-top:0;padding-top:10rpx">
             <view class="cu-item" wx:for="{{studentCourseOverview}}" wx:key>
-                <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
+				<view bindtap="overViewJump" data-type="{{item.course_category_name}}">
                     <view class="text-black text-center text-xl">
                         {{item.rest_course_count}}
                     </view>
                     <text>{{item.course_category_name}}</text>
-                </navigator>
+				</view>
             </view>
         </view>
     </view>

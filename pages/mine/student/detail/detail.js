@@ -31,6 +31,14 @@ Page({
         })
     },
 
+	overViewJump: function (e){
+		if (e.currentTarget.dataset.type == "课堂作品") {
+			wx.navigateTo({
+				url: '/pages/mine/student/artwork/artwork?studentCode=' + this.data.studentCode + '&studentName=' + this.data.studentName,
+			})
+		}
+	},
+
     getStudentList: function() {
         wx.request({
             url: app.globalData.ServerBase + "/api/wxopen/getstudentdetail",

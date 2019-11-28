@@ -79,6 +79,10 @@ Component({
     },
 
     methods: {
+		onPullDown: function(e) {
+			this.getUserInfoBySKey(wx.getStorageSync('SKEY'));
+		},
+
         doLogin: function(e) {
             if (e.detail.userInfo) {
                 app.globalData.UserInfo = e.detail.userInfo
@@ -282,6 +286,14 @@ Component({
 					});
 				}
 			})
+		},
+
+		overViewJump: function (e) {
+			if (e.currentTarget.dataset.type == "课堂作品") {
+				wx.navigateTo({
+					url: '/pages/mine/student/artwork/artwork?studentCode=' + this.data.studentCode + '&studentName=' + this.data.studentName,
+				})
+			}
 		},
 
 		// --------------注册登录部分 start-----------------
