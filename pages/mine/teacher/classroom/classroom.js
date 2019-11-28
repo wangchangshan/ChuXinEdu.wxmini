@@ -9,7 +9,7 @@ Page({
 
     jump2Signin(e) {
         wx.navigateTo({
-            url: '/pages/mine/teacher/studentlist/index?type=signin',
+            url: '/pages/mine/teacher/studentlist/index?type=signin&code=' + e.currentTarget.dataset.roomcode + '&name=' + e.currentTarget.dataset.roomname
         })
     },
 
@@ -28,7 +28,7 @@ Page({
 
                 for (var i = 0; i < result.data.length; i++) {
                     if (i < app.globalData.ColorList.length) {
-                        result.data[i].label = app.globalData.ColorList[i].name;
+                        result.data[i].color = app.globalData.ColorList[i].name;
                     }
                 }
                 this.setData({

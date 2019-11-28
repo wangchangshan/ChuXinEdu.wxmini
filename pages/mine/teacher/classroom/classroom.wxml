@@ -6,7 +6,10 @@
 
     <view class="padding text-center">
 		<block wx:for="{{classroomList}}" wx:key>
-        	<button bindtap="jump2Signin" data-code="{{item.value}}" class="padding-xl radius shadow-warp bg-{{item.label}} margin-top">{{item.text}}</button>
+        	<button bindtap="jump2Signin" data-roomcode="{{item.value}}" data-roomname="{{item.text}}" class="padding-xl radius shadow-warp bg-{{item.color}} margin-top">
+                {{item.text}}
+                <text class="text-lg">(待签到：<text class="text-bold text-yellow">{{item.label}}</text>人)</text>
+            </button>
 		</block>
     </view>
 
