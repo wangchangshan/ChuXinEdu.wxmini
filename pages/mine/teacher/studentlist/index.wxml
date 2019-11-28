@@ -90,6 +90,45 @@
         </block>
     </view>
 
+	<block wx:if="{{pageType == 'signin'}}">
+        <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
+            <view class="search-form round">
+                <text class="cuIcon-search"></text>
+                <input type="text" placeholder="输入学生姓名" confirm-type="search" value="{{searchName}}" bindinput="inputTyping"></input>
+                <view wx:if="{{searchName.length > 0}}" bindtap="clearInput">
+                    <text class="cuIcon-close text-gray"></text>
+                </view>
+            </view>
+            <view class="action">
+                <button bindtap='searchStudent' class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
+            </view>
+        </view>
+        <view class="cu-list menu-avatar" style="margin-top:{{CustomBar - 12}}px;">
+            <block wx:for="{{studentList}}" wx:key>
+                <view class="cu-item">
+                    <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
+                    <view class="content">
+                        <view>
+                            <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/detail/detail?studentCode={{item.student_code}}">
+                                <text class="text-cut">{{item.student_name}}</text>
+                            </navigator>
+                            <view class="text-grey text-sm padding-left">
+                                <text class="cuIcon-phone text-green"></text>{{item.student_phone}}</view>
+                        </view>
+                        <view class="text-gray text-sm flex">
+                            <block wx:for="{{item.rest_course_info}}" wx:for-item="cell" wx:key>
+                                <text class="text-cut padding-right">{{cell.course_category_name}}：剩余 {{cell.rest_course_count}}节 </text>
+                            </block>
+                        </view>
+                    </view>
+                    <view class="action">
+
+                    </view>
+                </view>
+            </block>
+        </view>
+    </block>
+
 
     <block wx:if="{{studentMore == false}}">
         <view class="cu-load bg-grey over light"></view>

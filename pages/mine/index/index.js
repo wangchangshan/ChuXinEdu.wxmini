@@ -34,7 +34,7 @@ Component({
             icon: 'roundcheck',
             color: 'green',
             name: '销课签到',
-            url: ''
+            url: '/pages/mine/teacher/classroom/classroom'
         }, {
             icon: 'calendar',
             color: 'blue',
