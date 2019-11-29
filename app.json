@@ -24,6 +24,7 @@
         "pages/mine/student/detail/detail",
 		"pages/mine/student/artwork/artwork",
 		"pages/mine/student/historycourse/historycourse",
+		"pages/mine/student/signin/signin",
 
         "pages/mine/package/package",
         "pages/mine/schedule/schedule"

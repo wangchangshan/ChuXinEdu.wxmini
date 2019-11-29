@@ -9,7 +9,7 @@ Page({
 
     jump2Signin(e) {
         wx.navigateTo({
-            url: '/pages/mine/teacher/studentlist/index?type=signin&code=' + e.currentTarget.dataset.roomcode + '&name=' + e.currentTarget.dataset.roomname
+            url: '/pages/mine/student/signin/signin?roomcode=' + e.currentTarget.dataset.roomcode + '&roomname=' + e.currentTarget.dataset.roomname
         })
     },
 

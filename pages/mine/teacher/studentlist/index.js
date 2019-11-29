@@ -8,7 +8,6 @@ Page({
         searchName: "",
         hiddenLoading: false,
         studentList: [],
-        roomCode: '',
         pageIndex: 1,
         pageSize: 10,
         studentMore: true
@@ -28,14 +27,6 @@ Page({
             this.setData({
                 pageTitle: '即将到期学员',
                 pageType: 'expiration'
-            })
-        } else if (options.type == 'signin') {
-            var roomCode = options.code;
-            var roomName = options.name;
-            this.setData({
-                pageTitle: roomName + '待签到列表',
-                pageType: 'signin',
-                roomCode: roomCode
             })
         }
         this.getStudentList(options.type)
@@ -109,14 +100,6 @@ Page({
                     pageSize: this.data.pageSize
                 }
                 break;
-            case "signin":
-                api = "/api/wxopen/getstudentstosignin"
-                myData = {
-                    roomCode: this.data.roomCode,
-                    pageIndex: this.data.pageIndex,
-                    pageSize: this.data.pageSize
-                }
-                break;
             default:
                 break;
         }
@@ -147,8 +130,7 @@ Page({
                         studentMore: false
                     })
                 }
-
-                var curList = JSON.parse(result.data.data)
+				var curList = result.data.data
 
                 if (type == 'all') {
                     curList.forEach(function(item) {
