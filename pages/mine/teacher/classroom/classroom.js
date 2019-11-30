@@ -7,6 +7,11 @@ Page({
         this.getClassroomList()
     },
 
+    onPullDownRefresh: function () {
+        this.getClassroomList()
+        wx.stopPullDownRefresh() //停止下拉刷新
+    },
+
     jump2Signin(e) {
         wx.navigateTo({
             url: '/pages/mine/student/signin/signin?roomcode=' + e.currentTarget.dataset.roomcode + '&roomname=' + e.currentTarget.dataset.roomname

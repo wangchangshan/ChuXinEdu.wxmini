@@ -60,7 +60,7 @@
                     </view>
                 </view>
                 <view class="action">
-                    <text class="cuIcon-phone text-sl text-green"></text>
+                    
                 </view>
             </view>
         </block>

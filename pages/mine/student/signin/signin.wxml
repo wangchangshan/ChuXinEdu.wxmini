@@ -5,7 +5,6 @@
     </cu-custom>
 
     <block wx:for="{{periodList}}" wx:key>
-
         <view class="cu-bar bg-white solid-bottom margin-top">
             <view class="action">
                 <text class="cuIcon-title text-orange "></text> {{item.courseDate}} （{{item.courseWeekday}}）{{item.coursePeriod}}
@@ -19,7 +18,7 @@
                         <text wx:if="{{cell.courseType == '试听'}}" class="cu-tag round line-blue margin-left"> 试听</text>
                     </view>
                     <view class="action ">
-                        <button bindtap="showSignDialog" class="cu-btn round bg-green shadow">
+                        <button bindtap="showSignDialog" data-name='{{cell.studentName}}' data-title="{{item.courseDate + '（' + item.courseWeekday + '）' + item.coursePeriod}}" class="cu-btn round bg-green shadow">
                             签到
                         </button>
                     </view>
@@ -30,20 +29,52 @@
 
     <view class="cu-modal {{signDialogShow}}">
         <view class="cu-dialog">
-            <view class="cu-bar bg-white justify-end">
-                <view class="content">销课标题</view>
+            <view class="cu-bar bg-white solid-bottom justify-between">
+                <view class="flex justify-between">
+                    <view class="padding-sm text-bold">{{signTitle}}</view>
+                    <view class="padding-sm text-bold text-blue">{{signStudentName}}</view>
+                </view>
+
                 <view class="action" bindtap="hideSignDialog">
                     <text class="cuIcon-close text-red"></text>
                 </view>
             </view>
-            <view class="padding-xl">
-                Modal 内容。
+            <view>
+                <form>
+                    <view class="cu-form-group">
+                        <view class="title">课程主题：</view>
+                        <input placeholder="请输入上课主题" bindblur="blurSubject"></input>
+                    </view>
+                    <view class="cu-bar bg-white">
+                        <view class="action">
+                            课堂作品上传
+                        </view>
+                        <view class="action">
+                            {{imgList.length}}/3
+                        </view>
+                    </view>
+
+                    <view class="cu-form-group">
+                        <view class="grid col-3 grid-square flex-sub">
+                            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+                                <image style="left: 0" src='{{imgList[index]}}' mode='aspectFill'></image>
+                                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                                    <text class="cuIcon-close"></text>
+                                </view>
+                            </view>
+                            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<3}}">
+                                <text class="cuIcon-cameraadd"></text>
+                            </view>
+                        </view>
+                    </view>
+
+
+                </form>
             </view>
             <view class="cu-bar bg-white justify-end">
                 <view class="action">
                     <button class="cu-btn line-green text-green" bindtap="hideSignDialog">取消</button>
-                    <button class="cu-btn bg-green margin-left" bindtap="hideSignDialog">确定</button>
-
+                    <button class="cu-btn bg-green margin-left" bindtap="submitSign">确定</button>
                 </view>
             </view>
         </view>
