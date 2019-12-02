@@ -77,7 +77,7 @@ Page({
                     studentName: overview.studentName,
                     studentSex: overview.studentSex,
                     studentAvatarPath: overview.studentAvatarPath,
-                    studentBirthday: overview.studentBirthday.split('T')[0],
+					studentBirthday: overview.studentBirthday && overview.studentBirthday.split('T')[0],
                     studentPhone: overview.studentPhone,
                     studentAddress: overview.studentAddress,
                     studentCourseOverview: restCourseObj,

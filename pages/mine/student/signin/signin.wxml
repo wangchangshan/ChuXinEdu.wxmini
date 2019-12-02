@@ -18,7 +18,10 @@
                         <text wx:if="{{cell.courseType == '试听'}}" class="cu-tag round line-blue margin-left"> 试听</text>
                     </view>
                     <view class="action ">
-                        <button bindtap="showSignDialog" data-courseId='{{cell.studentCourseId}}' data-code='{{cell.studentCode}}' data-name='{{cell.studentName}}' data-title="{{item.courseDate + '（' + item.courseWeekday + '）' + item.coursePeriod}}" class="cu-btn round bg-green shadow">
+						<button bindtap="onQingjia" data-courseid='{{cell.studentCourseId}}' data-name='{{cell.studentName}}' class="cu-btn round bg-orange shadow">
+                            请假
+                        </button>
+                        <button bindtap="showSignDialog" data-courseid='{{cell.studentCourseId}}' data-code='{{cell.studentCode}}' data-name='{{cell.studentName}}' data-title="{{item.courseDate + '（' + item.courseWeekday + '）' + item.coursePeriod}}" class="cu-btn round bg-green shadow margin-left-sm">
                             签到
                         </button>
                     </view>
@@ -43,14 +46,14 @@
                 <form>
                     <view class="cu-form-group">
                         <view class="title">课程主题：</view>
-                        <input placeholder="请输入上课主题" bindblur="blurSubject"></input>
+                        <input placeholder="请输入上课主题" value="{{signSubject}}" bindblur="blurSubject"></input>
                     </view>
                     <view class="cu-bar bg-white">
                         <view class="action">
                             课堂作品上传
                         </view>
                         <view class="action">
-                            {{imgList.length}}/3
+                            {{imgList.length}}/2
                         </view>
                     </view>
 
@@ -67,8 +70,6 @@
                             </view>
                         </view>
                     </view>
-
-
                 </form>
             </view>
             <view class="cu-bar bg-white justify-end">

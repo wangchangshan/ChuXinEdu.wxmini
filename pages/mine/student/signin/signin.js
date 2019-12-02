@@ -1,4 +1,4 @@
-var app = getApp();
+let app = getApp();
 const util = require('../../../../utils/util.js')
 Page({
     data: {
@@ -10,7 +10,7 @@ Page({
         imgList: [],
         roomCode: '',
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 12,
         signDialogShow: '',
         signTitle: '',
         signStudentCourseId: 0,
@@ -21,17 +21,21 @@ Page({
         studentMore: true
     },
     onLoad: function(options) {
-        var roomCode = options.roomcode;
-        var roomName = options.roomname;
+        let roomCode = options.roomcode;
+        let roomName = options.roomname;
         this.setData({
             pageTitle: roomName + '待签到列表',
-            pageType: 'signin',
             roomCode: roomCode
         })
-        this.getStudentList(options.type)
+        this.getStudentList()
     },
     onPullDownRefresh: function() {
         wx.stopPullDownRefresh();
+		this.setData({
+			pageIndex: 1,
+			periodList: []
+		})
+		this.getStudentList()
     },
     onReachBottom: function() {
         if (!this.data.studentMore) {
@@ -47,11 +51,11 @@ Page({
             imgList: [],
             signDialogShow: 'show',
             signTitle: e.currentTarget.dataset.title,
-            signStudentCourseId: e.currentTarget.dataset.courseId,
+			signStudentCourseId: e.currentTarget.dataset.courseid,
             signStudentCode: e.currentTarget.dataset.code,
             signStudentName: e.currentTarget.dataset.name,
             signSubject: '',
-            signImgUids: ''
+            signImgUids: []
         })
     },
     hideSignDialog() {
@@ -92,9 +96,9 @@ Page({
                     })
                 }
 
-                var newList = result.data.data;
-                var oldList = this.data.periodList;
-                var finallyList = null;
+                let newList = result.data.data;
+                let oldList = this.data.periodList;
+                let finallyList = null;
 
                 newList.forEach(function(item) {
                     item.courseWeekday = util.getWeekName(item.courseWeekday)
@@ -122,12 +126,65 @@ Page({
         })
     },
 
+	onQingjia(e){
+		wx.showModal({
+			content: '是否确定学员【' + e.currentTarget.dataset.name + '】已请假？',
+			cancelText: '取消',
+			confirmText: '确定',
+			success: res => {
+				if (res.confirm) {
+					wx.showToast({
+						title: '请假中...',
+						icon: 'loading',
+						mask: true,
+						duration: 6000
+					})
+					this.setData({
+						signStudentCourseId: e.currentTarget.dataset.courseid
+					})
+					wx.request({
+						url: app.globalData.ServerBase + "/api/wxopen/wxcourseqingjia",
+						data: {
+							StudentCourseId: e.currentTarget.dataset.courseid
+						},
+						method: 'POST',
+						header: {
+							'Content-Type': 'application/json',
+							'skey': wx.getStorageSync('SKEY')
+						},
+						success: result => {
+							if (result.data.code && result.data.code == '1401') {
+								this.setData({
+									hiddenLoading: true
+								});
+								return;
+							}
+
+							let curPeriodList = this.removeCourseLine();
+							wx.hideToast();
+							wx.showToast({
+								title: '请假成功',
+								icon: 'success',
+								mask: true,
+								duration: 1000
+							})
+							this.setData({
+								signDialogShow: 'hide',
+								periodList: curPeriodList
+							});
+						}
+					})
+				}
+			}
+		})
+	},
+
     submitSign() {
         wx.showToast({
             title: '正在提交课程信息...',
             icon: 'loading',
             mask: true,
-            duration: 1000
+            duration: 8000
         })
 
         // 有作品上传
@@ -138,42 +195,10 @@ Page({
         }
     },
 
-    postSignConent() {
-        wx.request({
-            url: app.globalData.ServerBase + "/api/wxopen/wxstudentsignin",
-            data: {
-                CourseListId: this.data.signStudentCourseId,
-                StudentCode: this.data.signStudentCode,
-                TeacherCode: wx.getStorageSync('SKEY'),
-                FileUIds: this.data.signImgUids,
-                CostCount: 1,
-                Title: this.data.signSubject
-            },
-            method: 'POST',
-            header: {
-                'Content-Type': 'application/json',
-                'skey': wx.getStorageSync('SKEY')
-            },
-            success: result => {
-                if (result.data.code && result.data.code == '1401') {
-                    this.setData({
-                        hiddenLoading: true
-                    });
-                    return;
-                }
-                debugger
-                wx.hideToast();
-                this.setData({
-                    signDialogShow: 'hide',
-                });
-            }
-        })
-    },
-
     uploadArtwork() {
-        var count = 0;
-        for (var i = 0; i < this.data.imgList.length; i++) {
-            var myuid = (new Date()).getTime();
+        let count = 0;
+        for (let i = 0; i < this.data.imgList.length; i++) {
+            let myuid = (new Date()).getTime();
             //上传文件
             wx.uploadFile({
                 url: app.globalData.ServerBase + "/api/wxopen/uploadartwork",
@@ -183,23 +208,25 @@ Page({
                     courseId: this.data.signStudentCourseId,
                     studentCode: this.data.signStudentCode,
                     studentName: this.data.signStudentName,
-                    uid: (new Date()).getTime()
+					uid: myuid
                 },
                 header: {
                     "Content-Type": "multipart/form-data",
                     'skey': wx.getStorageSync('SKEY')
                 },
-                success: function(res) {
+                success: (res) => {
+					let oldUids = this.data.signImgUids
+					oldUids.push(myuid)
                     this.setData({
-                        signImgUids: this.data.signImgUids.concat(myuid)
+						signImgUids: oldUids
                     })
                     count++;
                     //最后一张 
-                    if (count == res.tempFilePaths.length) {
+					if (count == this.data.imgList.length) {
                         this.postSignConent();
                     }
                 },
-                fail: function(res) {
+                fail: (res) => {
                     wx.hideToast();
                     wx.showModal({
                         title: '错误提示',
@@ -210,9 +237,70 @@ Page({
                 }
             });
         }
-    },
+	},
 
+	postSignConent() {
+		wx.request({
+			url: app.globalData.ServerBase + "/api/wxopen/wxstudentsignin",
+			data: {
+				CourseListId: this.data.signStudentCourseId,
+				StudentCode: this.data.signStudentCode,
+				TeacherCode: wx.getStorageSync('SKEY'),
+				FileUIds: this.data.signImgUids,
+				CostCount: 1,
+				Title: this.data.signSubject
+			},
+			method: 'POST',
+			header: {
+				'Content-Type': 'application/json',
+				'skey': wx.getStorageSync('SKEY')
+			},
+			success: result => {
+				if (result.data.code && result.data.code == '1401') {
+					this.setData({
+						hiddenLoading: true
+					});
+					return;
+				}
 
+				let curPeriodList = this.removeCourseLine();
+
+				wx.hideToast();
+				wx.showToast({
+					title: '签到成功',
+					icon: 'success',
+					mask: true,
+					duration: 1000
+				})			
+				this.setData({
+					signDialogShow: 'hide',
+					periodList: curPeriodList
+				});
+			}
+		})
+	},
+
+	removeCourseLine() {
+		let curPeriodList = this.data.periodList
+		let isBreak = false;
+		for (let i = 0; i < curPeriodList.length; i++) {
+			if (isBreak) {
+				break;
+			}
+			for (let j = 0; j < curPeriodList[i].signCourses.length; j++) {
+				if (this.data.signStudentCourseId == curPeriodList[i].signCourses[j].studentCourseId) {
+					curPeriodList[i].signCourses.splice(j, 1);
+					if (curPeriodList[i].signCourses.length == 0) {
+						curPeriodList.splice(i, 1);
+					}
+					isBreak = true;
+					break;
+				}
+			}
+		}
+
+		return curPeriodList
+	},
 
     ChooseImage() {
         wx.chooseImage({
@@ -240,7 +328,6 @@ Page({
     },
     DelImg(e) {
         wx.showModal({
-            title: '测试',
             content: '确定要删除这张图片吗？',
             cancelText: '取消',
             confirmText: '删除',

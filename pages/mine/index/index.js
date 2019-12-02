@@ -201,7 +201,7 @@ Component({
 				curUserTypeName: '学 员',
 				studentCode: code,
 				studentName: name,
-				studentBirthday: overview.studentBirthday.split('T')[0],
+				studentBirthday: overview.studentBirthday && overview.studentBirthday.split('T')[0],
 				studentPhone: overview.studentPhone,
 				studentSex: overview.studentSex,
 				studentAddress: overview.studentAddress,
