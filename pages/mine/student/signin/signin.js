@@ -127,6 +127,12 @@ Page({
     },
 
 	onQingjia(e){
+		if (e.currentTarget.dataset.coursetype == "试听"){
+			wx.showModal({
+				content: '试听学员没有请假功能，请直接在排课面板删除。',
+			})
+			return false;
+		}
 		wx.showModal({
 			content: '是否确定学员【' + e.currentTarget.dataset.name + '】已请假？',
 			cancelText: '取消',
@@ -230,7 +236,7 @@ Page({
                     wx.hideToast();
                     wx.showModal({
                         title: '错误提示',
-                        content: '上传图片失败',
+						content: '上传图片失败',
                         showCancel: false,
                         success: function(res) {}
                     })

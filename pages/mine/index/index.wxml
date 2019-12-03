@@ -1,4 +1,4 @@
-<scroll-view scroll-y class="scrollPage">
+<!-- <scroll-view scroll-y class="scrollPage"> -->
     <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
         <view slot="content">初心美术</view>
     </cu-custom>
@@ -229,4 +229,4 @@
     </view>
 
     <!-- <view class='cu-tabbar-height'></view> -->
-</scroll-view>
+<!-- </scroll-view> -->

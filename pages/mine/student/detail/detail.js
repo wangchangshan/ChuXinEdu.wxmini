@@ -22,8 +22,13 @@ Page({
         this.setData({
             studentCode: option.studentCode
         })
-        this.getStudentList();
+        this.getStudentDetail();
     },
+
+	onPullDownRefresh: function () {
+		wx.stopPullDownRefresh();
+		this.getStudentDetail()
+	},
 
     makePhoneCall: function(e) {
         wx.makePhoneCall({
@@ -39,7 +44,7 @@ Page({
 		}
 	},
 
-    getStudentList: function() {
+    getStudentDetail: function() {
         wx.request({
             url: app.globalData.ServerBase + "/api/wxopen/getstudentdetail",
             data: {
