@@ -10,7 +10,7 @@
                 <text class="cuIcon-title text-orange "></text> {{item.courseDate}} （{{item.courseWeekday}}）{{item.coursePeriod}}
             </view>
         </view>
-        <view class="cu-list menu 'sm-border card-menu margin-top">
+        <view class="cu-list menu sm-border card-menu margin-top">
             <block wx:for="{{item.signCourses}}" wx:for-item="cell" wx:key>
                 <view class="cu-item">
                     <view class="content">
