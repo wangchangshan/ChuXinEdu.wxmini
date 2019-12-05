@@ -49,6 +49,12 @@ Page({
 						hiddenLoading: true
 					});
 				}
+				else{
+					this.setData({
+						scheduleList: [],
+						hiddenLoading: true
+					});
+				}
             }
         })
     },
