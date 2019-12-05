@@ -1,31 +1,33 @@
 const util = require('../../../utils/util.js')
 var app = getApp();
 Page({
-    data: {
+	data: {
+		CustomBar: app.globalData.CustomBar,
         hiddenLoading: false,
-        date: util.getToday(),
-        periods:[],
-        schedule: {}
+        myDate: util.getToday(),
+		weekDay: '',
+		scheduleList: []
     },
 
     onLoad: function (options) {
         this.searchSchedule();
     },
 
-    onPullDownRefresh: function () {
-        this.searchSchedule();
-    },
+	jump2Detail(e) {
+		wx.navigateTo({
+			url: '/pages/mine/student/detail/detail?studentCode=' + e.currentTarget.dataset.code,
+		})
+	},
 
     searchSchedule: function () {
         this.setData({
-            periods: [],
-            schedule: {},
+			scheduleList: [],
             hiddenLoading: false
         });
         wx.request({
-            url: app.globalData.ServerBase + "/api/wxopen/getcoursearrangedbyday",
+			url: app.globalData.ServerBase + "/api/wxopen/getwxschedule",
             data: {
-                day: this.data.date
+                day: this.data.myDate
             },
             method: 'GET',
             header: {
@@ -39,39 +41,23 @@ Page({
                     });
                     return;
                 }
-                var tempPeriod = [];
-                var tempStudent = {};
-                result.data.forEach(item => {
-                    if (tempPeriod.indexOf(item.coursePeriod) == -1){
-                        tempPeriod.push(item.coursePeriod);
-                        tempStudent[item.coursePeriod] = [{
-                            studentName : item.studentName,
-                            folderName : item.courseFolderName,
-                            colorclass: item.courseFolderCode
-                        }];
-                    }
-                    else{
-                        tempStudent[item.coursePeriod].push({
-                            studentName : item.studentName,
-                            folderName: item.courseFolderName,
-                            colorclass: item.courseFolderCode
-                        });
-                    }
-                });
-                this.setData({
-                    periods : tempPeriod,
-                    schedule : tempStudent,
-                    hiddenLoading: true
-                });
+				if(result.data.length > 0){
+					let weekname = util.getWeekName(result.data[0].roomSchedule[0].scheduleDetail[0].courseWeekDay)
+					this.setData({
+						weekDay: weekname,
+						scheduleList: result.data,
+						hiddenLoading: true
+					});
+				}
             }
         })
     },
 
     bindDateChange: function (e) {
         this.setData({
-            date: e.detail.value
+            myDate: e.detail.value
         });
-        this.searchSchedule(this.data.date);
+        this.searchSchedule(this.data.myDate);
     }
 
 });

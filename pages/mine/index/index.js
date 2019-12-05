@@ -38,13 +38,8 @@ Component({
         }, {
             icon: 'calendar',
             color: 'blue',
-            name: '排课看板',
+            name: '排课看板',//精品画作
             url: '/pages/mine/schedule/schedule'
-        }, {
-            icon: 'picfill',
-            color: 'olive',
-            name: '精品画作',
-            url: ''
         },{
             icon: 'shop',
             color: 'cyan',
