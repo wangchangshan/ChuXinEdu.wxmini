@@ -956,6 +956,12 @@ button.icon.lg {
 	font-size: 2em;
 }
 
+.cu-avatar.lg-plus {
+	width: 112rpx;
+	height: 112rpx;
+	font-size: 2.2em;
+}
+
 .cu-avatar.xl {
 	width: 128rpx;
 	height: 128rpx;

@@ -20,25 +20,25 @@
     <!--start -->
     <block wx:for="{{scheduleList}}" wx:key="*this">
         <view class="cu-bar bg-white solid-bottom margin-top">
-            <view class="action text-bold">
-                <text class="cuIcon-title text-orange "></text> {{item.coursePeriod}} | {{weekDay}}
+            <view class="action text-bold text-blue">
+                <text class="cuIcon-title text-orange"></text> {{item.coursePeriod}} | {{weekDay}}
             </view>
         </view>
         <block wx:for="{{item.roomSchedule}}" wx:for-item="cell" wx:key>
             <view class=' radius-lg shadow-lg bg-white'>
                 <view class="cu-bar bg-white solid-bottom margin-top-0">
-                    <view class="padding text-lg text-black">
+                    <view class="padding text-lg text-black text-bold">
                         {{cell.classroom}}
                     </view>
                 </view>
 
-                <view class="cu-list grid col-5 no-border solid-bottom">
+                <view class="cu-list grid col-5 no-border solid-bottom" style="padding:10rpx">
                     <block wx:for="{{cell.scheduleDetail}}" wx:for-item="tiny" wx:key>
                         <view class="cu-item">
                             <view>
-                                <view bindtap="jump2Detail" data-code="{{tiny.studentCode}}" class="cu-avatar lg round" style="background-image:url({{tiny.studentAvatarPath}});"></view>
+                                <view bindtap="jump2Detail" data-code="{{tiny.studentCode}}" class="cu-avatar lg-plus round" style="background-image:url({{tiny.studentAvatarPath}});"></view>
                                 <text>{{tiny.studentName}}</text>
-                                <view class="text-{{(tiny.attendanceCode == '01' || tiny.attendanceCode == '02') ? 'green': (tiny.attendanceCode == '00' || tiny.attendanceCode == '03') ? 'orange': ''}}" style="font-size:20rpx;margin:0">{{tiny.attendanceName}}</view>
+                                <view class="text-{{(tiny.attendanceCode == '01' || tiny.attendanceCode == '02') ? 'green': (tiny.attendanceCode == '00' || tiny.attendanceCode == '03') ? 'orange': ''}}" style="font-size:22rpx;margin:0">{{tiny.attendanceName}}</view>
                             </view>
                         </view>
                     </block>
