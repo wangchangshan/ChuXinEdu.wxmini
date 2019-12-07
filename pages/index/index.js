@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
     data: {
-        PageCur: 'mine',
+        PageCur: 'dashboard',
     },
     onLoad: function () {
     },
