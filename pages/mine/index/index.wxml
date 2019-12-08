@@ -150,9 +150,9 @@
 			</navigator>
             </view>
             <view class="margin-top flex">
-                <text class="margin-left">总课时: {{item.actualCourseCount}}</text>
-                <text class="margin-left">剩余课时数: {{item.restCourseCount}}</text>
-                <text class="margin-left">金额: ￥{{item.actualPrice}}</text>
+                <text class="margin-left margin-right-xl">总课时: {{item.actualCourseCount}}</text>
+                <text class="margin-left-xl">剩余课时数: {{item.restCourseCount}}</text>
+                <!-- <text class="margin-left">金额: ￥{{item.actualPrice}}</text> -->
             </view>
             <view class="padding-top padding-left padding-right">
                 <view class="flex">
