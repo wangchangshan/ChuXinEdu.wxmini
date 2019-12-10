@@ -100,12 +100,4 @@ Page({
             }
         })
     },
-
-    // bindDateChange: function(e) {
-    //     this.setData({
-    //         myDate: e.detail.value
-    //     });
-    //     this.searchSchedule();
-    // }
-
 });

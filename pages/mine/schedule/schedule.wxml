@@ -1,74 +1,64 @@
-<!-- <scroll-view scroll-y class="scrollPage"> -->
-    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
-        <view slot="backText">返回</view>
-        <view slot="content">课程看板</view>
-    </cu-custom>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">课程看板</view>
+</cu-custom>
 
-    <form>
-        <!-- <view class="cu-form-group margin-top">
-            <view class="title">日期选择</view>
-            <picker mode="date" value="{{myDate}}" start="2017-12-01" end="2030-12-31" bindchange="bindDateChange">
-                <view class="picker">
-                    {{myDate}}
-                </view>
-            </picker>
-        </view> -->
-        <view class="cu-form-group">
-            <view class="title">日期选择</view>
-            {{myDate}}
-            <button bindtap="showCalendarModel" class="cu-btn bg-green shadow">选择</button>
+<form>
+    <view class="cu-form-group">
+        <view class="title">日期选择</view>
+        {{myDate}}
+        <button bindtap="showCalendarModel" class="cu-btn bg-green shadow">选择</button>
+    </view>
+</form>
+
+<view class="cu-modal {{calendarModelShow}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">选择排课日期</view>
+            <view class="action" bindtap="hideCalendarModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
         </view>
-    </form>
-
-    <view class="cu-modal {{calendarModelShow}}">
-        <view class="cu-dialog">
-            <view class="cu-bar bg-white justify-end">
-                <view class="content">选择排课日期</view>
-                <view class="action" bindtap="hideCalendarModal">
-                    <text class="cuIcon-close text-red"></text>
-                </view>
-            </view>
-            <view class="padding-xl">
-                <calendar calendarConfig="{{calendarConfig}}"  bind:afterTapDay="afterTapDay"></calendar>
-            </view>
+        <view class="padding-xl">
+            <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay"></calendar>
         </view>
     </view>
+</view>
 
-    <!--start -->
-    <block wx:for="{{scheduleList}}" wx:key>
-        <view class="cu-bar bg-white solid-bottom margin-top">
-            <view class="action text-bold text-blue">
-                <text class="cuIcon-title text-orange"></text> {{item.coursePeriod}} | {{weekDay}}
+<!--start -->
+<block wx:for="{{scheduleList}}" wx:key>
+    <view class="cu-bar bg-white solid-bottom margin-top">
+        <view class="action text-bold text-blue">
+            <text class="cuIcon-title text-orange"></text> {{item.coursePeriod}} | {{weekDay}}
+        </view>
+    </view>
+    <block wx:for="{{item.roomSchedule}}" wx:for-item="cell" wx:key>
+        <view class=' radius-lg shadow-lg bg-white'>
+            <view class="cu-bar bg-white solid-bottom margin-top-0">
+                <view class="padding text-lg text-black text-bold">
+                    {{cell.classroom}}
+                </view>
+            </view>
+
+            <view class="cu-list grid col-5 no-border solid-bottom" style="padding:10rpx">
+                <block wx:for="{{cell.scheduleDetail}}" wx:for-item="tiny" wx:key>
+                    <view class="cu-item">
+                        <view>
+                            <view bindtap="jump2Detail" data-code="{{tiny.studentCode}}" class="cu-avatar lg-plus round" style="background-image:url({{tiny.studentAvatarPath}});"></view>
+                            <text>{{tiny.studentName}}</text>
+                            <view class="text-{{(tiny.attendanceCode == '01' || tiny.attendanceCode == '02') ? 'green': (tiny.attendanceCode == '00' || tiny.attendanceCode == '03') ? 'orange': ''}}" style="font-size:22rpx;margin:0">{{tiny.attendanceName}}</view>
+                        </view>
+                    </view>
+                </block>
             </view>
         </view>
-        <block wx:for="{{item.roomSchedule}}" wx:for-item="cell" wx:key>
-            <view class=' radius-lg shadow-lg bg-white'>
-                <view class="cu-bar bg-white solid-bottom margin-top-0">
-                    <view class="padding text-lg text-black text-bold">
-                        {{cell.classroom}}
-                    </view>
-                </view>
-
-                <view class="cu-list grid col-5 no-border solid-bottom" style="padding:10rpx">
-                    <block wx:for="{{cell.scheduleDetail}}" wx:for-item="tiny" wx:key>
-                        <view class="cu-item">
-                            <view>
-                                <view bindtap="jump2Detail" data-code="{{tiny.studentCode}}" class="cu-avatar lg-plus round" style="background-image:url({{tiny.studentAvatarPath}});"></view>
-                                <text>{{tiny.studentName}}</text>
-                                <view class="text-{{(tiny.attendanceCode == '01' || tiny.attendanceCode == '02') ? 'green': (tiny.attendanceCode == '00' || tiny.attendanceCode == '03') ? 'orange': ''}}" style="font-size:22rpx;margin:0">{{tiny.attendanceName}}</view>
-                            </view>
-                        </view>
-                    </block>
-                </view>
-            </view>
-        </block>
     </block>
-    <!--end -->
+</block>
+<!--end -->
 
-    <block wx:if="{{scheduleList.length == 0}}">
-        <view class="cu-load bg-grey over light"></view>
-    </block>
-<!-- </scroll-view> -->
+<block wx:if="{{scheduleList.length == 0}}">
+    <view class="cu-load bg-grey over light"></view>
+</block>
 
 <view class='load-progress {{hiddenLoading?"hide":"show"}}' style="top:{{CustomBar}}px;">
     <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
