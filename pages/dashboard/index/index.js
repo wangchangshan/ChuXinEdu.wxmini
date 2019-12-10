@@ -48,7 +48,7 @@ Component({
             }, {
                 name: '于孟珂',
                 title: '书法教师',
-                img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg',
+				img: '/images/yumengke.jpg',
 				url: '/pages/dashboard/teachers/resumes/yumengke',
                 color: 'brown'
             },

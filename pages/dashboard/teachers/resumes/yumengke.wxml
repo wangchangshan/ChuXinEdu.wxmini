@@ -7,52 +7,25 @@
 
     <view class='margin-lg padding-lg radius shadow-lg bg-white'>
         <view>
-            <view class="cu-avatar xxl round margin-left inline-block" style="background-image:url(/images/t002.png);"></view>
+            <view class="cu-avatar xxl round margin-left inline-block" style="background-image:url(/images/yumengke.jpg);"></view>
             <view class="inline-block base-info">
-                <view class="text-bold view-padding">马朝 </view>
-                <view class="text-bold view-padding">山东工艺美术学院</view>
-                <view class="text-bold view-padding">油画专业</view>
+                <view class="text-bold view-padding">于孟珂 </view>
+                <!-- <view class="text-bold view-padding">山东青年书法家协会会员</view> -->
             </view>
         </view>
 
         <view class="cu-bar bg-white solid-bottom margin-top">
             <view class="action">
-                <text class="cuIcon-title text-green"></text>从业资历
+                <text class="cuIcon-title text-green"></text>个人简介
             </view>
         </view>
 
         <view class="padding-sm text-sm">
-            从事美术教育行业5年，擅长3岁半到16岁少年儿童的创意西画教育。
+            于孟轲，潍坊市潍城区人，山东青年书法家协会会员。研修于中国艺术研究院美术学方向，师从刘文海（中国书法家协会会员，德州市书协副主席），并受教于陈忠康（中国书协行书委员会委员）、杨涛等书法名家。
         </view>
-
-        <view class="cu-bar bg-white solid-bottom margin-top">
-            <view class="action">
-                <text class="cuIcon-title text-red"></text>获得荣誉
-            </view>
-        </view>
-
+        <view class="padding-sm text-sm">自幼酷爱书法，初学颜体，后临习欧、赵等诸家书体。多年来博览书法名家碑帖，师古习今，临池不辍，练就了扎实的基本功。长期从事美术书法教学工作，以弘扬中华传统文化为基石，采取多体验游戏式的教学模式，严格秉承“书品与人品同行”的教育理念，得到了学生家长的普遍认可。</view>
         <view class="padding-sm text-sm">
-            山东师生基本功大赛国画线描一等奖
+            先后任职文质教育集团书法及国画教师，艺格学院书画专职教师，书成练字主讲教师、东方童民族艺术教育课程研发顾问、师训讲师等。
         </view>
-        <view class="padding-sm text-sm">
-            辅导学员参加ICAA国际少儿书画大赛多位学生获得金奖
-        </view>
-        <view class="padding-sm text-sm">
-            ICAA国际少儿书画大赛优秀辅导教师称号
-        </view>
-        <view class="padding-sm text-sm">
-            文化部全国美术等级考试优秀指导老师
-        </view>
-
-		<view class="cu-bar bg-white solid-bottom margin-top">
-            <view class="action">
-                <text class="cuIcon-title text-mauve"></text>教学总结
-            </view>
-        </view>
-
-        <view class="padding-sm text-sm">
-            孩子的成长是我最大的快乐，家长的满意是我最大的满足，能带给孩子不一样的东西，是我永恒的追求！
-        </view>
-        
     </view>
 </scroll-view>
