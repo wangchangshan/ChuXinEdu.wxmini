@@ -18,7 +18,7 @@ Component({
             color: 'yellow',
             badge: 0,
             name: '获得荣誉',
-            url: ''
+			url: '/pages/dashboard/honor/index'
         }, {
             icon: 'colorlens',
             color: 'olive',
@@ -51,7 +51,13 @@ Component({
 				img: '/images/yumengke.jpg',
 				url: '/pages/dashboard/teachers/resumes/yumengke',
                 color: 'brown'
-            },
+			}, {
+				name: '刘磊',
+				title: '西画老师',
+				img: '/images/liulei.png',
+				url: '/pages/dashboard/teachers/resumes/liulei',
+				color: 'blue'
+			}
         ]
     },
     lifetimes: {

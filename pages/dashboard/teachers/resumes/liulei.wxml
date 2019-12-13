@@ -1,0 +1,38 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">个人简历</view>
+    </cu-custom>
+
+    <view class='margin-lg padding-lg radius shadow-lg bg-white'>
+        <view >
+            <view class="cu-avatar xxl round margin-left-0 inline-block" style="background-image:url(/images/liulei.png);"></view>
+            <view class="inline-block base-info">
+                <view class="text-bold view-padding">刘磊 </view>
+                <view class="text-bold view-padding">四川师范大学</view>
+                <view class="text-bold view-padding">绘画专业</view>
+            </view>
+        </view>
+
+        <view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-green"></text>个人简介
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+           刘磊，四川师范大学绘画专业毕业，从事少儿美术行业两年有余，一直致力于少儿美术培训，曾指导学生参加多次专业美术大赛获得多次大奖，自身也获得多项优秀教师奖，能够贯彻执行教学计划，理解 “作经师易，作人师难”，备好每一堂课，能够有计划地完成所教课程，专研绘画技法，了解、研究学生个人情况，做到因材施教、因时施教。着力提高学生绘画的技能，实事求是地分析讲评。性格阳光豁达，有亲和力，善于和孩子沟通。
+        </view>
+
+		<view class="cu-bar bg-white solid-bottom margin-top">
+            <view class="action">
+                <text class="cuIcon-title text-mauve"></text>教学总结
+            </view>
+        </view>
+
+        <view class="padding-sm text-sm">
+           捧着一颗热爱孩子、热爱教育的心定会有收获！
+        </view>
+        
+    </view>
+</scroll-view>

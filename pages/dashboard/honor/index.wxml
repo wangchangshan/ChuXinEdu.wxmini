@@ -1,0 +1,22 @@
+<scroll-view scroll-y class="scrollPage">
+    <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+        <view slot="backText">返回</view>
+        <view slot="content">获得荣誉</view>
+    </cu-custom>
+
+    <view class='margin-lg padding-xl radius shadow-lg bg-white'>
+        <view class='text-content'>
+            <view class="text-blue">初心工作室成立至今，通过工作室老师们的精心指导以及家长朋友们的大力支持，获得了一些列的荣誉！孩子们都是棒棒哒~</view>
+        </view>
+        <view class="image">
+            <image src="/images/honor1.jpg" mode="widthFix"></image>
+        </view>
+        <view class="image">
+            <image src="/images/honor2.jpg" mode="widthFix"></image>
+        </view>
+        <view class="image">
+            <image src="/images/honor3.jpg" mode="widthFix"></image>
+        </view>
+
+    </view>
+</scroll-view>

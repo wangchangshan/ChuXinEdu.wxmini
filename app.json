@@ -10,7 +10,8 @@
         "pages/dashboard/teachers/resumes/tangdehong",
 		"pages/dashboard/teachers/resumes/mazhao",
 		"pages/dashboard/teachers/resumes/yumengke",
-
+		"pages/dashboard/teachers/resumes/liulei",
+		"pages/dashboard/honor/index",
         "pages/dashboard/coursecategory/coursecategory",
 
         "pages/contact/index/index",

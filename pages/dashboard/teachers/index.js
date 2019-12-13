@@ -24,7 +24,13 @@ Page({
 				img: '/images/yumengke.jpg',
 				url: '/pages/dashboard/teachers/resumes/yumengke',
                 color: 'brown'
-            },
+			}, {
+				name: '刘磊',
+				title: '西画老师',
+				img: '/images/liulei.png',
+				url: '/pages/dashboard/teachers/resumes/liulei',
+				color: 'blue'
+			}
         ]
     },
 })

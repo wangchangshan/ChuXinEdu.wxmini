@@ -239,9 +239,13 @@ Component({
 						return;
 					}
 					
+					let i = 1;
                     result.data.forEach(item => {
                         let p = (item.actualCourseCount - item.restCourseCount) / item.actualCourseCount;
                         item['percentage'] = (p * 100).toFixed(2)
+						// 隐藏套餐名
+						item['packageName'] = '套餐 ' + i.toLocaleString()
+						i ++
                     });
 					this.setData({
 						studentPackages: result.data,
