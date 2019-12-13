@@ -6,7 +6,9 @@
 
     <view class='margin-lg padding-lg radius shadow-lg bg-white'>
         <view>
-            <view class="cu-avatar xxl round margin-left inline-block" style="background-image:url(/images/t002.png);"></view>
+            <view class="cu-avatar xxl round margin-left inline-block">
+                <image style="height:256rpx; width:256rpx" mode='aspectFill' src="/images/t002.png"></image>
+            </view>
             <view class="inline-block base-info">
                 <view class="text-bold view-padding">马朝 </view>
                 <view class="text-bold view-padding">山东工艺美术学院</view>
@@ -43,7 +45,7 @@
             文化部全国美术等级考试优秀指导老师
         </view>
 
-		<view class="cu-bar bg-white solid-bottom margin-top">
+        <view class="cu-bar bg-white solid-bottom margin-top">
             <view class="action">
                 <text class="cuIcon-title text-mauve"></text>教学总结
             </view>
@@ -52,6 +54,6 @@
         <view class="padding-sm text-sm">
             孩子的成长是我最大的快乐，家长的满意是我最大的满足，能带给孩子不一样的东西，是我永恒的追求！
         </view>
-        
+
     </view>
 </scroll-view>

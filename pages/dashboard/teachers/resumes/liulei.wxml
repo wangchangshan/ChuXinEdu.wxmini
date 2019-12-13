@@ -6,7 +6,9 @@
 
     <view class='margin-lg padding-lg radius shadow-lg bg-white'>
         <view >
-            <view class="cu-avatar xxl round margin-left-0 inline-block" style="background-image:url(/images/liulei.png);"></view>
+            <view class="cu-avatar xxl round margin-left-0 inline-block">
+				<image style="height:256rpx; width:256rpx" mode='aspectFill' src="/images/liulei.png"></image>
+			</view>
             <view class="inline-block base-info">
                 <view class="text-bold view-padding">刘磊 </view>
                 <view class="text-bold view-padding">四川师范大学</view>
