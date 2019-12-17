@@ -42,7 +42,7 @@ Component({
             }, {
                 name: '马朝',
                 title: '西画教师',
-                img: '/images/t002.png',
+                img: '/images/t002.jpg',
                 url: '/pages/dashboard/teachers/resumes/mazhao',
                 color: 'blue'
             }, {
