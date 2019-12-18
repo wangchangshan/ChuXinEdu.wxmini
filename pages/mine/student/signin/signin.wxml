@@ -3,14 +3,14 @@
     <view slot="content">{{pageTitle}}</view>
 </cu-custom>
 
-<block wx:for="{{periodList}}" wx:key>
+<block wx:for="{{periodList}}" wx:key="index">
     <view class="cu-bar bg-white solid-bottom margin-top">
         <view class="action">
             <text class="cuIcon-title text-orange "></text> {{item.courseDate}} （{{item.courseWeekday}}）{{item.coursePeriod}}
         </view>
     </view>
     <view class="cu-list menu sm-border card-menu margin-top">
-        <block wx:for="{{item.signCourses}}" wx:for-item="cell" wx:key>
+        <block wx:for="{{item.signCourses}}" wx:for-item="cell" wx:key="index">
             <view class="cu-item">
                 <view class="content">
                     <text class="text-grey">{{cell.studentName}}</text>
@@ -59,7 +59,7 @@
 
                 <view class="cu-form-group">
                     <view class="grid col-2 grid-square flex-sub">
-                        <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+                        <view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="ViewImage" data-url="{{imgList[index]}}">
                             <image style="left: 0" src='{{imgList[index]}}' mode='aspectFill'></image>
                             <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
                                 <text class="cuIcon-close"></text>

@@ -5,9 +5,9 @@
     </cu-custom>
 
     <view class="cu-timeline">
-        <block wx:for="{{courseList}}" wx:for-item="item" wx:key>
+        <block wx:for="{{courseList}}" wx:for-item="item" wx:key="index">
             <view class="cu-time">{{item.yyyymm}}</view>
-            <block wx:for="{{item.courses}}" wx:for-item="cell" wx:key>
+            <block wx:for="{{item.courses}}" wx:for-item="cell" wx:key="index">
                 <view class="cu-item text-red cuIcon-evaluate_fill">
                     <view class="content">
                         <view class="cu-capsule radius">
@@ -16,7 +16,7 @@
                         </view>
                         <text class="margin-left">{{cell.courseSubject}}</text>
                         <view wx:if="{{cell.courseArtworks.length > 0}}" class="cu-list grid col-3 no-border" style="margin:0;padding:10rpx">
-                            <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{cell.courseArtworks}}" wx:for-item="tiny" wx:key>
+                            <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{cell.courseArtworks}}" wx:for-item="tiny" wx:key="index">
                                 <image bindtap="imagePreview" mode="widthFix" src="{{tiny.artworkUrl}}" data-src="{{tiny.artworkUrl}}"></image>
                             </view>
                         </view>

@@ -5,7 +5,7 @@
 
     <view class='margin-lg padding-xl radius shadow-lg bg-white'>
 
-        <block wx:for="{{contactList}}" wx:key>
+        <block wx:for="{{contactList}}" wx:key="index">
             <view class="text-left padding-sm">联系人：{{item.name}}</view>
 
             <view class="text-inline">

@@ -59,7 +59,7 @@
     <!-- 教师总览 -->
     <block wx:if="{{curUser && curUserType == 2}}">
         <view class="cu-list grid col-4 no-border" style="margin-top:0;padding-top:10rpx">
-            <view class="cu-item" wx:for="{{teacherOverview}}" wx:key>
+            <view class="cu-item" wx:for="{{teacherOverview}}" wx:key="index">
                 <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
                     <view class="text-black text-center text-xl">
                         {{item.num}}
@@ -73,7 +73,7 @@
     <!-- 学员总览 -->
     <block wx:if="{{curUser && curUserType == 1}}">
         <view class="cu-list grid col-3 no-border" style="margin-top:0;padding-top:10rpx">
-            <view class="cu-item" wx:for="{{studentOverview}}" wx:key>
+            <view class="cu-item" wx:for="{{studentOverview}}" wx:key="index">
                 <view bindtap="overViewJump" data-type="{{item.course_category_name}}">
                     <view class="text-black text-center text-xl">
                         {{item.rest_course_count}}
@@ -102,7 +102,7 @@
             </view>
         </view>
         <view class="cu-list grid col-3 no-border">
-            <view class="cu-item" wx:for="{{teacherEdu}}" wx:key>
+            <view class="cu-item" wx:for="{{teacherEdu}}" wx:key="index">
                 <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
                     <view class="cuIcon-{{item.icon}} text-{{item.color}}">
                     </view>
@@ -123,7 +123,7 @@
             </view>
         </view>
         <view class="cu-list menu sm-border margin-top">
-            <view class="cu-item" wx:for="{{studentSchedule}}" wx:key>
+            <view class="cu-item" wx:for="{{studentSchedule}}" wx:key="index">
                 <view class="content">
                     <text class="cuIcon-tagfill text-red"></text>
                     <text class="text-grey">{{item.courseWeekDay}}（{{item.coursePeriod}}）</text>
@@ -140,7 +140,7 @@
 </block>
 
 <!-- 家长功能——学员套餐卡 -->
-<block wx:if="{{curUser && curUserType == 1}}" wx:for="{{studentPackages}}" wx:key>
+<block wx:if="{{curUser && curUserType == 1}}" wx:for="{{studentPackages}}" wx:key="index">
     <view style="position:relative; top:-75px; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
         <navigator open-type="navigate" hover-class='none' url="/pages/mine/student/historycourse/historycourse?sPackageId={{item.id}}&studentName={{item.studentName}}">
             <view class="cu-bar bg-white solid-bottom margin-top">

@@ -5,7 +5,7 @@
     </cu-custom>
 
     <view class="padding text-center">
-		<block wx:for="{{classroomList}}" wx:key>
+		<block wx:for="{{classroomList}}" wx:key="index">
         	<button bindtap="jump2Signin" data-roomcode="{{item.value}}" data-roomname="{{item.text}}" class="padding-xl radius shadow-warp bg-{{item.color}} margin-top">
                 {{item.text}}
                 <text class="text-lg">(待签到：<text class="text-bold text-yellow">{{item.label}}</text>人)</text>

@@ -5,7 +5,7 @@
     </cu-custom>
 
     <view class="cu-list menu">
-        <view class="cu-item" wx:for="{{packageList}}" wx:key="{{studentCourseId}}">
+        <view class="cu-item" wx:for="{{packageList}}" wx:key="studentCourseId">
             <view class="content">
                 <text class="cuIcon-colorlens text-olive bg"></text>
                 <text class="text-grey">{{ item.packageName }}</text>

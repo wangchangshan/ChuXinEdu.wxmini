@@ -58,16 +58,16 @@
             让学生在快乐中学习，快乐中成长，以最简单的艺术表达方式传递给学生基本的艺术理念。
         </view>
 
-		<view class="cu-bar bg-white solid-bottom margin-top">
-            <view class="action">
-                <text class="cuIcon-title text-mauve"></text>教师作品
+        <block wx:if="{{showArtwork}}">
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="action">
+                    <text class="cuIcon-title text-blue"></text>教师作品
+                </view>
             </view>
-        </view>
-		<image mode='aspectFit' src="/images/tdh_zp_01.png"></image>
-		<image mode='aspectFill' src="/images/tdh_zp_02.png"></image>
-		<image mode='aspectFill' src="/images/tdh_zp_03.jpg"></image>
-		<image mode='aspectFill' src="/images/tdh_zp_04.png"></image>
-		<image mode='aspectFill' src="/images/tdh_zp_05.jpg"></image>
+            <block wx:for="{{teacherArtworkList}}" wx:key="index">
+                <image mode='aspectFit' src="{{item}}"></image>
+            </block>
+        </block>
 
     </view>
 </scroll-view>

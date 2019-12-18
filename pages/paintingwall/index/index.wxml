@@ -4,7 +4,7 @@
     </cu-custom>
 
     <view style="height:100%">
-        <view class="cu-card case" wx:for="{{paintingList}}" wx:key>
+        <view class="cu-card case" wx:for="{{paintingList}}" wx:key="index">
             <view class="cu-item shadow">
                 <view class="image">
                     <image src="{{item.picturePath}}" mode="widthFix"></image>

@@ -2,13 +2,13 @@
     <cu-custom bgColor="bg-gradual-blue" isBack="{{false}}">
     </cu-custom>
     <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
-        <swiper-item wx:for="{{environmentPicList}}" wx:key>
+        <swiper-item wx:for="{{environmentPicList}}" wx:key="index">
             <image src="{{item.picturePath}}" mode="aspectFill"></image>
         </swiper-item>
     </swiper>
 
     <view class="cu-list grid col-4 no-border">
-        <view class="cu-item" wx:for="{{iconList}}" wx:key>
+        <view class="cu-item" wx:for="{{iconList}}" wx:key="index">
             <navigator open-type="navigate" hover-class='none' url="{{item.url}}">
                 <view class="cuIcon-{{item.icon}} text-{{item.color}}">
                     <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
@@ -30,7 +30,7 @@
         </view>
     </view>
     <view class='nav-list' style="padding: 0 15rpx;">
-        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li" style="border-radius:0;padding:0 0 10rpx; background-color:#fff;margin: 0 2% 15rpx" wx:for="{{teachers}}" wx:key>
+        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li" style="border-radius:0;padding:0 0 10rpx; background-color:#fff;margin: 0 2% 15rpx" wx:for="{{teachers}}" wx:key="index">
             <image src="{{item.img}}" mode="aspectFill"></image>
             <view class='text-bold padding-sm'>
                 <view class="text-df" style="display:inline">
@@ -52,7 +52,7 @@
         </view>
     </view>
     <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="false" style="height:249px">
-        <swiper-item wx:for="{{learnPicList}}" wx:key>
+        <swiper-item wx:for="{{learnPicList}}" wx:key="index">
             <image src="{{item.picturePath}}" mode="aspectFill"></image>
         </swiper-item>
     </swiper>

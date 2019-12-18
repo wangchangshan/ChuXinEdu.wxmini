@@ -55,11 +55,15 @@
             孩子的成长是我最大的快乐，家长的满意是我最大的满足，能带给孩子不一样的东西，是我永恒的追求！
         </view>
 
-        <view class="cu-bar bg-white solid-bottom margin-top">
-            <view class="action">
-                <text class="cuIcon-title text-mauve"></text>教师作品
+        <block wx:if="{{showArtwork}}">
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="action">
+                    <text class="cuIcon-title text-blue"></text>教师作品
+                </view>
             </view>
-        </view>
-        <image mode='aspectFit' src="/images/mz_zp_01.jpg"></image>
+            <block wx:for="{{teacherArtworkList}}" wx:key="index">
+                <image mode='aspectFit' src="{{item}}"></image>
+            </block>
+        </block>
     </view>
 </scroll-view>

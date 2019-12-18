@@ -30,7 +30,7 @@
 
         <!-- 学员总览 -->
         <view class="cu-list grid col-3 no-border" style="margin-top:0;padding-top:10rpx">
-            <view class="cu-item" wx:for="{{studentCourseOverview}}" wx:key>
+            <view class="cu-item" wx:for="{{studentCourseOverview}}" wx:key="index">
 				<view bindtap="overViewJump" data-type="{{item.course_category_name}}">
                     <view class="text-black text-center text-xl">
                         {{item.rest_course_count}}
@@ -51,7 +51,7 @@
             </view>
         </view>
         <view class="cu-list menu sm-border margin-top">
-            <view class="cu-item" wx:for="{{studentSchedule}}" wx:key>
+            <view class="cu-item" wx:for="{{studentSchedule}}" wx:key="index">
                 <view class="content">
                     <text class="cuIcon-tagfill text-red"></text>
                     <text class="text-grey">{{item.courseWeekDay}}（{{item.coursePeriod}}）</text>
@@ -67,7 +67,7 @@
     </view>
 
     <!-- 家长功能——学员套餐卡 -->
-    <block wx:for="{{studentPackages}}" wx:key>
+    <block wx:for="{{studentPackages}}" wx:key="index">
         <view style="position:relative; margin-top:10rpx;" class='margin radius-lg shadow-lg bg-white'>
             <view class="cu-bar bg-white solid-bottom margin-top">
 				<navigator open-type="navigate" hover-class='none' url="/pages/mine/student/historycourse/historycourse?sPackageId={{item.id}}&studentName={{item.studentName}}">

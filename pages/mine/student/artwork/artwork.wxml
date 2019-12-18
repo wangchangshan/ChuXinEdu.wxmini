@@ -5,12 +5,12 @@
     </cu-custom>
 
     <view class="cu-timeline">
-        <block wx:for="{{artworklist}}" wx:for-item="item" wx:key>
+        <block wx:for="{{artworklist}}" wx:for-item="item" wx:key="index">
             <view class="cu-time">{{item.yyyymm}}</view>
             <view class="cu-item text-red cuIcon-evaluate_fill">
                 <view class="content">
                     <view class="cu-list grid col-3 no-border" style="margin:0;padding:10rpx">
-                        <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{item.artworks}}" wx:for-item="cell" wx:key>
+                        <view class="cu-item" style="margin:0; padding:10rpx" wx:for="{{item.artworks}}" wx:for-item="cell" wx:key="index">
                             <image bindtap="imagePreview" mode="widthFix" src="{{cell.artworkUrl}}" data-src="{{cell.artworkUrl}}"></image>
                         </view>
                     </view>

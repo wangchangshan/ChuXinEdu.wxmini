@@ -5,7 +5,7 @@
     </cu-custom>
 
     <view class='nav-list' style="padding: 20rpx 15rpx;">
-        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li" style="border-radius:0;padding:0 0 10rpx; background-color:#fff;margin: 0 2% 15rpx" wx:for="{{teachers}}" wx:key>
+        <navigator open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li" style="border-radius:0;padding:0 0 10rpx; background-color:#fff;margin: 0 2% 15rpx" wx:for="{{teachers}}" wx:key="index">
             <image src="{{item.img}}" mode="aspectFill"></image>
             <view class='text-bold padding-sm'>
                 <view class="text-df" style="display:inline">

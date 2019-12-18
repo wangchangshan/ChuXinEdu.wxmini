@@ -18,7 +18,7 @@
             </view>
         </view>
         <view class="cu-list menu-avatar" style="margin-top:{{CustomBar - 12}}px;">
-            <block wx:for="{{studentList}}" wx:key>
+            <block wx:for="{{studentList}}" wx:key="index">
                 <view class="cu-item">
                     <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
                     <view class="content">
@@ -30,7 +30,7 @@
                                 <text class="cuIcon-phone text-green"></text>{{item.student_phone}}</view>
                         </view>
                         <view class="text-gray text-sm flex">
-                            <block wx:for="{{item.rest_course_info}}" wx:for-item="cell" wx:key>
+                            <block wx:for="{{item.rest_course_info}}" wx:for-item="cell" wx:key="index">
                                 <text class="text-cut padding-right">{{cell.course_category_name}}：剩余 {{cell.rest_course_count}}节 </text>
                             </block>
                         </view>
@@ -44,7 +44,7 @@
     </block>
 
     <view class="cu-list menu-avatar" wx:if="{{pageType == 'birthday'}}">
-        <block wx:for="{{studentList}}" wx:key>
+        <block wx:for="{{studentList}}" wx:key="index">
             <view class="cu-item">
                 <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
                 <view class="content">
@@ -67,7 +67,7 @@
     </view>
 
     <view class="cu-list menu-avatar" wx:if="{{pageType == 'expiration'}}">
-        <block wx:for="{{studentList}}" wx:key>
+        <block wx:for="{{studentList}}" wx:key="index">
             <view class="cu-item">
                 <view bindtap="jump2Detail" data-code="{{item.student_code}}" class="cu-avatar round lg" style="background-image:url({{item.student_avatar_path}});"></view>
                 <view class="content">

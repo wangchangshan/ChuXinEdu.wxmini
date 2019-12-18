@@ -1,60 +1,54 @@
-// pages/dashboard/teachers/resumes/mazhao.js
+const app = getApp();
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-
+		teacherCode: 'T-000002',
+		showArtwork: true,
+		teacherArtworkList: []
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+		this.getTeacherArtwork();
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
+	getTeacherArtwork: function () {
+		wx.request({
+			url: app.globalData.ServerBase + "/api/wxopen/getteacherartwork",
+			data: {
+				teacherCode: this.data.teacherCode
+			},
+			method: 'GET',
+			header: {
+				'Content-Type': 'application/json',
+				'skey': wx.getStorageSync('SKEY')
+			},
+			success: result => {
+				if (result.data.code && result.data.code == '1401') {
+					this.setData({
+						showArtwork: false
+					})
+					return;
+				}
 
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
+				if (result.data.length > 0) {
+					this.setData({
+						showArtwork: true,
+						teacherArtworkList: result.data
+					})
+				}
+				else {
+					this.setData({
+						showArtwork: false
+					})
+				}
+			}
+		})
 	},
 
 	/**

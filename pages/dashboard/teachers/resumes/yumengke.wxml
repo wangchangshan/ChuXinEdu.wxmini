@@ -29,5 +29,16 @@
         <view class="padding-sm text-sm">
             先后任职文质教育集团书法及国画教师，艺格学院书画专职教师，书成练字主讲教师、东方童民族艺术教育课程研发顾问、师训讲师等。
         </view>
+
+		<block wx:if="{{showArtwork}}">
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="action">
+                    <text class="cuIcon-title text-blue"></text>教师作品
+                </view>
+            </view>
+            <block wx:for="{{teacherArtworkList}}" wx:key="index">
+                <image mode='aspectFit' src="{{item}}"></image>
+            </block>
+        </block>
     </view>
 </scroll-view>

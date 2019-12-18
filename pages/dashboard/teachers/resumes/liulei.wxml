@@ -35,6 +35,15 @@
         <view class="padding-sm text-sm">
            捧着一颗热爱孩子、热爱教育的心定会有收获！
         </view>
-        
+        <block wx:if="{{showArtwork}}">
+            <view class="cu-bar bg-white solid-bottom margin-top">
+                <view class="action">
+                    <text class="cuIcon-title text-blue"></text>教师作品
+                </view>
+            </view>
+            <block wx:for="{{teacherArtworkList}}" wx:key="index">
+                <image mode='aspectFit' src="{{item}}"></image>
+            </block>
+        </block>
     </view>
 </scroll-view>
