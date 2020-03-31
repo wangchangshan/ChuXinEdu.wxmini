@@ -1,11 +1,11 @@
 Page({
     data: {
 		contactList: [{
-			name: '唐得红',
+			name: '唐老师',
 			phone:'18513423024',
 			weixin: '18513423024'
 		}, {
-				name: '马朝',
+				name: '马老师',
 				phone: '17310182521',
 				weixin: 'mz1239'
 			}],
