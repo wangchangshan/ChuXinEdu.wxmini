@@ -33,7 +33,7 @@ App({
     globalData: {
         UserInfo: wx.getStorageSync('USERINFO'),
         UserType: "0",
-        //ServerBase: "http://localhost:8080",
+		//ServerBase: "http://localhost:8080",
         ServerBase: "https://www.shuyouxiaowu.com",
 		ColorList: [
 			{
