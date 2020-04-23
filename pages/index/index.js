@@ -41,7 +41,7 @@ Page({
     onShareAppMessage() {
         return {
             title: '初心美术——创意无限的美术培训室',
-            imageUrl: '/images/logo.png',
+            imageUrl: '/images/logo1.png',
             path: '/pages/index/index'
         }
     },
