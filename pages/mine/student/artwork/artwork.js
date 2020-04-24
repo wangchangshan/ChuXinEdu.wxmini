@@ -7,7 +7,7 @@ Page({
 		previewlist:[],
 		hiddenLoading: false,
 		pageIndex: 1,
-		pageSize: 10,
+		pageSize: 16,
 		hasMore: true,
 	},
 

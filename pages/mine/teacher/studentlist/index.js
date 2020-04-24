@@ -9,7 +9,7 @@ Page({
         hiddenLoading: false,
         studentList: [],
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 15,
         studentMore: true
     },
     onLoad: function(options) {

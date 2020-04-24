@@ -8,7 +8,7 @@ Page({
 		artImagelist: [],
 		hiddenCourseLoading: false,
 		pageIndex: 1,
-		pageSize: 12,
+		pageSize: 15,
 		courseMore: true,
 	},
 

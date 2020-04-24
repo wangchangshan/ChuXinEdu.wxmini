@@ -10,7 +10,7 @@ Page({
         imgList: [],
         roomCode: '',
         pageIndex: 1,
-        pageSize: 12,
+        pageSize: 15,
         signDialogShow: '',
         signTitle: '',
         signStudentCourseId: 0,
