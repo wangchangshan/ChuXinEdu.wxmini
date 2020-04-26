@@ -3,7 +3,12 @@ Page({
     data: {
         PageCur: 'dashboard',
     },
-    onLoad: function () {
+    onLoad: function (option) {
+        if(option.target) {
+            this.setData({
+                PageCur: option.target
+            });
+        }
     },
 
     onReachBottom: function () {
@@ -42,7 +47,7 @@ Page({
         return {
             title: '初心美术——创意无限的美术培训室',
             imageUrl: '/images/logo1.png',
-            path: '/pages/index/index'
+            path: '/pages/index/index?target=paintingwall'
         }
     },
 })
