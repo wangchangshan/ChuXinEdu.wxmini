@@ -21,6 +21,9 @@
         </block>
 
         <view class="text-left padding-sm">地 址：{{showAddress}}</view>
+		<button open-type="contact" class="cu-btn block bg-blue margin-tb-sm lg">
+    		<text class="cuIcon-servicefill padding-right-xs"></text>点我咨询吧^-^
+		</button>
     </view>
 
     <!-- <view class='margin-lg padding-xl radius shadow-lg'>
